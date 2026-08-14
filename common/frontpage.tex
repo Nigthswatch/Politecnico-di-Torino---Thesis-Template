@@ -26,13 +26,14 @@
 \vspace{\stretch{4}}
 %
 \makebox[\textwidth]{\null\hfill\def\arraystretch{1.1} % to change the spacing change this number
-\begin{minipage}[t]{.4\textwidth}
+% .47 e non .4: con "Prof." davanti i nomi dei relatori sforano la colonna
+\begin{minipage}[t]{.47\textwidth}
     \begin{tabular}[t]{@{}ll@{}}
         \fixednamesfont \thesissupervisortext: & \\
-         & \namesfont \thesissupervisoronename~\thesissupervisoronesurname \\
-         & \namesfont \thesissupervisortwoname~\thesissupervisortwosurname %\\
+         & \namesfont \thesissupervisortitle~\thesissupervisoronename~\thesissupervisoronesurname \\
+         & \namesfont \thesissupervisortitle~\thesissupervisortwoname~\thesissupervisortwosurname %\\
          % uncomment if you need a third supervisor
-         % & \namesfont \thesissupervisorthreename~\thesissupervisorthreesurname
+         % & \namesfont \thesissupervisortitle~\thesissupervisorthreename~\thesissupervisorthreesurname
     \end{tabular}
 \end{minipage}
 %
@@ -41,7 +42,8 @@
 \begin{minipage}[t]{.4\textwidth}
 \begin{tabular}[t]{@{}ll@{}}
     \fixednamesfont \thesiscandidatetext:  & \\
-     & \namesfont \thesiscandidatename~\thesiscandidatesurname
+     & \namesfont \thesiscandidatename~\thesiscandidatesurname \\
+     & \namesfont \thesiscandidateid
 \end{tabular}
 \end{minipage}\hfill\null}\\
 %

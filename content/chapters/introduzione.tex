@@ -26,6 +26,10 @@ fabbricazione convenzionale \cite{smutny2022}. La variabilità del blocchetto si
 riflette sui carichi effettivamente imposti allo strumento e, di conseguenza,
 sulla ripetibilità della misura.
 
+% SEGNAPOSTO figura: immagine del blocchetto endodontico.
+% La Figura 1 di Smutny et al. e' riutilizzabile (licenza Creative Commons
+% Attribution 4.0) citando autori e fonte nella didascalia.
+
 Il quadro si complica ulteriormente se si considera la natura della
 sollecitazione. In esercizio lo strumento è soggetto simultaneamente a flessione
 alternata, imposta dalla curvatura del canale, e a torsione, dovuta
@@ -40,6 +44,89 @@ Da queste considerazioni discende l'obiettivo del presente lavoro: la
 progettazione di un banco che consenta di sottoporre uno strumento endodontico
 rotante a carichi combinati di fatica flessionale e torsione statica, in
 condizioni note e ripetibili, misurando la coppia resistente fino a rottura.
+
+Il banco non nasce da zero. Attorno a una macchina di prova commerciale, già
+acquisita dal laboratorio, è stata progettata una catena di componenti di
+interfaccia che ne adatta le dimensioni e le portate alla scala del provino
+endodontico. Le due traverse della macchina sono entrambe dotate di mandrino:
+quella superiore sostiene il gruppo porta-provino, quella inferiore afferra lo
+strumento. L'assieme complessivo è riportato in
+figura~\ref{fig:assieme-banco}; i suoi elementi, percorsi dall'alto verso il
+basso, sono i seguenti.
+
+\begin{figure}[htbp]
+    \centering
+    % SEGNAPOSTO: sostituire la cornice sottostante con
+    % \includegraphics[width=0.75\linewidth]{images/banco/assieme.pdf}
+    \fbox{\begin{minipage}[c][0.30\textheight][c]{0.72\linewidth}
+        \centering\itshape
+        Segnaposto\\[2mm]
+        Assieme del banco di prova\\
+        (esportazione SolidWorks da inserire)
+    \end{minipage}}
+    \caption{Assieme del banco di prova.}
+    \label{fig:assieme-banco}
+\end{figure}
+
+\begin{description}
+
+  \item[Macchina di prova.] Macchina elettrodinamica a motori lineari
+    STEP Lab UD04, corsa 80\,mm, equipaggiata con l'attuatore torsionale
+    BV010-AIR (coppia statica massima 8\,N$\cdot$m, velocità massima 350\,rpm,
+    encoder assoluto integrato) \cite[pp.~6, 10]{steplab2024}. La presenza di
+    entrambi gli attuatori è ciò che rende possibile applicare simultaneamente
+    la sollecitazione assiale e quella torsionale.
+
+  \item[Piastra di accoppiamento superiore.] Piastra di interfaccia,
+    progettata nell'ambito di questo lavoro, fra il mandrino della traversa
+    superiore e la tavola di posizionamento.
+
+  \item[Tavola di posizionamento.] Tavola a rulli incrociati MISUMI
+    XYCRS120 \cite[pp.~1941--1942]{misumi2014}, scelta al termine del
+    confronto discusso al capitolo~\ref{cap:progettazione}. Consente di allineare manualmente l'asse
+    del canale radicolare all'asse di rotazione dello strumento prima di
+    avviare la prova.
+
+  \item[Piastra di accoppiamento inferiore.] Seconda piastra di interfaccia,
+    anch'essa progettata in questo lavoro, che collega la tavola di
+    posizionamento alla cella di carico. Il suo parallelismo rispetto all'asse
+    della macchina governa l'entità dei momenti parassiti letti dalla cella.
+
+  \item[Cella di carico.] Cella multiassiale Interface 6A27, che misura
+    simultaneamente le tre forze e i tre momenti. Le portate sono
+    $F_z = 200$\,N e $M_x = M_y = M_z = 1$\,N$\cdot$m, su un corpo di diametro
+    27\,mm e altezza 25\,mm; il fissaggio avviene tramite sei fori M2 e una
+    spina di centraggio $\varnothing$2\,E7. La sua portata, di due ordini di
+    grandezza inferiore a quella della cella biassiale della macchina, è ciò
+    che consente di risolvere le coppie in gioco nella prova.
+
+  \item[Sede del blocchetto.] Componente unico, all'interno del quale la resina
+    indurisce inglobando il blocchetto e rendendolo solidale alla struttura.
+    Impone allo strumento la curvatura del canale e trasferisce alla cella la
+    coppia di reazione.
+
+  \item[Blocchetto.] Blocchetto in resina Endo-Training-Bloc-J, descritto al
+    paragrafo precedente, che riproduce il canale radicolare in forma
+    ripetibile.
+
+  \item[Strumento endodontico.] Il provino vero e proprio, impegnato nel canale
+    dal basso, sollecitato a flessione alternata dalla curvatura e a torsione
+    dalla coppia resistente all'avanzamento.
+
+  \item[Clamshell.] Boccola bipartita, progettata nell'ambito di questo lavoro,
+    interposta fra le ganasce del mandrino inferiore e il gambo dello
+    strumento. Ne protegge il gambo dalla forza di serraggio, comportandosi da
+    elemento sacrificale.
+
+  \item[Mandrino inferiore.] Organo di afferraggio dello strumento, solidale
+    all'attuatore torsionale, che gli trasmette il moto rotatorio. La macchina
+    è fornita sia di morsa a cuneo autocentrante, sia di mandrino a pinza
+    portapunta; la scelta definitiva fra i due sarà effettuata alla consegna
+    della macchina, in funzione dell'accoppiamento che risulterà più favorevole
+    con il gambo dello strumento. Il clamshell resta necessario in entrambi i
+    casi.
+
+\end{description}
 
 \section{Struttura della tesi}
 

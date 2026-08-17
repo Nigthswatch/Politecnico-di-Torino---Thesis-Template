@@ -58,7 +58,7 @@ endodontico. Le portate della macchina restano largamente superiori ai carichi
 in gioco; la misura è quindi affidata a una cella dedicata, e il divario di
 scala costituisce uno dei vincoli da cui discende il progetto dei componenti di
 interfaccia. Le due traverse della macchina sono entrambe dotate di mandrino:
-quella superiore sostiene l'insieme di componenti che fissa il blocchetto e ne
+quella superiore sostiene il gruppo porta-provino, che fissa il blocchetto e ne
 consente il centraggio rispetto all'asse di rotazione; quella inferiore afferra
 lo strumento. Il gruppo porta-provino progettato in questo lavoro è riportato in
 figura~\ref{fig:assieme-banco} e, in vista esplosa, in
@@ -76,10 +76,41 @@ verso il basso, sono i seguenti.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=\linewidth]{images/banco/assieme-esploso.pdf}
-    \caption{Vista esplosa del gruppo porta-provino e relativa distinta base.}
+    \includegraphics[height=0.45\textheight]{images/banco/assieme-esploso.pdf}
+    \caption{Vista esplosa del gruppo porta-provino. I numeri di riferimento
+    corrispondono alle posizioni della tabella~\ref{tab:distinta-base}.}
     \label{fig:assieme-esploso}
 \end{figure}
+
+\begin{table}[!htbp]
+    \centering
+    \caption{Distinta base del gruppo porta-provino. Le posizioni corrispondono
+    ai numeri di riferimento della figura~\ref{fig:assieme-esploso}.}
+    \label{tab:distinta-base}
+    \footnotesize
+    \setlength{\tabcolsep}{4pt}
+    \begin{tabularx}{\linewidth}{@{}c
+        >{\hsize=1.5\hsize\raggedright\arraybackslash}X c
+        >{\hsize=1.0\hsize\raggedright\arraybackslash}X
+        >{\hsize=0.8\hsize\raggedright\arraybackslash}X
+        >{\hsize=0.7\hsize\raggedright\arraybackslash}X l@{}}
+        \toprule
+        Pos. & Denominazione & Q.tà & Codice & Materiale & Fornitore & Origine \\
+        \midrule
+        1  & Vite TCEI ISO 4762 M4$\times$6 & 4 & --- & Acciaio & --- & Commerciale \\
+        2  & Piastra di accoppiamento superiore & 1 & BE-01 & C45 (1.1193) & Produzione interna & Progettato \\
+        3  & Tavola di posizionamento & 1 & XYCRS120 & Lega di alluminio & MISUMI & Commerciale \\
+        4  & Piastra di accoppiamento inferiore & 1 & BE-02 & 7075-T6 & Produzione interna & Progettato \\
+        5  & Cella di carico & 1 & 6A27 & Acciaio inox & Interface & Commerciale \\
+        6  & Sede del blocchetto & 1 & BE-03 & 7075-T6 & Produzione interna & Progettato \\
+        7  & Blocchetto endodontico & 1 & Endo-Training-Bloc-J & Resina epossidica & Dentsply Sirona & Commerciale \\
+        8  & Strumento endodontico & 1 & --- & NiTi & --- & Provino \\
+        9  & Spina cilindrica ISO 2338 $\varnothing$2\,m6 & 2 & --- & Acciaio & --- & Commerciale \\
+        10 & Clamshell, semiguscio I & 1 & BE-04-A & AISI 304 & Produzione interna & Progettato \\
+        11 & Clamshell, semiguscio II & 1 & BE-04-B & AISI 304 & Produzione interna & Progettato \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
 
 \begin{description}
 
@@ -144,24 +175,5 @@ verso il basso, sono i seguenti.
 
 \section{Struttura della tesi}
 
-Il capitolo~\ref{cap:specifiche} traduce l'obiettivo appena enunciato in
-requisiti numerici. A partire dai banchi descritti in altre pubblicazioni e i
-riferimenti normativi disponibili, si fissano i carichi e le corse che il banco
-deve garantire, e si definisce l'architettura del sistema come catena di
-accoppiamenti fra la macchina, il provino e la catena di misura. È il capitolo a
-cui rimandano tutte le scelte successive.
-
-Il capitolo~\ref{cap:progettazione} costituisce il corpo del lavoro. Si apre con
-il metodo di analisi agli elementi finiti adottato --- tipi di elemento,
-discretizzazione, condizioni al contorno e criteri di verifica --- richiamato
-poi da ciascuna delle verifiche successive. Seguono i singoli componenti,
-presentati nell'ordine in cui compongono la catena: per ognuno sono esposti i
-requisiti che discendono dal capitolo precedente, la soluzione costruttiva
-adottata e la relativa verifica. Il capitolo si chiude con l'assemblaggio del
-complessivo, la catena di misura e la procedura di azzeramento prescritta per la
-prova.
-
-Il capitolo~\ref{cap:conclusioni} raccoglie i risultati del lavoro, ne dichiara i
-limiti e indica gli sviluppi futuri, primo fra tutti la campagna sperimentale che
-la consegna della macchina renderà possibile.
+% Traccia delle sezioni ancora da scrivere:
 % \section{Modalita' di rottura: fatica flessionale e torsione statica}

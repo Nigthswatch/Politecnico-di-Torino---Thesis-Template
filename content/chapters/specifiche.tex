@@ -33,7 +33,97 @@ il banco oggetto di questa tesi.
 
 \section{Requisiti funzionali e prestazionali}
 \label{sec:requisiti}
-%È il capitolo dei numeri, quello a cui rimanderanno tutte le scelte del capitolo 3. Ci vanno i carichi in gioco — coppie dell'ordine di 0,025–0,1 N·m ricavate da Iacono, carico assiale limitato a 180 N dalla portata della tavola, la 6A27 che regge 200 N sull'asse Z — le corse necessarie, la risoluzione di posizionamento richiesta per centrare il canale, e i limiti della macchina: 2,91 kN e 8 N·m statici, 350 rpm, corsa 80 mm. È qui che il divario di scala fra macchina e provino va scritto nero su bianco, perché è il vincolo generatore di quasi tutto il resto.
+
+I requisiti del banco discendono da tre sorgenti distinte: il fenomeno da
+riprodurre, che stabilisce quali sollecitazioni imporre e con quale intensità; i
+componenti già acquisiti all'avvio dell'attività, macchina di prova e cella di
+carico, che impongono vincoli non negoziabili; e il provino, la cui geometria
+determina la precisione con cui deve essere posizionato.
+
+\paragraph{Sollecitazioni da imporre.}
+Il banco deve applicare allo stesso provino, simultaneamente, una flessione
+alternata imposta dalla curvatura del canale e una coppia torcente costante. I
+livelli di coppia significativi sono dell'ordine di 0,025--0,1\,N$\cdot$m, ossia
+quelli per i quali l'effetto sulla vita a fatica è stato documentato
+\cite{iacono2021}; la velocità di rotazione deve essere rappresentativa
+dell'impiego clinico, dell'ordine di alcune centinaia di giri al minuto. La prova
+si conclude con la rottura dello strumento, di cui va rilevato l'istante.
+
+\paragraph{Vincoli imposti dalla macchina.}
+La macchina UD04 dispone di una corsa di 80\,mm e di forze ben superiori a quelle
+in gioco, mentre l'attuatore BV010 eroga fino a 8\,N$\cdot$m statici a un massimo
+di 350\,giri/min, con un limite di $\pm$10\,000 giri per prova
+\cite[pp.~6, 10]{steplab2024}. La cella biassiale in dotazione alla macchina ha
+portata 10\,kN e 50\,N$\cdot$m, due ordini di grandezza oltre le coppie da
+misurare, ed è quindi inutilizzabile allo scopo. Il controllore mette a
+disposizione due canali configurabili, entrambi già occupati da quella cella:
+l'acquisizione di un trasduttore aggiuntivo richiede una scheda dedicata.
+
+\paragraph{Vincoli imposti dalla cella di carico.}
+La cella multiassiale 6A27 misura simultaneamente tre forze e tre momenti, con
+portate di 200\,N sull'asse verticale e 1\,N$\cdot$m sui tre momenti, su un corpo
+di 27\,mm di diametro e 25\,mm di altezza; il fissaggio è vincolato a sei fori M2
+e a una spina di centraggio $\varnothing$2\,E7. Ne discendono due conseguenze.
+La prima riguarda la risoluzione: le coppie da misurare valgono fra il 2,5\,\% e
+il 10\,\% del fondo scala, e la catena di misura deve essere in grado di
+risolverle. La seconda è di natura strutturale: essendo la cella sensibile anche
+ai momenti flettenti, qualsiasi massa disposta fuori asse genera momenti
+parassiti che competono con il segnale utile sulla medesima portata di
+1\,N$\cdot$m. Il progetto dei componenti di interfaccia deve quindi contenere sia
+l'eccentricità delle masse sia gli errori di parallelismo.
+
+\paragraph{Posizionamento del provino.}
+Il canale del blocchetto ha sezione oblunga di circa 137 per 314\,\textmu m
+\cite{smutny2022}, e vi si impegna uno strumento di punta comparabile. Perché lo
+strumento imbocchi il canale senza forzare contro le pareti, l'asse del canale
+deve coincidere con l'asse di rotazione entro alcune decine di micrometri. Il
+posizionamento è manuale e va eseguito prima di ogni prova, il che richiede che
+gli organi di regolazione restino accessibili a banco montato.
+
+\paragraph{Vincolo del provino.}
+Il blocchetto deve essere reso solidale alla struttura in modo che, sotto i
+carichi applicati, non si verifichino scorrimenti né cedimenti elastici
+apprezzabili: qualsiasi mobilità relativa fra provino e cella si traduce in una
+lettura di coppia falsata. Il vincolo deve inoltre consentire la sostituzione del
+provino fra una prova e la successiva, dato che il blocchetto è soggetto a usura.
+
+\paragraph{Afferraggio e protezione dello strumento.}
+L'afferraggio deve trasmettere allo strumento la coppia richiesta senza
+strisciamento e, al tempo stesso, non danneggiarlo. Gli organi disponibili sono
+dimensionati per provini metallici di scala assai maggiore --- la morsa a cuneo è
+tarata su 50\,kN e 200\,N$\cdot$m --- mentre il gambo dello strumento ha diametro
+di pochi millimetri. È quindi necessario interporre un elemento sacrificale che
+adatti il diametro e limiti l'azione della forza di serraggio sul gambo.
+
+\paragraph{Condizioni di prova.}
+Le condizioni ambientali della prova non erano state specificate all'avvio
+dell'attività. Il banco è stato pertanto progettato per prove condotte a
+temperatura ambiente, condizione peraltro coerente con la cella di carico
+adottata, che il costruttore dichiara priva di compensazione in temperatura.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Sintesi dei requisiti e dei vincoli, con la relativa origine.}
+    \label{tab:requisiti}
+    \footnotesize
+    \setlength{\tabcolsep}{4pt}
+    \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X l l@{}}
+        \toprule
+        Requisito o vincolo & Valore & Origine \\
+        \midrule
+        Coppia da imporre e misurare      & 0,025--0,1\,N$\cdot$m          & Fenomeno \\
+        Velocità di rotazione             & fino a 350\,giri/min           & Macchina BV010 \\
+        Giri massimi per prova            & $\pm$10\,000                   & Macchina BV010 \\
+        Corsa assiale disponibile         & 80\,mm                         & Macchina UD04 \\
+        Portata assiale della cella       & 200\,N                         & Cella 6A27 \\
+        Portata sui momenti               & 1\,N$\cdot$m                   & Cella 6A27 \\
+        Interfaccia di fissaggio          & 6$\times$M2, spina $\varnothing$2\,E7 & Cella 6A27 \\
+        Canali di acquisizione liberi     & nessuno                        & Controllore \\
+        Sezione del canale                & 137 $\times$ 314\,\textmu m    & Provino \\
+        Precisione di centraggio          & alcune decine di \textmu m     & Derivato \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
 
 \section{Grandezze da misurare e requisiti della catena di misura}
 

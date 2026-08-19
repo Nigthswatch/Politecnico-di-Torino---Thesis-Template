@@ -4,63 +4,36 @@
 \section{Banchi esistenti e riferimenti normativi}
 
 I due meccanismi di rottura descritti nell'introduzione sono da tempo oggetto di
-prove consolidate, ma di prove distinte: alla fatica flessionale e alla torsione
-corrispondono due protocolli separati, condotti su apparati diversi e su provini
-diversi.
+prove consolidate ma distinte. La resistenza a fatica ciclica si misura
+facendo ruotare lo strumento all'interno di un canale artificiale curvo fino alla
+rottura, registrando il numero di cicli sopportati; la resistenza torsionale si
+misura impedendo la rotazione della punta e imponendo allo stelo una rotazione
+lenta, rilevando la coppia massima e l'angolo di distorsione raggiunto. Il
+riferimento normativo per gli strumenti endodontici è la norma ISO 3630-1
+\cite{iso3630}.
 
-La resistenza a fatica ciclica si misura facendo ruotare lo strumento all'interno
-di un canale artificiale ricavato in un blocchetto metallico, fino alla rottura;
-si registrano il tempo trascorso e, nota la velocità di rotazione, il numero di
-cicli a rottura. La geometria del canale è il parametro che governa la
-sollecitazione imposta, ed è quello che gli studi dichiarano per primo: si
-incontrano ricorrentemente curvature di 60\textdegree{} con raggio compreso fra
-3 e 5\,mm \cite{bumbalek2021,bueno2019,keskin2017} e, in lavori più recenti,
-curvature meno severe, come 45\textdegree{} con raggio di 6,06\,mm
-\cite{jeong2024}. Si distingue inoltre fra modelli statici, in cui lo strumento
-ruota mantenendo fissa la propria posizione lungo la curva, e modelli dinamici,
-in cui compie anche una corsa assiale che riproduce il movimento di lavoro del
-clinico \cite{keskin2017}.
-
-La resistenza torsionale si misura invece impedendo la rotazione della punta e
-imponendo allo stelo una rotazione lenta, dell'ordine di due giri al minuto,
-fino alla rottura, rilevando la coppia massima e l'angolo di distorsione
-raggiunto \cite{jeong2024}. Il riferimento normativo per gli strumenti
-endodontici è la norma ISO 3630-1 \cite{iso3630}.
-
-Entrambi i protocolli sono efficaci nel proprio ambito, ma per costruzione non
-possono dire nulla sull'interazione fra le due sollecitazioni: essendo condotti
-su macchine separate e su esemplari diversi dello stesso strumento, ciascuno
-misura una sola modalità di rottura in assenza dell'altra. Il lavoro di Jeong e
-colleghi ne è un esempio esplicito: gli stessi sistemi di lime vengono
-caratterizzati sia a fatica ciclica sia a torsione, ma con due dispositivi e due
-procedure indipendenti \cite{jeong2024}.
+Entrambi i protocolli sono efficaci nel proprio ambito, ma la valutazione si complica quanto le due sollecitazioni si sovrappongono: essendo condotti su
+apparati separati e su esemplari diversi dello stesso strumento, ciascuno misura
+una modalità di rottura in assenza dell'altra. Il lavoro di Jeong e colleghi ne è
+un esempio esplicito: gli stessi sistemi di lime vengono caratterizzati sia a
+fatica ciclica sia a torsione, ma con due dispositivi e due procedure
+indipendenti \cite{jeong2024}.
 
 Che l'interazione esista, e sia misurabile, è stato mostrato da Iacono e
-colleghi, che hanno realizzato un dispositivo capace di applicare un carico
-torsionale ai 5\,mm apicali dello strumento mentre questo è sottoposto a fatica
-flessionale. Provando trentatré strumenti su una curvatura di 30\textdegree{} a
-tre livelli di coppia, hanno riscontrato una correlazione inversa fra coppia
-applicata e tempo a rottura ($r = -0{,}721$) \cite{iacono2021}. Gli autori stessi
+colleghi, che hanno applicato un carico torsionale allo strumento mentre questo
+era sottoposto a fatica flessionale, riscontrando una riduzione del tempo a
+rottura al crescere della coppia applicata \cite{iacono2021}. Gli autori stessi
 presentano il lavoro come una dimostrazione di principio, limitata a un solo tipo
 di strumento e a una sola geometria di canale.
 
-Rimane quindi scoperto uno spazio preciso: non esiste un apparato consolidato che
-consenta di applicare in modo controllato e ripetibile entrambe le sollecitazioni
-allo stesso provino, misurando la coppia resistente fino alla rottura. È lo
-spazio in cui si colloca il banco oggetto di questa tesi.
-
-A questa lacuna se ne affianca una relativa al provino. I banchi di fatica
-ciclica citati impiegano canali ricavati in blocchetti metallici, durevoli e
-geometricamente stabili nel tempo, ma che non riproducono l'attrito
-dell'interfaccia con la dentina; i blocchetti in resina, adottati in questo
-lavoro, sono più rappresentativi ma soggetti a usura e a una dispersione
-dimensionale non trascurabile \cite{smutny2022}. La scelta del provino è dunque
-essa stessa un requisito di progetto, e come tale viene ripresa nel
-paragrafo~\ref{sec:requisiti}.
+Non esiste quindi un apparato consolidato che consenta di applicare in modo
+controllato e ripetibile entrambe le sollecitazioni allo stesso provino,
+misurando la coppia resistente fino alla rottura. È lo spazio in cui si colloca
+il banco oggetto di questa tesi.
 
 \section{Requisiti funzionali e prestazionali}
 \label{sec:requisiti}
-%   180 N assiali, 1 Nm, corse e risoluzione di posizionamento
+%È il capitolo dei numeri, quello a cui rimanderanno tutte le scelte del capitolo 3. Ci vanno i carichi in gioco — coppie dell'ordine di 0,025–0,1 N·m ricavate da Iacono, carico assiale limitato a 180 N dalla portata della tavola, la 6A27 che regge 200 N sull'asse Z — le corse necessarie, la risoluzione di posizionamento richiesta per centrare il canale, e i limiti della macchina: 2,91 kN e 8 N·m statici, 350 rpm, corsa 80 mm. È qui che il divario di scala fra macchina e provino va scritto nero su bianco, perché è il vincolo generatore di quasi tutto il resto.
 
 \section{Grandezze da misurare e requisiti della catena di misura}
 

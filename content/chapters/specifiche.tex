@@ -34,30 +34,33 @@ il banco oggetto di questa tesi.
 \section{Requisiti funzionali e prestazionali}
 \label{sec:requisiti}
 
-I requisiti del banco discendono da tre sorgenti distinte: il fenomeno da
+I requisiti necessari alla progettazione del banco discendono da tre ragioni distinte: il fenomeno da
 riprodurre, che stabilisce quali sollecitazioni imporre e con quale intensità; i
 componenti già acquisiti all'avvio dell'attività, macchina di prova e cella di
 carico, che impongono vincoli non negoziabili; e il provino, la cui geometria
 determina la precisione con cui deve essere posizionato.
 
 \paragraph{Sollecitazioni da imporre.}
-Il banco deve applicare allo stesso provino, simultaneamente, una flessione
-alternata imposta dalla curvatura del canale e una coppia torcente costante. I
-livelli di coppia significativi sono dell'ordine di 0,025--0,1\,N$\cdot$m, ossia
-quelli per i quali l'effetto sulla vita a fatica è stato documentato
-\cite{iacono2021}; la velocità di rotazione deve essere rappresentativa
-dell'impiego clinico, dell'ordine di alcune centinaia di giri al minuto. La prova
-si conclude con la rottura dello strumento, di cui va rilevato l'istante.
+Il banco deve sottoporre lo stesso provino, simultaneamente, alla flessione
+alternata imposta dalla curvatura del canale e alla torsione derivante
+dall'ingaggio dello strumento nelle pareti. Le grandezze imposte sono la
+rotazione, a velocità rappresentativa dell'impiego clinico e dell'ordine di
+alcune centinaia di giri al minuto, e l'avanzamento assiale; la coppia nasce dall'interazione fra strumento e canale, ed è la grandezza che
+la prova deve misurare. Prove analoghe riportano coppie dell'ordine di
+0,025--0,1\,N$\cdot$m \cite{iacono2021}, valore utile a dimensionare la catena di
+misura. La prova si conclude con la rottura dello strumento, di cui va rilevato
+l'istante.
 
 \paragraph{Vincoli imposti dalla macchina.}
 La macchina UD04 dispone di una corsa di 80\,mm e di forze ben superiori a quelle
 in gioco, mentre l'attuatore BV010 eroga fino a 8\,N$\cdot$m statici a un massimo
 di 350\,giri/min, con un limite di $\pm$10\,000 giri per prova
-\cite[pp.~6, 10]{steplab2024}. La cella biassiale in dotazione alla macchina ha
-portata 10\,kN e 50\,N$\cdot$m, due ordini di grandezza oltre le coppie da
-misurare, ed è quindi inutilizzabile allo scopo. Il controllore mette a
-disposizione due canali configurabili, entrambi già occupati da quella cella:
-l'acquisizione di un trasduttore aggiuntivo richiede una scheda dedicata.
+\cite[pp.~6, 10]{steplab2024}. La cella biassiale in dotazione alla macchina ha portata 10\,kN e 50\,N$\cdot$m,
+due ordini di grandezza oltre le coppie da misurare, ed è quindi inutilizzabile
+allo scopo: la misura richiede un trasduttore dedicato. I due canali
+configurabili sono però già occupati dalla cella biassiale,
+sicché l'acquisizione del trasduttore aggiuntivo comporta anche una scheda
+dedicata.
 
 \paragraph{Vincoli imposti dalla cella di carico.}
 La cella multiassiale 6A27 misura simultaneamente tre forze e tre momenti, con
@@ -83,8 +86,8 @@ gli organi di regolazione restino accessibili a banco montato.
 \paragraph{Vincolo del provino.}
 Il blocchetto deve essere reso solidale alla struttura in modo che, sotto i
 carichi applicati, non si verifichino scorrimenti né cedimenti elastici
-apprezzabili: qualsiasi mobilità relativa fra provino e cella si traduce in una
-lettura di coppia falsata. Il vincolo deve inoltre consentire la sostituzione del
+apprezzabili: qualsiasi movimento relativo fra provino e cella si traduce in una
+lettura di coppia sbagliata. Il vincolo deve inoltre consentire la sostituzione del
 provino fra una prova e la successiva, dato che il blocchetto è soggetto a usura.
 
 \paragraph{Afferraggio e protezione dello strumento.}

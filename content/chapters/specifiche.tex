@@ -242,28 +242,33 @@ moltiplicando per la matrice di disaccoppiamento a trentasei termini fornita in
 sede di taratura. Ogni componente dipende quindi da tutte e sei le uscite, e la
 misura della sola coppia non è possibile: la catena deve acquisire i sei canali
 per intero. Il crosstalk residuo di $\pm$1\,\% dichiarato dal costruttore va
-letto in questa luce: è riferito al fondo scala degli assi disturbanti, sicché
+letto in questa luce: è riferito al fondo scala degli assi disturbanti, quindi
 il suo effetto reale è proporzionale alle componenti effettivamente presenti.
 Con una forza assiale dell'ordine di un decimo della portata, l'errore indotto
-sulla coppia resta al di sotto del cinque per cento del segnale minimo; è però un
-motivo ulteriore per contenere le componenti parassite anziché affidarne la
+sulla coppia resta al di sotto del cinque per cento del segnale minimo; rimane importante 
+contenere le componenti parassite, attraverso la progettazione anziché affidarne esclusivamente la
 correzione alla sola matrice.
 
 \paragraph{Numero di canali e sincronizzazione.}
-Il fabbisogno di sei canali di ponte intero eccede quanto il controllore della
-macchina mette a disposizione. Questo dispone di un canale di posizione per
-ciascun attuatore e di due soli canali analogici configurabili, entrambi già
-impegnati dalla cella biassiale della macchina; la scheda di acquisizione
-opzionale ne aggiunge altri due, insufficienti allo scopo. La catena di misura
-richiede pertanto un'unità di acquisizione esterna, dotata di almeno sei canali
-di ponte intero con alimentazione dedicata. Ne segue un secondo requisito:
-i dati della cella e quelli della macchina, angolo, posizione, forza e coppia
-degli attuatori, devono essere riferiti a una base dei tempi comune, perché
-solo così la coppia registrata può essere associata al numero di giri compiuti e
-l'istante di rottura collocato univocamente. La macchina dispone di uscite
-analogiche dei propri segnali, che possono essere riportate sui canali liberi
-dell'unità esterna; in alternativa le due acquisizioni vanno sincronizzate
-mediante un segnale di innesco comune.
+Le sei uscite della cella richiedono altrettanti canali di ponte intero, ciascuno
+con la propria alimentazione. È un fabbisogno che eccede i due canali analogici
+configurabili del controllore della macchina, peraltro già destinati alla cella
+biassiale di cui essa è equipaggiata; la cella multiassiale costituisce del resto
+uno strumento a sé, e il suo costruttore ne prevede l'acquisizione mediante un
+amplificatore dedicato a otto canali con interfaccia USB, corredato del software
+che applica la matrice di disaccoppiamento e restituisce direttamente forze e
+momenti \cite{interface6a}. È la soluzione prevista per il banco.
+
+Gli altri due canali dell'amplificatore assolvono il secondo requisito, quello
+della sincronizzazione. I dati della cella e quelli della macchina --- angolo di
+rotazione e posizione assiale --- devono condividere lo stesso riferimento
+temporale, perché solo così la coppia registrata può essere associata al numero
+di giri compiuti e l'istante di rottura collocato univocamente; poiché la
+macchina rende disponibili i propri segnali su uscite analogiche, questi possono
+essere riportati sui canali rimasti liberi, così che tutte le grandezze della
+prova confluiscano in un'unica registrazione.
+\begin{comment}
+    
 
 \paragraph{Frequenza di campionamento.}
 Alla velocità massima di 350\,giri/min lo strumento compie poco meno di sei giri
@@ -276,7 +281,7 @@ devono inoltre essere campionati simultaneamente, o con uno sfasamento
 trascurabile rispetto al periodo di rotazione: la matrice di disaccoppiamento
 combina le sei uscite istante per istante, e un campionamento multiplexato con
 ritardo apprezzabile mescolerebbe letture relative a posizioni angolari diverse.
-
+\end{comment}
 \paragraph{Azzeramento e derive.}
 La cella sostiene l'intero gruppo posto al di sopra di essa, e ne legge il peso
 come una componente costante di $F_z$; l'eventuale eccentricità di tale massa si

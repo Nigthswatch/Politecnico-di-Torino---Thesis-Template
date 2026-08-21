@@ -67,9 +67,8 @@ di 350\,giri/min, con un limite di $\pm$10\,000 giri per prova
 \cite[pp.~6, 10]{steplab2024}. La cella biassiale in dotazione alla macchina ha portata 10\,kN e 50\,N$\cdot$m,
 due ordini di grandezza oltre le coppie da misurare, ed è quindi inutilizzabile
 allo scopo: la misura richiede un trasduttore dedicato. I due canali
-configurabili sono però già occupati dalla cella biassiale,
-sicché l'acquisizione del trasduttore aggiuntivo comporta anche una scheda
-dedicata.
+configurabili sono però già occupati dalla cella biassiale, sicché la cella
+multiassiale richiede un'acquisizione propria.
 
 \paragraph{Vincoli imposti dalla cella di carico.}
 La cella multiassiale 6A27 misura simultaneamente tre forze e tre momenti, con
@@ -112,8 +111,8 @@ adatti il diametro e limiti l'azione della forza di serraggio sul gambo.
 Le condizioni ambientali della prova non erano state specificate all'avvio
 dell'attività. Il banco è stato pertanto progettato per prove condotte a
 temperatura ambiente, condizione peraltro coerente con la cella di carico
-adottata, che il costruttore dichiara priva di compensazione in temperatura
-\cite{interface6a}.
+adottata, per la quale il costruttore non prevede la compensazione in
+temperatura \cite{interface6a}.
 
 \begin{table}[htbp]
     \centering
@@ -142,24 +141,25 @@ adottata, che il costruttore dichiara priva di compensazione in temperatura
 \section{Grandezze da misurare e requisiti della catena di misura}
 \label{sec:catena-misura}
 
-La funzione principale del banco di prova è quella di misurare: quanto più accuratamente esso rileva la coppia resistente e le grandezze che le danno significato, tanto più attendibili sono i risultati che produce.
-Se la sezione precedente ha fissato le sollecitazioni da
-imporre, questa stabilisce che cosa va registrato durante la prova, con quale
-risoluzione e con quale incertezza, e ne ricava i requisiti della catena di
-acquisizione.
+La funzione principale del banco di prova è quella di misurare: quanto più
+accuratamente esso rileva la coppia resistente e le grandezze che le danno
+significato, tanto più attendibili sono i risultati che produce. La sezione
+precedente ha fissato le sollecitazioni da imporre. Questa stabilisce che cosa va
+registrato durante la prova, con quale incertezza, e che cosa ne consegue per la
+catena di acquisizione.
 
 \paragraph{Grandezze da rilevare.}
-La grandezza di interesse primario è la coppia resistente $M_z$ attorno all'asse
-di rotazione, che la prova deve seguire con continuità fino alla rottura. Ad
-essa si affiancano la forza assiale $F_z$, reazione all'avanzamento dello
-strumento nel canale, e le componenti trasversali $F_x$, $F_y$ e flettenti
-$M_x$, $M_y$, generate dalla curvatura del canale e dagli inevitabili
-disallineamenti. Queste ultime non sono grandezze di interesse diretto, ma la
-loro registrazione consente di riconoscere a posteriori una prova condotta in
-condizioni di centraggio non corrette. A queste sei componenti si aggiungono
+La grandezza principale è la coppia resistente $M_z$ attorno all'asse di
+rotazione, che va seguita con continuità fino alla rottura. La cella misura anche
+la forza assiale $F_z$, reazione all'avanzamento dello strumento nel canale, e le
+componenti trasversali $F_x$, $F_y$ e flettenti $M_x$, $M_y$, dovute alla
+curvatura del canale e ai disallineamenti di montaggio. Queste ultime non
+interessano di per sé, ma registrarle permette di riconoscere a posteriori una
+prova eseguita con un centraggio scorretto. Alle sei componenti si aggiungono
 l'angolo di rotazione, da cui si ricava il numero di giri sopportati, la
-posizione assiale della traversa e il riferimento temporale comune, sulla quale va
-collocato l'istante di rottura. La tabella~\ref{tab:grandezze} le riassume.
+posizione assiale della traversa e il tempo, riferimento comune a tutti i
+segnali, sul quale va collocato l'istante di rottura. La
+tabella~\ref{tab:grandezze} le riassume.
 
 \begin{table}[!tb]
     \centering
@@ -177,10 +177,11 @@ collocato l'istante di rottura. La tabella~\ref{tab:grandezze} le riassume.
         Forze trasversali        & $F_x$, $F_y$   & portata 50\,N         & Cella 6A27 \\
         Angolo di rotazione      & $\theta$       & $\pm$10\,000 giri     & Encoder BV010 \\
         Posizione assiale        & $z$            & 0--80\,mm             & Encoder UD04 \\
-        Tempo                    & $t$            & ---                   & sistema di acquisizione \\
+        Tempo                    & $t$            & ---                   & Sistema di acquisizione \\
         \bottomrule
     \end{tabularx}
 \end{table}
+
 \begin{comment}
 \paragraph{Sensibilità e risoluzione.}
 La cella eroga un segnale nominale di $\pm$0,4\,mV/V a fondo scala; con la
@@ -193,17 +194,16 @@ uso generale a bassa risoluzione e richiede una conversione ad almeno 24 bit.
 \end{comment}
 
 \paragraph{Errori del trasduttore.}
-Il costruttore dichiara gli errori massimi della cella --- non linearità,
-isteresi, non ripetibilità e creep \cite{interface6a},--- riferendoli al fondo scala. Poiché la prova
-impegna solo una frazione del campo disponibile, quegli stessi errori, riferiti
-alla lettura, crescono nella stessa proporzione: la
+Il costruttore dichiara gli errori massimi della cella riferendoli al fondo
+scala: non linearità, isteresi, non ripetibilità e creep \cite{interface6a}. La
+prova però impegna solo una piccola parte del campo disponibile, e riferiti alla
+lettura quegli stessi errori crescono nella medesima proporzione. La
 tabella~\ref{tab:errori} riporta il confronto. Il contributo dominante è la non
-ripetibilità, che sul segnale più piccolo vale un quinto della lettura. Ne
-discendono due conseguenze per il protocollo di prova: le differenze di coppia
-fra sistemi di strumenti diversi sono significative solo se superiori a tale
-soglia, e il confronto va condotto sulla media di più prove ripetute, la cui
-dispersione si riduce con la radice del numero di ripetizioni.
-
+ripetibilità, che sul segnale più piccolo vale un quinto della lettura. Per il
+protocollo di prova questo comporta due cose: fra sistemi di strumenti diversi
+sono significative solo le differenze di coppia superiori a tale soglia, e il
+confronto va condotto sulla media di più prove ripetute, la cui dispersione si
+riduce con la radice del numero di ripetizioni.
 
 \begin{table}[!tb]
     \centering
@@ -219,12 +219,11 @@ dispersione si riduce con la radice del numero di ripetizioni.
         \cmidrule(l){4-5}
          & & & 0,025\,N$\cdot$m & 0,1\,N$\cdot$m \\
         \midrule
-        Non linearità     & $\pm$0,1\,\% FS      & 0,001\,N$\cdot$m   & 4\,\%   & 1\,\% \\
-        Isteresi          & $\pm$0,1\,\% FS      & 0,001\,N$\cdot$m   & 4\,\%   & 1\,\% \\
-        Non ripetibilità  & $\pm$0,5\,\% RO      & 0,005\,N$\cdot$m   & 20\,\%  & 5\,\% \\
-        Creep (20\,min)   & $\pm$0,1\,\%         & 0,001\,N$\cdot$m   & 4\,\%   & 1\,\% \\
-        Deriva dello zero & $\pm$0,01\,\% RO/$^\circ$C & 0,0001\,N$\cdot$m/$^\circ$C & 0,4\,\%/$^\circ$C & 0,1\,\%/$^\circ$C \\
-        Crosstalk         & $\pm$1\,\%           & 0,01\,N$\cdot$m\textsuperscript{*} & 40\,\%  & 10\,\% \\
+        Non linearità     & $\pm$0,1\,\% FS & 0,001\,N$\cdot$m & 4\,\%  & 1\,\% \\
+        Isteresi          & $\pm$0,1\,\% FS & 0,001\,N$\cdot$m & 4\,\%  & 1\,\% \\
+        Non ripetibilità  & $\pm$0,5\,\% RO & 0,005\,N$\cdot$m & 20\,\% & 5\,\% \\
+        Creep (20\,min)   & $\pm$0,1\,\%    & 0,001\,N$\cdot$m & 4\,\%  & 1\,\% \\
+        Crosstalk         & $\pm$1\,\%      & 0,01\,N$\cdot$m\textsuperscript{*} & 40\,\% & 10\,\% \\
         \bottomrule
     \end{tabularx}
 
@@ -236,40 +235,38 @@ dispersione si riduce con la radice del numero di ripetizioni.
 \end{table}
 
 \paragraph{Crosstalk e disaccoppiamento.}
-La cella non fornisce direttamente le sei componenti: i suoi sei ponti estensimetrici
-erogano sei tensioni indipendenti, dalle quali forze e momenti si ottengono
-moltiplicando per la matrice di disaccoppiamento a trentasei termini fornita in
-sede di taratura. Ogni componente dipende quindi da tutte e sei le uscite, e la
-misura della sola coppia non è possibile: la catena deve acquisire i sei canali
-per intero. Il crosstalk residuo di $\pm$1\,\% dichiarato dal costruttore va
-letto in questa luce: è riferito al fondo scala degli assi disturbanti, quindi
-il suo effetto reale è proporzionale alle componenti effettivamente presenti.
-Con una forza assiale dell'ordine di un decimo della portata, l'errore indotto
-sulla coppia resta al di sotto del cinque per cento del segnale minimo; rimane importante 
-contenere le componenti parassite, attraverso la progettazione anziché affidarne esclusivamente la
+La cella non fornisce direttamente le sei componenti. I suoi sei ponti
+estensimetrici erogano sei tensioni indipendenti, e forze e momenti si ottengono
+moltiplicandole per la matrice di disaccoppiamento a trentasei termini fornita
+con la taratura. Ogni componente dipende quindi da tutte e sei le uscite, e non è
+possibile misurare la sola coppia: la catena deve acquisire i sei canali per
+intero. Anche il crosstalk dichiarato, pari a $\pm$1\,\%, va letto in questo
+modo. È riferito al fondo scala degli assi disturbanti, quindi il suo effetto
+reale è proporzionale alle componenti effettivamente presenti: con una forza
+assiale pari a un decimo della portata, l'errore indotto sulla coppia resta al di
+sotto del cinque per cento del segnale minimo. Resta comunque preferibile
+contenere le componenti parassite fin dal progetto, anziché affidarne la
 correzione alla sola matrice.
 
 \paragraph{Numero di canali e sincronizzazione.}
 Le sei uscite della cella richiedono altrettanti canali di ponte intero, ciascuno
-con la propria alimentazione. È un fabbisogno che eccede i due canali analogici
-configurabili del controllore della macchina, peraltro già destinati alla cella
-biassiale di cui essa è equipaggiata; la cella multiassiale costituisce del resto
-uno strumento a sé, e il suo costruttore ne prevede l'acquisizione mediante un
+con la propria alimentazione. Sono più dei due canali analogici configurabili di
+cui dispone il controllore della macchina, peraltro già destinati alla cella
+biassiale di cui essa è equipaggiata. Una cella multiassiale, del resto, è uno
+strumento a sé: il costruttore ne prevede l'acquisizione mediante un
 amplificatore dedicato a otto canali con interfaccia USB, corredato del software
 che applica la matrice di disaccoppiamento e restituisce direttamente forze e
 momenti \cite{interface6a}. È la soluzione prevista per il banco.
 
-Gli altri due canali dell'amplificatore assolvono il secondo requisito, quello
-della sincronizzazione. I dati della cella e quelli della macchina --- angolo di
-rotazione e posizione assiale --- devono condividere lo stesso riferimento
-temporale, perché solo così la coppia registrata può essere associata al numero
-di giri compiuti e l'istante di rottura collocato univocamente; poiché la
-macchina rende disponibili i propri segnali su uscite analogiche, questi possono
-essere riportati sui canali rimasti liberi, così che tutte le grandezze della
-prova confluiscano in un'unica registrazione.
-\begin{comment}
-    
+I due canali che restano liberi assolvono il secondo requisito, la
+sincronizzazione. I dati della cella e quelli della macchina, angolo di rotazione
+e posizione assiale, devono condividere lo stesso riferimento temporale: solo
+così la coppia registrata può essere associata al numero di giri compiuti e
+l'istante di rottura collocato con precisione. La macchina rende disponibili i
+propri segnali su uscite analogiche, che possono essere portate su quei canali,
+così che tutte le grandezze della prova confluiscano in un'unica registrazione.
 
+\begin{comment}
 \paragraph{Frequenza di campionamento.}
 Alla velocità massima di 350\,giri/min lo strumento compie poco meno di sei giri
 al secondo, e la flessione si inverte una volta per giro: i canali di momento
@@ -282,20 +279,21 @@ trascurabile rispetto al periodo di rotazione: la matrice di disaccoppiamento
 combina le sei uscite istante per istante, e un campionamento multiplexato con
 ritardo apprezzabile mescolerebbe letture relative a posizioni angolari diverse.
 \end{comment}
+
 \paragraph{Azzeramento e derive.}
-La cella sostiene l'intero gruppo posto al di sopra di essa, e ne legge il peso
-come una componente costante di $F_z$; l'eventuale eccentricità di tale massa si
-presenta a sua volta come una coppia flettente permanente sui canali $M_x$ e
-$M_y$. Entrambi i contributi sono statici e vengono cancellati dalla tara, a
-condizione che questa sia eseguita dopo il centraggio del provino e
-immediatamente prima dell'avvio della prova: ogni spostamento della tavola
-successivo all'azzeramento reintroduce un offset non compensato. Ciò che la tara
-non può cancellare è la deriva che si accumula durante la prova, la cui durata
-massima, diecimila giri alla velocità massima, sfiora la mezz'ora, tempo
-confrontabile con l'intervallo di venti minuti sul quale il creep è specificato.
-Alla deriva contribuisce anche la temperatura, poiché il modello di cella
-adottato è dichiarato privo di compensazione termica; le prove vanno pertanto
-condotte in ambiente termicamente stabile, e la tara ripetuta a ogni prova.
+La cella sostiene tutto il gruppo posto al di sopra di essa e ne legge il peso
+come una componente costante di $F_z$; se quella massa non è centrata, compare
+anche una coppia flettente permanente su $M_x$ e $M_y$. Sono entrambi contributi
+statici, che la tara cancella. Perché li cancelli davvero, però, la tara va
+eseguita dopo il centraggio del provino e immediatamente prima di avviare la
+prova: ogni spostamento della tavola successivo all'azzeramento reintroduce un
+offset non compensato. Quello che la tara non può cancellare è la deriva che si
+accumula durante la prova, la cui durata massima, diecimila giri alla velocità
+massima, sfiora la mezz'ora, un tempo confrontabile con i venti minuti sui quali
+il creep è specificato. Alla deriva contribuisce anche la temperatura: il
+costruttore precisa che la compensazione termica, prevista per la serie, non è
+disponibile sul modello 6A27 \cite{interface6a}. Le prove vanno quindi condotte
+in ambiente termicamente stabile, ripetendo la tara a ogni prova.
 
 \section{Architettura del banco}
 %   mandrino-strumento, blocchetto-sede, sede-cella, cella-piastra,

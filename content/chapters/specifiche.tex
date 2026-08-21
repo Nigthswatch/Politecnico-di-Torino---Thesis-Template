@@ -38,7 +38,7 @@ I requisiti necessari alla progettazione del banco discendono da tre ragioni dis
 riprodurre, che stabilisce quali sollecitazioni imporre e con quale intensità; i
 componenti già acquisiti all'avvio dell'attività, macchina di prova e cella di
 carico, che impongono vincoli non negoziabili; e il provino, la cui geometria
-determina la precisione con cui deve essere posizionato.
+determina la precisione richiesta nel posizionamento.
 
 \paragraph{Sollecitazioni da imporre.}
 Il banco deve sottoporre lo stesso provino, simultaneamente, alla flessione
@@ -84,7 +84,7 @@ parassiti che competono con il segnale utile sulla medesima portata di
 1\,N$\cdot$m. Il progetto dei componenti di interfaccia deve quindi contenere sia
 l'eccentricità delle masse sia gli errori di parallelismo.
 
-\paragraph{Posizionamento del provino.}
+\paragraph{Posizionamento del blocchetto.}
 Il canale del blocchetto ha sezione oblunga di circa 137 per 314\,\textmu m
 \cite{smutny2022}, e vi si impegna uno strumento di punta comparabile. Perché lo
 strumento imbocchi il canale senza forzare contro le pareti, l'asse del canale
@@ -92,12 +92,12 @@ deve coincidere con l'asse di rotazione entro alcune decine di micrometri. Il
 posizionamento è manuale e va eseguito prima di ogni prova, il che richiede che
 gli organi di regolazione restino accessibili a banco montato.
 
-\paragraph{Vincolo del provino.}
+\paragraph{Vincolo del blocchetto.}
 Il blocchetto deve essere reso solidale alla struttura in modo che, sotto i
 carichi applicati, non si verifichino scorrimenti né cedimenti elastici
 apprezzabili: qualsiasi movimento relativo fra provino e cella si traduce in una
-lettura di coppia sbagliata. Il vincolo deve inoltre consentire la sostituzione del
-provino fra una prova e la successiva, dato che il blocchetto è soggetto a usura.
+lettura di coppia sbagliata. Il vincolo deve inoltre consentire la sostituzione
+del blocchetto fra una prova e la successiva, dato che è soggetto a usura.
 
 \paragraph{Afferraggio e protezione dello strumento.}
 L'afferraggio deve trasmettere allo strumento la coppia richiesta senza
@@ -285,7 +285,7 @@ La cella sostiene tutto il gruppo posto al di sopra di essa e ne legge il peso
 come una componente costante di $F_z$; se quella massa non è centrata, compare
 anche una coppia flettente permanente su $M_x$ e $M_y$. Sono entrambi contributi
 statici, che la tara cancella. Perché li cancelli davvero, però, la tara va
-eseguita dopo il centraggio del provino e immediatamente prima di avviare la
+eseguita dopo il centraggio del blocchetto e immediatamente prima di avviare
 prova: ogni spostamento della tavola successivo all'azzeramento reintroduce un
 offset non compensato. Quello che la tara non può cancellare è la deriva che si
 accumula durante la prova, la cui durata massima, diecimila giri alla velocità
@@ -298,11 +298,12 @@ in ambiente termicamente stabile, ripetendo la tara a ogni prova.
 \section{Architettura del banco}
 \label{sec:architettura}
 
-Di seguito sono presenti una successione di elementi che collegando la macchina al provino e il provino alla misura, soddisfano i requisiti elencati nelle due sezioni precedenti.
-Questa sezione ne descrive l'ordine e
-assegna a ciascun collegamento la funzione che deve svolgere; la
-tabella~\ref{tab:accoppiamenti} ne dà la mappa completa. Il capitolo successivo
-percorre la stessa successione, affrontando un componente per volta.
+Di seguito è presentata la successione di elementi che, collegando la macchina al
+provino e il provino alla misura, soddisfa i requisiti elencati nelle due sezioni
+precedenti. Se ne descrive l'ordine e si assegna a ciascun collegamento la
+funzione che deve svolgere; la tabella~\ref{tab:accoppiamenti} ne dà la mappa
+completa. Il capitolo successivo percorre la stessa successione, affrontando un
+componente per volta.
 
 \begin{table}[!tb]
     \centering
@@ -323,8 +324,8 @@ percorre la stessa successione, affrontando un componente per volta.
             & Trasmettere rotazione e coppia
             & Serrare senza danneggiare il gambo \\
         Blocchetto -- sede
-            & Vincolare il provino
-            & Nessuno scorrimento, provino sostituibile \\
+            & Vincolare il blocchetto
+            & Nessuno scorrimento, blocchetto sostituibile \\
         Sede -- cella di carico
             & Portare la reazione alla misura
             & Interfaccia 6$\times$M2, spina $\varnothing$2\,E7 \\
@@ -344,8 +345,15 @@ percorre la stessa successione, affrontando un componente per volta.
 \paragraph{La catena di carico.}
 Il provino si trova fra le due traverse della macchina, entrambe dotate di
 mandrino. Quella inferiore afferra lo strumento e gli impone la rotazione e
-l'avanzamento assiale; quella superiore sostiene l'insieme di componenti che
-fissa il blocchetto. Il carico si chiude ad anello: la coppia prodotta dall'attuatore inferiore passa nello strumento, da questo al blocchetto attraverso il contatto con il canale, e da lì risale tutta la catena fino alla traversa superiore e al telaio della macchina. Ogni elemento della catena è percorso dalla stessa coppia, ed è questo che rende possibile la misura. Le deformazioni invece si sommano: la cedevolezza e i giochi di ciascun elemento si accumulano fra la macchina e il provino, e altrettanto fanno gli errori di allineamento, che raggiungono la cella sotto forma di momenti flettenti parassiti. L'assieme è riportato in
+l'avanzamento assiale; quella superiore sostiene il gruppo porta-blocchetto. Il
+carico si chiude ad anello: la coppia prodotta dall'attuatore inferiore passa
+nello strumento, da questo al blocchetto attraverso il contatto con il canale, e
+da lì risale tutta la catena fino alla traversa superiore e al telaio della
+macchina. Ogni elemento della catena è percorso dalla stessa coppia, ed è questo
+che rende possibile la misura. Le deformazioni invece si sommano: la cedevolezza
+e i giochi di ciascun elemento si accumulano fra la macchina e il provino, e
+altrettanto fanno gli errori di allineamento, che raggiungono la cella sotto
+forma di momenti flettenti parassiti. L'assieme è riportato in
 figura~\ref{fig:assieme-banco} e, in vista esplosa, in
 figura~\ref{fig:assieme-esploso}.
 
@@ -364,12 +372,13 @@ Un elemento della catena deve invece potersi muovere. L'asse del canale va fatto
 coincidere con l'asse di rotazione prima di ogni prova, e la regolazione è
 manuale. Il compito è affidato alla tavola di posizionamento, che introduce nella
 catena due traslazioni ortogonali all'asse, regolabili dall'esterno a banco
-montato. È l'elemento che determina il movimento di tutto il gruppo per costruzione, e la sua rigidezza e la sua
-massa condizionano il comportamento di tutta la catena: per questo la scelta
-della tavola è discussa nel capitolo~\ref{cap:progettazione}.
+montato. È l'elemento che consente il movimento dell'intero gruppo, e la sua
+rigidezza e la sua massa condizionano il comportamento di tutta la catena: per
+questo la scelta della tavola è discussa nel capitolo~\ref{cap:progettazione}.
 
 \paragraph{La protezione dello strumento.}
 Sul lato inferiore la catena è più corta. Fra il mandrino e il gambo dello
-strumento si interpone il solo clamshell, una boccola costituita da due parti che adatta il
-diametro e riceve al posto dello strumento la forza di serraggio delle ganasce. È un
-elemento sacrificale, destinato a essere sostituito quando si deforma.
+strumento si interpone il solo clamshell, una boccola costituita da due parti,
+che adatta il diametro e riceve al posto del gambo la forza di serraggio delle
+ganasce. È un elemento sacrificale, destinato a essere sostituito quando si
+deforma.

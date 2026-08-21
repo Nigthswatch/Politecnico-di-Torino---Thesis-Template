@@ -298,9 +298,8 @@ in ambiente termicamente stabile, ripetendo la tara a ogni prova.
 \section{Architettura del banco}
 \label{sec:architettura}
 
-I requisiti raccolti nelle due sezioni precedenti non sono soddisfatti da un
-singolo componente, ma da una successione di elementi che collegano la macchina
-al provino e il provino alla misura. Questa sezione ne descrive l'ordine e
+Di seguito sono presenti una successione di elementi che collegando la macchina al provino e il provino alla misura, soddisfano i requisiti elencati nelle due sezioni precedenti.
+Questa sezione ne descrive l'ordine e
 assegna a ciascun collegamento la funzione che deve svolgere; la
 tabella~\ref{tab:accoppiamenti} ne dà la mappa completa. Il capitolo successivo
 percorre la stessa successione, affrontando un componente per volta.
@@ -345,11 +344,8 @@ percorre la stessa successione, affrontando un componente per volta.
 \paragraph{La catena di carico.}
 Il provino si trova fra le due traverse della macchina, entrambe dotate di
 mandrino. Quella inferiore afferra lo strumento e gli impone la rotazione e
-l'avanzamento assiale; quella superiore sostiene il gruppo porta-provino, che
-fissa il blocchetto. Il carico si chiude quindi attraverso il provino, e tutto
-ciò che sta fra il blocchetto e la traversa superiore lavora in serie: il
-cedimento elastico o il disallineamento di un solo elemento si ritrova, senza
-attenuazione, nella grandezza misurata. L'assieme è riportato in
+l'avanzamento assiale; quella superiore sostiene l'insieme di componenti che
+fissa il blocchetto. Il carico si chiude ad anello: la coppia prodotta dall'attuatore inferiore passa nello strumento, da questo al blocchetto attraverso il contatto con il canale, e da lì risale tutta la catena fino alla traversa superiore e al telaio della macchina. Ogni elemento della catena è percorso dalla stessa coppia, ed è questo che rende possibile la misura. Le deformazioni invece si sommano: la cedevolezza e i giochi di ciascun elemento si accumulano fra la macchina e il provino, e altrettanto fanno gli errori di allineamento, che raggiungono la cella sotto forma di momenti flettenti parassiti. L'assieme è riportato in
 figura~\ref{fig:assieme-banco} e, in vista esplosa, in
 figura~\ref{fig:assieme-esploso}.
 
@@ -368,12 +364,12 @@ Un elemento della catena deve invece potersi muovere. L'asse del canale va fatto
 coincidere con l'asse di rotazione prima di ogni prova, e la regolazione è
 manuale. Il compito è affidato alla tavola di posizionamento, che introduce nella
 catena due traslazioni ortogonali all'asse, regolabili dall'esterno a banco
-montato. È l'unico elemento cedevole per costruzione, e la sua rigidezza e la sua
+montato. È l'elemento che determina il movimento di tutto il gruppo per costruzione, e la sua rigidezza e la sua
 massa condizionano il comportamento di tutta la catena: per questo la scelta
 della tavola è discussa nel capitolo~\ref{cap:progettazione}.
 
 \paragraph{La protezione dello strumento.}
 Sul lato inferiore la catena è più corta. Fra il mandrino e il gambo dello
-strumento si interpone il solo clamshell, una boccola bipartita che adatta il
-diametro e riceve al posto del gambo la forza di serraggio delle ganasce. È un
+strumento si interpone il solo clamshell, una boccola costituita da due parti che adatta il
+diametro e riceve al posto dello strumento la forza di serraggio delle ganasce. È un
 elemento sacrificale, destinato a essere sostituito quando si deforma.

@@ -1,20 +1,59 @@
 \chapter{Progettazione e verifica dei componenti}
 \label{cap:progettazione}
 
-% Traccia (scommenta le sezioni man mano che le scrivi):
-% \section{Metodo di analisi agli elementi finiti}
-%   tipi di elemento, discretizzazione, condizioni al contorno,
-%   studio di convergenza, criteri di verifica adottati.
-%   Qui vanno le citazioni al testo di riferimento sul FEM:
-%   le sezioni successive richiamano questo paragrafo invece di ripetersi.
-% \section{Anello di protezione mandrino-strumento}
-% \section{Il blocchetto Endo-Training-Bloc-J come geometria di riferimento}
-% \section{Morsa di fissaggio e gabbia in Additive Manufacturing}
-% \section{Tavola di posizionamento XY: selezione e verifica}
-%   rigidezza contro peso, capacita' di carico, cross roller o ball slide
-% \section{Piastra di interfaccia cella-tavola}
-%   fori M2 su diametro 17 mm, spina di centraggio diametro 2 E7
-% \section{Supporto della cella alla struttura fissa}
-%   parallelismo all'asse Z e controllo del crosstalk
-% \section{Assemblaggio del complessivo e catena di misura}
-% \section{Procedura di azzeramento e protocollo di prova}
+\section{Metodo di analisi agli elementi finiti}
+\label{sec:metodo-fem}
+% Esposto una volta sola; tutte le verifiche successive richiamano questa
+% sezione invece di ripetersi.
+%   - perche' il calcolo numerico e' necessario per queste geometrie
+%   - tipi di elemento adottati e ragione della scelta
+%   - discretizzazione e controllo di convergenza (da mettere per iscritto)
+%   - modello di materiale e provenienza dei dati
+%   - rappresentazione di vincoli, contatti e precarichi
+%   - criterio di verifica e coefficiente di sicurezza assunto
+%   - cio' che il modello NON rappresenta, e perche'
+% Riferimento: Santi e Cesari, CLUEB 2024 (voce bibliografica da aggiungere).
+
+\section{Scelta della tavola di posizionamento}
+\label{sec:tavola}
+% Selezione a catalogo, non verifica strutturale. Precede i componenti
+% progettati perche' ne condiziona le interfacce.
+%   - criteri dal capitolo 2: capacita' di carico, rigidezza, massa e momenti
+%     parassiti, ingombro e accessibilita' delle testine, dima di foratura
+%   - confronto fra le alternative considerate
+%   - scelta e conseguenze sulle due piastre
+
+\section{Clamshell di protezione dello strumento}
+\label{sec:clamshell}
+% Schema comune alle quattro sezioni sui componenti progettati:
+% requisiti (cap. 2) -> soluzione costruttiva e materiale -> carichi e
+% condizioni al contorno -> risultati della verifica -> esito.
+%   - carichi: forza di serraggio delle ganasce, coppia da trasmettere
+%   - verifica: pressione trasmessa al gambo, tenuta senza strisciamento
+%   - esito: componente sacrificale, criterio di sostituzione
+
+\section{Sede del blocchetto}
+\label{sec:sede}
+%   - carichi: coppia di reazione e peso
+%   - verifica: resistenza e soprattutto rigidezza, perche' ogni cedevolezza
+%     qui si somma direttamente fra provino e cella
+%   - sostituzione del blocchetto fra una prova e la successiva
+
+\section{Piastra di accoppiamento inferiore}
+\label{sec:piastra-inferiore}
+%   - interfacce: sei fori M2 e spina di centraggio sul lato cella,
+%     dima della tavola sul lato opposto
+%   - requisiti dominanti: parallelismo, eccentricita' contenuta
+%   - verifica: rigidezza flessionale
+
+\section{Piastra di accoppiamento superiore}
+\label{sec:piastra-superiore}
+%   - interfacce: tavola da un lato, mandrino della traversa dall'altro
+%   - verifica: rigidezza
+
+\section{Assieme e procedura di prova}
+\label{sec:assieme-procedura}
+%   - sequenza di montaggio
+%   - centraggio manuale del blocchetto
+%   - azzeramento della cella prima dell'avvio
+%   - sostituzione dei componenti di consumo (clamshell, blocchetto)

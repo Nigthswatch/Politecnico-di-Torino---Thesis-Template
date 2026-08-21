@@ -296,5 +296,84 @@ disponibile sul modello 6A27 \cite{interface6a}. Le prove vanno quindi condotte
 in ambiente termicamente stabile, ripetendo la tara a ogni prova.
 
 \section{Architettura del banco}
-%   mandrino-strumento, blocchetto-sede, sede-cella, cella-piastra,
-%   piastra-tavola, tavola-mandrino superiore
+\label{sec:architettura}
+
+I requisiti raccolti nelle due sezioni precedenti non sono soddisfatti da un
+singolo componente, ma da una successione di elementi che collegano la macchina
+al provino e il provino alla misura. Questa sezione ne descrive l'ordine e
+assegna a ciascun collegamento la funzione che deve svolgere; la
+tabella~\ref{tab:accoppiamenti} ne dà la mappa completa. Il capitolo successivo
+percorre la stessa successione, affrontando un componente per volta.
+
+\begin{table}[!tb]
+    \centering
+    \caption{Gli accoppiamenti della catena, percorsi dallo strumento verso la
+    traversa superiore. Le denominazioni corrispondono a quelle della distinta
+    base (tabella~\ref{tab:distinta-base}).}
+    \label{tab:accoppiamenti}
+    \footnotesize
+    \setlength{\tabcolsep}{4pt}
+    \begin{tabularx}{\linewidth}{@{}
+        >{\hsize=1.2\hsize\raggedright\arraybackslash}X
+        >{\hsize=0.95\hsize\raggedright\arraybackslash}X
+        >{\hsize=0.85\hsize\raggedright\arraybackslash}X@{}}
+        \toprule
+        Accoppiamento & Funzione & Requisito determinante \\
+        \midrule
+        Mandrino inferiore -- strumento
+            & Trasmettere rotazione e coppia
+            & Serrare senza danneggiare il gambo \\
+        Blocchetto -- sede
+            & Vincolare il provino
+            & Nessuno scorrimento, provino sostituibile \\
+        Sede -- cella di carico
+            & Portare la reazione alla misura
+            & Interfaccia 6$\times$M2, spina $\varnothing$2\,E7 \\
+        Cella di carico -- piastra inferiore
+            & Chiudere la catena verso la struttura
+            & Parallelismo all'asse, assenza di gioco \\
+        Piastra inferiore -- tavola
+            & Adattare forature diverse
+            & Eccentricità contenuta \\
+        Tavola -- piastra superiore -- mandrino
+            & Vincolare il gruppo alla traversa
+            & Rigidezza \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\paragraph{La catena di carico.}
+Il provino si trova fra le due traverse della macchina, entrambe dotate di
+mandrino. Quella inferiore afferra lo strumento e gli impone la rotazione e
+l'avanzamento assiale; quella superiore sostiene il gruppo porta-provino, che
+fissa il blocchetto. Il carico si chiude quindi attraverso il provino, e tutto
+ciò che sta fra il blocchetto e la traversa superiore lavora in serie: il
+cedimento elastico o il disallineamento di un solo elemento si ritrova, senza
+attenuazione, nella grandezza misurata. L'assieme è riportato in
+figura~\ref{fig:assieme-banco} e, in vista esplosa, in
+figura~\ref{fig:assieme-esploso}.
+
+\paragraph{La posizione della misura.}
+La cella di carico è interposta lungo questa catena, fra la sede che sostiene il
+blocchetto e la tavola di posizionamento. L'intera reazione del provino la
+attraversa, ed è questo che rende possibile la misura. Ne discendono due criteri
+per i componenti di interfaccia. Dal lato del provino deve trovarsi il minimo
+indispensabile di massa, perché ogni corpo aggiuntivo carica la cella senza
+contribuire alla prova. E ogni collegamento della catena deve essere privo di
+gioco, perché un movimento relativo fra provino e cella falsa direttamente la
+lettura.
+
+\paragraph{Il grado di libertà voluto.}
+Un elemento della catena deve invece potersi muovere. L'asse del canale va fatto
+coincidere con l'asse di rotazione prima di ogni prova, e la regolazione è
+manuale. Il compito è affidato alla tavola di posizionamento, che introduce nella
+catena due traslazioni ortogonali all'asse, regolabili dall'esterno a banco
+montato. È l'unico elemento cedevole per costruzione, e la sua rigidezza e la sua
+massa condizionano il comportamento di tutta la catena: per questo la scelta
+della tavola è discussa nel capitolo~\ref{cap:progettazione}.
+
+\paragraph{La protezione dello strumento.}
+Sul lato inferiore la catena è più corta. Fra il mandrino e il gambo dello
+strumento si interpone il solo clamshell, una boccola bipartita che adatta il
+diametro e riceve al posto del gambo la forza di serraggio delle ganasce. È un
+elemento sacrificale, destinato a essere sostituito quando si deforma.

@@ -1,18 +1,58 @@
 \chapter{Progettazione e verifica dei componenti}
 \label{cap:progettazione}
 
+% ---------------------------------------------------------------------------
+% SCHEMA COMUNE alle sezioni 3.3-3.6 (componenti progettati).
+% Stesso ordine in tutte e quattro, cosi' il lettore lo impara una volta sola:
+%   1. funzione e requisiti, con rimando esplicito alle sezioni del capitolo 2
+%   2. soluzione costruttiva e materiale, con immagine SolidWorks o sezione
+%   3. carichi e vincoli applicati, con l'ORIGINE dichiarata di ogni valore
+%   4. risultati, modifiche apportate e nuova verifica
+%   5. geometria definitiva: disegno quotato con tolleranze
+% Il disegno tecnico va in fondo, non all'inizio: e' la geometria finale, non
+% quella di partenza. All'inizio basta l'immagine 3D per far capire il pezzo.
+% ---------------------------------------------------------------------------
+
 \section{Metodo di analisi agli elementi finiti}
 \label{sec:metodo-fem}
-% Esposto una volta sola; tutte le verifiche successive richiamano questa
-% sezione invece di ripetersi.
-%   - perche' il calcolo numerico e' necessario per queste geometrie
-%   - tipi di elemento adottati e ragione della scelta
-%   - discretizzazione e controllo di convergenza (da mettere per iscritto)
-%   - modello di materiale e provenienza dei dati
-%   - rappresentazione di vincoli, contatti e precarichi
-%   - criterio di verifica e coefficiente di sicurezza assunto
-%   - cio' che il modello NON rappresenta, e perche'
-% Riferimento: Santi e Cesari, CLUEB 2024 (voce bibliografica da aggiungere).
+% Esposto una volta sola; le sezioni successive lo richiamano e non ripetono.
+%
+% (a) PERCHE' IL CALCOLO NUMERICO
+%   - geometrie non riconducibili a schemi di trave o piastra con soluzione in
+%     forma chiusa: fori, raccordi, spallamenti, contatti
+%   - non serve solo la resistenza ma il campo di spostamento, perche' e' la
+%     rigidezza a determinare l'errore di misura (cap. 2)
+%   - se hai fatto una stima analitica anche solo di ordine di grandezza su un
+%     componente, mettila qui e confrontala con il risultato numerico:
+%     e' la difesa piu' forte di qualunque analisi FEM
+%
+% (b) PRINCIPI, dal testo di riferimento -- corti e strumentali, solo cio' che
+%     le verifiche useranno davvero:
+%   - discretizzazione, funzioni di forma, sistema di rigidezza risultante
+%   - la soluzione e' approssimata e migliora infittendo
+%   - tipi di elemento: cosa cambia fra lineari e parabolici
+%   - le tensioni si ricostruiscono dagli spostamenti e sono meno accurate:
+%     e' la ragione per cui la convergenza si controlla sulle tensioni
+%   Riferimento: Santi e Cesari, CLUEB 2024 (voce bibliografica da aggiungere).
+%
+% (c) CRITERIO DI VERIFICA -- cosa significa "verificato", dichiarato prima:
+%   - quale tensione equivalente, contro quale limite del materiale
+%   - coefficiente di sicurezza assunto e perche' quel valore
+%   - per la rigidezza: quale spostamento e' accettabile e da dove viene
+%     (requisiti di eccentricita' e parallelismo del cap. 2)
+%
+% (d) COME E' STATO USATO SOLIDWORKS -- il metro e' la riproducibilita':
+%     uno che legge deve poter rifare l'analisi e ottenere gli stessi numeri
+%   - versione e tipo di studio
+%   - materiali: da libreria o inseriti a mano, con quali dati
+%   - tipo e dimensione degli elementi, infittimenti locali
+%   - trattamento dei collegamenti fra corpi
+%   - vincoli imposti
+%   - controllo di convergenza: un caso mostrato per esteso
+%
+% (e) LIMITI DEL MODELLO -- cio' che NON e' rappresentato e perche':
+%     precarico dei serraggi, attrito, comportamento della resina.
+%     Dichiararli protegge; farli scoprire in discussione no.
 
 \section{Scelta della tavola di posizionamento}
 \label{sec:tavola}
@@ -25,31 +65,41 @@
 
 \section{Clamshell di protezione dello strumento}
 \label{sec:clamshell}
-% Schema comune alle quattro sezioni sui componenti progettati:
-% requisiti (cap. 2) -> soluzione costruttiva e materiale -> carichi e
-% condizioni al contorno -> risultati della verifica -> esito.
-%   - carichi: forza di serraggio delle ganasce, coppia da trasmettere
-%   - verifica: pressione trasmessa al gambo, tenuta senza strisciamento
-%   - esito: componente sacrificale, criterio di sostituzione
+% Schema comune (vedi testa del capitolo).
+%   1. funzione: adattare il diametro e proteggere il gambo dalla forza di
+%      serraggio; rimando al par. "Afferraggio e protezione" del cap. 2
+%   3. carichi: forza di serraggio delle ganasce e coppia da trasmettere.
+%      Se la forza di serraggio e' un'assunzione e non un dato, scrivilo,
+%      con il ragionamento che l'ha prodotta
+%   4. verifica: pressione trasmessa al gambo, tenuta senza strisciamento
+%   5. esito: componente sacrificale, criterio di sostituzione
 
 \section{Sede del blocchetto}
 \label{sec:sede}
-%   - carichi: coppia di reazione e peso
-%   - verifica: resistenza e soprattutto rigidezza, perche' ogni cedevolezza
-%     qui si somma direttamente fra provino e cella
+%   3. carichi: coppia di reazione e peso
+%   4. verifica: resistenza e soprattutto rigidezza, perche' ogni cedevolezza
+%      qui si somma direttamente fra provino e cella
+%   ATTENZIONE: il blocchetto inglobato nella resina e' il caso piu' scomodo da
+%   modellare (proprieta' della resina, comportamento dell'incollaggio).
+%   Qualunque semplificazione adottata va dichiarata qui, esplicitamente.
 %   - sostituzione del blocchetto fra una prova e la successiva
 
 \section{Piastra di accoppiamento inferiore}
 \label{sec:piastra-inferiore}
-%   - interfacce: sei fori M2 e spina di centraggio sul lato cella,
-%     dima della tavola sul lato opposto
-%   - requisiti dominanti: parallelismo, eccentricita' contenuta
-%   - verifica: rigidezza flessionale
+%   1. interfacce: sei fori M2 e spina di centraggio sul lato cella,
+%      dima della tavola sul lato opposto
+%      requisiti dominanti: parallelismo, eccentricita' contenuta
+%   4. verifica: rigidezza flessionale -- una piastra che si inflette carica la
+%      cella con momenti che non vengono dalla prova
+%   5. le tolleranze importanti vanno giustificate, non solo disegnate:
+%      il parallelismo viene dal requisito sui momenti parassiti, la sede
+%      della spina dall'accoppiamento imposto dalla cella.
+%      Non stringere cio' che nessuno ha chiesto.
 
 \section{Piastra di accoppiamento superiore}
 \label{sec:piastra-superiore}
-%   - interfacce: tavola da un lato, mandrino della traversa dall'altro
-%   - verifica: rigidezza
+%   1. interfacce: tavola da un lato, mandrino della traversa dall'altro
+%   4. verifica: rigidezza
 
 \section{Assieme e procedura di prova}
 \label{sec:assieme-procedura}
@@ -57,3 +107,12 @@
 %   - centraggio manuale del blocchetto
 %   - azzeramento della cella prima dell'avvio
 %   - sostituzione dei componenti di consumo (clamshell, blocchetto)
+
+% ---------------------------------------------------------------------------
+% PROMEMORIA per il punto 4 di ogni componente.
+% Le modifiche vanno mostrate con i numeri, non raccontate. Una tabella per
+% componente, una riga per iterazione:
+%   versione | modifica apportata | tensione max | spostamento max | coeff. sic.
+% Rende l'andamento leggibile in tre secondi ed e' la prova che il metodo e'
+% stato applicato davvero, e non che il pezzo e' venuto bene per fortuna.
+% ---------------------------------------------------------------------------

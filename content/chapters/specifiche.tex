@@ -142,9 +142,8 @@ adottata, che il costruttore dichiara priva di compensazione in temperatura
 \section{Grandezze da misurare e requisiti della catena di misura}
 \label{sec:catena-misura}
 
-Il banco è, prima di ogni altra cosa, uno strumento di misura: la sua utilità
-dipende dalla qualità con cui rileva la coppia resistente e le grandezze che le
-danno significato. Se la sezione precedente ha fissato le sollecitazioni da
+La funzione principale del banco di prova è quella di misurare: quanto più accuratamente esso rileva la coppia resistente e le grandezze che le danno significato, tanto più attendibili sono i risultati che produce.
+Se la sezione precedente ha fissato le sollecitazioni da
 imporre, questa stabilisce che cosa va registrato durante la prova, con quale
 risoluzione e con quale incertezza, e ne ricava i requisiti della catena di
 acquisizione.
@@ -159,7 +158,7 @@ disallineamenti. Queste ultime non sono grandezze di interesse diretto, ma la
 loro registrazione consente di riconoscere a posteriori una prova condotta in
 condizioni di centraggio non corrette. A queste sei componenti si aggiungono
 l'angolo di rotazione, da cui si ricava il numero di giri sopportati, la
-posizione assiale della traversa e la base dei tempi comune, sulla quale va
+posizione assiale della traversa e il riferimento temporale comune, sulla quale va
 collocato l'istante di rottura. La tabella~\ref{tab:grandezze} le riassume.
 
 \begin{table}[!tb]
@@ -178,11 +177,11 @@ collocato l'istante di rottura. La tabella~\ref{tab:grandezze} le riassume.
         Forze trasversali        & $F_x$, $F_y$   & portata 50\,N         & Cella 6A27 \\
         Angolo di rotazione      & $\theta$       & $\pm$10\,000 giri     & Encoder BV010 \\
         Posizione assiale        & $z$            & 0--80\,mm             & Encoder UD04 \\
-        Tempo                    & $t$            & ---                   & Base dei tempi comune \\
+        Tempo                    & $t$            & ---                   & sistema di acquisizione \\
         \bottomrule
     \end{tabularx}
 \end{table}
-
+\begin{comment}
 \paragraph{Sensibilità e risoluzione.}
 La cella eroga un segnale nominale di $\pm$0,4\,mV/V a fondo scala; con la
 tensione di alimentazione di 5\,V ciò corrisponde a circa 2\,mV per 1\,N$\cdot$m.
@@ -191,11 +190,11 @@ traducono quindi in segnali fra 0,05 e 0,2\,mV, che l'amplificatore deve
 risolvere con un passo di quantizzazione e un rumore di almeno un ordine di
 grandezza inferiori. È un requisito che esclude gli amplificatori da ponte di
 uso generale a bassa risoluzione e richiede una conversione ad almeno 24 bit.
+\end{comment}
 
 \paragraph{Errori del trasduttore.}
 Il costruttore dichiara gli errori massimi della cella --- non linearità,
-isteresi, non ripetibilità e creep \cite{interface6a}, illustrati nella
-figura~\ref{fig:errori-cella} --- riferendoli al fondo scala. Poiché la prova
+isteresi, non ripetibilità e creep \cite{interface6a},--- riferendoli al fondo scala. Poiché la prova
 impegna solo una frazione del campo disponibile, quegli stessi errori, riferiti
 alla lettura, crescono nella stessa proporzione: la
 tabella~\ref{tab:errori} riporta il confronto. Il contributo dominante è la non
@@ -205,14 +204,6 @@ fra sistemi di strumenti diversi sono significative solo se superiori a tale
 soglia, e il confronto va condotto sulla media di più prove ripetute, la cui
 dispersione si riduce con la radice del numero di ripetizioni.
 
-\begin{figure}[!tb]
-    \centering
-    \includegraphics[width=0.95\linewidth]{images/banco/errori-cella.pdf}
-    \caption{Gli errori dichiarati per la cella di carico. La curva reale è
-    confrontata con il comportamento ideale; in ciascun riquadro è evidenziata
-    la grandezza a cui la specifica si riferisce.}
-    \label{fig:errori-cella}
-\end{figure}
 
 \begin{table}[!tb]
     \centering
@@ -266,8 +257,8 @@ impegnati dalla cella biassiale della macchina; la scheda di acquisizione
 opzionale ne aggiunge altri due, insufficienti allo scopo. La catena di misura
 richiede pertanto un'unità di acquisizione esterna, dotata di almeno sei canali
 di ponte intero con alimentazione dedicata. Ne segue un secondo requisito:
-i dati della cella e quelli della macchina --- angolo, posizione, forza e coppia
-degli attuatori --- devono essere riferiti a una base dei tempi comune, perché
+i dati della cella e quelli della macchina, angolo, posizione, forza e coppia
+degli attuatori, devono essere riferiti a una base dei tempi comune, perché
 solo così la coppia registrata può essere associata al numero di giri compiuti e
 l'istante di rottura collocato univocamente. La macchina dispone di uscite
 analogiche dei propri segnali, che possono essere riportate sui canali liberi
@@ -295,7 +286,7 @@ condizione che questa sia eseguita dopo il centraggio del provino e
 immediatamente prima dell'avvio della prova: ogni spostamento della tavola
 successivo all'azzeramento reintroduce un offset non compensato. Ciò che la tara
 non può cancellare è la deriva che si accumula durante la prova, la cui durata
-massima --- diecimila giri alla velocità massima --- sfiora la mezz'ora, tempo
+massima, diecimila giri alla velocità massima, sfiora la mezz'ora, tempo
 confrontabile con l'intervallo di venti minuti sul quale il creep è specificato.
 Alla deriva contribuisce anche la temperatura, poiché il modello di cella
 adottato è dichiarato privo di compensazione termica; le prove vanno pertanto

@@ -22,16 +22,35 @@
 
 \subsection{Necessità del calcolo numerico}
 \label{sec:fem-necessita}
-%   - geometrie non riconducibili a schemi di trave o piastra con soluzione in
-%     forma chiusa: fori, raccordi, spallamenti, contatti
-%   - non serve solo la resistenza ma il campo di spostamento, perche' e' la
-%     rigidezza a determinare l'errore di misura (cap. 2)
-%   - dichiarare qui il METODO, non i numeri: dove la geometria lo consente la
-%     verifica numerica e' accompagnata da una stima analitica di ordine di
-%     grandezza, che serve a controllare vincoli, unita' di misura e ordine dei
-%     risultati prima di fidarsi del modello. Bastano una o due frasi.
-%     Il confronto vero e proprio sta al par. 3.5 (piastra inferiore), dove ci
-%     sono geometria, carichi e numero da confrontare.
+
+I componenti progettati in questo capitolo sono quattro, tutti di piccole
+dimensioni e tutti con una forma dettata dalle interfacce che devono collegare:
+circonferenze di fori, sedi di spina, cavità, raccordi. Per corpi di questo tipo
+una soluzione analitica esiste solo dopo averli ricondotti a uno schema
+canonico, una trave o una piastra, e la riduzione costa proprio ciò che
+interessa. Fori e raccordi sono i punti in cui la tensione si concentra e la
+rigidezza cambia, ed è quanto lo schema semplificato cancella per primo.
+
+C'è però una ragione più stringente, e viene dal capitolo precedente. Per questi
+componenti la domanda non è soltanto se resistano. Il
+paragrafo~\ref{sec:requisiti} ha stabilito che ogni cedevolezza e ogni
+disallineamento lungo la catena fra provino e cella si traduce in un errore
+sulla coppia misurata: per le due piastre e per la sede del blocchetto il
+requisito che governa il progetto è la rigidezza, non la resistenza. I carichi
+in gioco sono infatti modesti al punto che il margine sulla tensione, come si
+vedrà, resta sempre ampio. Occorre quindi conoscere il campo di spostamento, e
+non solo il valore massimo della tensione: è la grandezza che più risente della
+schematizzazione, perché dipende dalla geometria nel suo insieme e non da una
+singola sezione critica. Fa eccezione il clamshell, per il quale la questione è
+diversa e riguarda la forza di serraggio trasmessa al gambo dello strumento.
+
+Il risultato del calcolo numerico non viene però assunto come verità. Dove la
+geometria consente una schematizzazione ragionevole, il valore ottenuto è
+confrontato con una stima analitica di ordine di grandezza. Il confronto non
+serve a validare il componente, ma il modello: un errore nei vincoli, nelle
+unità di misura o nell'entità dei carichi si manifesta come uno scarto di ordini
+di grandezza, non come una piccola differenza. Il confronto è svolto al
+paragrafo~\ref{sec:piastra-inferiore}, sulla piastra di accoppiamento inferiore.
 
 \subsection{Principi del metodo}
 \label{sec:fem-principi}

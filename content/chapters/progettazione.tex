@@ -22,9 +22,12 @@
 %     forma chiusa: fori, raccordi, spallamenti, contatti
 %   - non serve solo la resistenza ma il campo di spostamento, perche' e' la
 %     rigidezza a determinare l'errore di misura (cap. 2)
-%   - se hai fatto una stima analitica anche solo di ordine di grandezza su un
-%     componente, mettila qui e confrontala con il risultato numerico:
-%     e' la difesa piu' forte di qualunque analisi FEM
+%   - dichiarare qui il METODO, non i numeri: dove la geometria lo consente la
+%     verifica numerica e' accompagnata da una stima analitica di ordine di
+%     grandezza, che serve a controllare vincoli, unita' di misura e ordine dei
+%     risultati prima di fidarsi del modello. Bastano una o due frasi.
+%     Il confronto vero e proprio sta al par. 3.5 (piastra inferiore), dove ci
+%     sono geometria, carichi e numero da confrontare.
 %
 % (b) PRINCIPI, dal testo di riferimento -- corti e strumentali, solo cio' che
 %     le verifiche useranno davvero:
@@ -95,6 +98,42 @@
 %      il parallelismo viene dal requisito sui momenti parassiti, la sede
 %      della spina dall'accoppiamento imposto dalla cella.
 %      Non stringere cio' che nessuno ha chiesto.
+%
+%   STIMA ANALITICA DI CONFRONTO -- e' questo il componente scelto per il
+%   confronto con il calcolo numerico: la rigidezza e' il suo requisito critico
+%   e la freccia dipende dal cubo dello spessore, quindi anche una stima
+%   grossolana ne coglie la sensibilita' dominante.
+%
+%   Geometria: piastra quadrata di lato a, quattro fori d'angolo verso la
+%   tavola, circonferenza di sei fori al centro per la cella.
+%   Percorso del carico: centro -> quattro angoli.
+%
+%   Schema principale, mensola d'angolo -- e' il piu' vicino al percorso reale
+%   del carico, perche' il corpo della cella irrigidisce il centro come un
+%   disco rigido:
+%     braccio dal bordo del disco centrale al foro d'angolo, lunghezza l
+%     reazione alla punta R = F/4
+%     freccia   d = R l^3 / (3 E I)        con I = b t^3 / 12
+%     momento   M = R l
+%
+%   Schema alternativo, trave diagonale -- luce L = a*sqrt(2) fra due angoli
+%   opposti, meta' del carico per ciascuna diagonale:
+%     estremi appoggiati   d = F L^3 / (96 E I)     M = F L / 8
+%     estremi incastrati   d = F L^3 / (384 E I)    M = F L / 16
+%
+%   Calcolare i due estremi e presentare un INTERVALLO, non un numero singolo:
+%   il valore agli elementi finiti deve cadere dentro. Il vincolo reale, quattro
+%   viti agli angoli, sta fra appoggio e incastro.
+%
+%   ASSUNZIONE DA DICHIARARE: la larghezza efficace b della striscia.
+%   LIMITE DA DICHIARARE: la piastra porta il carico in due direzioni mentre la
+%   striscia in una sola, e c'e' l'effetto Poisson (E -> E/(1-nu^2), circa il
+%   10 per cento). Entrambe le schematizzazioni SOVRASTIMANO quindi la freccia:
+%   distorsione nota e nella direzione della sicurezza.
+%
+%   NB la formula chiusa della lastra quadrata su quattro appoggi d'angolo non
+%   sta in Santi-Cesari: il metodo di Navier (par. 30.1.2) vale per bordi
+%   appoggiati, non per appoggi puntuali. Se serve, sta sui manuali tipo Roark.
 
 \section{Piastra di accoppiamento superiore}
 \label{sec:piastra-superiore}

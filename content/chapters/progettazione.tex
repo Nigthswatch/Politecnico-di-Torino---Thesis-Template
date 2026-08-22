@@ -15,9 +15,13 @@
 
 \section{Metodo di analisi agli elementi finiti}
 \label{sec:metodo-fem}
-% Esposto una volta sola; le sezioni successive lo richiamano e non ripetono.
-%
-% (a) PERCHE' IL CALCOLO NUMERICO
+% Esposto una volta sola; le sezioni sui componenti lo richiamano e non ripetono.
+% Cinque sottosezioni. La piu' lunga deve essere la 3.1.4, l'unica che contiene
+% lavoro proprio: se il riassunto di un manuale pesa piu' dell'applicazione, si
+% legge come riempitivo.
+
+\subsection{Necessità del calcolo numerico}
+\label{sec:fem-necessita}
 %   - geometrie non riconducibili a schemi di trave o piastra con soluzione in
 %     forma chiusa: fori, raccordi, spallamenti, contatti
 %   - non serve solo la resistenza ma il campo di spostamento, perche' e' la
@@ -28,34 +32,101 @@
 %     risultati prima di fidarsi del modello. Bastano una o due frasi.
 %     Il confronto vero e proprio sta al par. 3.5 (piastra inferiore), dove ci
 %     sono geometria, carichi e numero da confrontare.
+
+\subsection{Principi del metodo}
+\label{sec:fem-principi}
+% REGOLA GUIDA: scrivere SOLO cio' che le sezioni successive richiamano. Ogni
+% affermazione teorica dev'essere richiamata da qualcosa che viene dopo.
+% METRO: scrivi cio' che sapresti spiegare alla lavagna.
+% LUNGHEZZA: una pagina e mezza, due al massimo.
 %
-% (b) PRINCIPI, dal testo di riferimento -- corti e strumentali, solo cio' che
-%     le verifiche useranno davvero:
-%   - discretizzazione, funzioni di forma, sistema di rigidezza risultante
-%   - la soluzione e' approssimata e migliora infittendo
-%   - tipi di elemento: cosa cambia fra lineari e parabolici
-%   - le tensioni si ricostruiscono dagli spostamenti e sono meno accurate:
-%     e' la ragione per cui la convergenza si controlla sulle tensioni
-%   Riferimento: Santi e Cesari, CLUEB 2024 (voce bibliografica da aggiungere).
+% Sette blocchi, da due a sei righe l'uno:
 %
-% (c) CRITERIO DI VERIFICA -- cosa significa "verificato", dichiarato prima:
+%  1. IL PROBLEMA ELASTICO -- i tre gruppi di equazioni (equilibrio, congruenza,
+%     legame costitutivo); soluzione in forma chiusa solo per geometrie
+%     semplici. Fa da ponte con la 3.1.1.
+%
+%  2. DALLA FORMA FORTE ALLA FORMA DEBOLE -- la formulazione integrale abbassa
+%     il requisito di continuita', ed e' questo che rende lecito approssimare
+%     lo spostamento a tratti, elemento per elemento. Enunciato, non dimostrato.
+%     Senza questo passaggio la sezione diventa un elenco di ricette senza il
+%     perche'.
+%
+%  3. STAZIONARIETA' -- l'equilibrio coincide con il minimo dell'energia
+%     potenziale totale. Ipotesi necessarie: materiale elastico e carichi
+%     conservativi. Una formula sola: Pi = U - L.
+%
+%  4. DISCRETIZZAZIONE -- nodi, elementi, funzioni di forma: u = N a, con la
+%     proprieta' che ciascuna vale 1 sul proprio nodo e 0 sugli altri, sicche'
+%     i parametri incogniti sono spostamenti veri.
+%
+%  5. IL SISTEMA K a = F -- K dipende da geometria e materiale, F dai carichi,
+%     a e' l'incognita; poi eps = B a e sigma = D eps, con l'osservazione che
+%     le tensioni sono grandezze DERIVATE.
+%
+%  6. CONVERGENZA ED ERRORE DI DISCRETIZZAZIONE -- completezza (moti rigidi e
+%     deformazione costante) e compatibilita'; l'errore nasce dall'aver
+%     ristretto la ricerca e si riduce infittendo. E' il blocco che GIUSTIFICA
+%     lo studio di convergenza della 3.1.4: senza, quel controllo sembra un rito.
+%
+%  7. CONSEGUENZA PRATICA -- il modello e' piu' rigido del pezzo reale, quindi
+%     infittendo le frecce crescono e convergono dal basso. Due righe, ed e'
+%     cio' che poi si mostra con i numeri.
+%
+% FORMULE AMMESSE, tutte difendibili: Pi = U - L ; u = N a ; K a = F ;
+% K = integrale di B' D B dV. Ogni formula messa in tesi e' un invito a una
+% domanda: mettere solo quelle che si sanno raccontare.
+%
+% DA LASCIARE FUORI:
+%   - le derivazioni: integrazione per parti, Eulero-Lagrange, passaggio da
+%     funzionale a sistema. Enunciare e citare il libro.
+%   - i residui pesati (cap. 12 del libro): non usati.
+%   - tutto cio' che sta DENTRO il solutore: mappatura isoparametrica,
+%     jacobiano, ordine di integrazione gaussiana, distorsione degli elementi,
+%     locking. Non sono scelte fatte da me e SolidWorks non le documenta:
+%     nominarle apre domande a cui non esiste risposta.
+%   - dinamica, instabilita', non linearita': una sola frase, e sta nella 3.1.5.
+%
+% Chiudere ogni blocco con \cite[cap.~11]{santi2024}: dichiara che si sta
+% riassumendo, non rivendicando.
+%
+% RISCHIO OPPOSTO da non sottovalutare: mezza paginetta generica ("il metodo
+% suddivide il corpo in elementi e risolve numericamente") comunica che non si
+% sa come funziona, e attira domande piu' dell'eccesso. La zona sicura e':
+% breve, ma con la catena logica intatta, dal problema elastico fino alla mappa
+% di tensione senza buchi.
+
+\subsection{Criterio di verifica}
+\label{sec:fem-criterio}
+% Cosa significa "verificato", dichiarato prima delle verifiche:
 %   - quale tensione equivalente, contro quale limite del materiale
 %   - coefficiente di sicurezza assunto e perche' quel valore
 %   - per la rigidezza: quale spostamento e' accettabile e da dove viene
 %     (requisiti di eccentricita' e parallelismo del cap. 2)
-%
-% (d) COME E' STATO USATO SOLIDWORKS -- il metro e' la riproducibilita':
-%     uno che legge deve poter rifare l'analisi e ottenere gli stessi numeri
+% NB questo non sta nel libro di Santi-Cesari: e' materia di costruzione di
+% macchine, non di elementi finiti.
+
+\subsection{Impostazione delle analisi in SolidWorks}
+\label{sec:fem-solidworks}
+% E' la sottosezione che deve pesare di piu': e' l'unica con lavoro proprio.
+% Il metro e' la riproducibilita': chi legge deve poter rifare l'analisi e
+% ottenere gli stessi numeri.
 %   - versione e tipo di studio
 %   - materiali: da libreria o inseriti a mano, con quali dati
 %   - tipo e dimensione degli elementi, infittimenti locali
 %   - trattamento dei collegamenti fra corpi
 %   - vincoli imposti
-%   - controllo di convergenza: un caso mostrato per esteso
-%
-% (e) LIMITI DEL MODELLO -- cio' che NON e' rappresentato e perche':
-%     precarico dei serraggi, attrito, comportamento della resina.
-%     Dichiararli protegge; farli scoprire in discussione no.
+%   - controllo di convergenza: un caso mostrato per esteso, con la curva
+%     tensione/spostamento al variare della dimensione di mesh. Deve risultare
+%     che le frecce CRESCONO infittendo (convergenza dal basso): se
+%     diminuissero, ci sarebbe un errore nel modello.
+
+\subsection{Limiti del modello}
+\label{sec:fem-limiti}
+% Cio' che il modello NON rappresenta, e perche': precarico dei serraggi,
+% attrito, comportamento della resina. Qui va anche la frase che dichiara che
+% le analisi sono statiche lineari.
+% Dichiarare le semplificazioni protegge; farle scoprire in discussione no.
 
 \section{Scelta della tavola di posizionamento}
 \label{sec:tavola}

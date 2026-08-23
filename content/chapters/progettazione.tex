@@ -110,6 +110,7 @@ derivazione, $\varepsilon = B \Delta$, e le tensioni per
 applicazione del legame costitutivo, $\sigma = D \varepsilon$. Le tensioni sono
 quindi grandezze derivate, ricavate differenziando un campo già approssimato, e
 per questo costituiscono il risultato meno accurato dell'analisi.
+
 Perché infittendo la suddivisione la soluzione converga a quella esatta, gli
 elementi devono soddisfare due requisiti \cite[cap.~11]{santi2024}. Devono
 essere completi, cioè saper rappresentare i moti rigidi e gli stati di
@@ -118,6 +119,7 @@ elemento tende a essere costante, e un elemento incapace di descriverla non
 potrebbe convergere. Devono inoltre essere compatibili, cioè garantire la
 continuità dello spostamento attraverso i bordi comuni, perché in caso contrario
 l'energia di deformazione non sarebbe definita sui bordi stessi.
+
 L'errore che permane, detto di discretizzazione, non nasce da imprecisioni di
 calcolo ma dall'aver ristretto la ricerca a un insieme più piccolo di quello dei
 campi ammissibili. Esso decresce secondo una potenza della dimensione
@@ -128,6 +130,7 @@ la suddivisione, oppure innalzando il grado delle funzioni di forma. Si noti che
 la dimensione caratteristica così definita penalizza gli elementi distorti, il
 cui cerchio circoscritto resta ampio anche a parità di volume: infittire non è
 sufficiente se gli elementi introdotti sono di forma allungata.
+
 Da queste premesse discende una proprietà usata nel seguito come controllo.
 Cercando il minimo dell'energia in un sottoinsieme anziché nell'insieme
 completo, il valore che si trova è superiore a quello vero: il modello risulta
@@ -138,13 +141,42 @@ crescere al crescere del numero di elementi.
 
 \subsection{Criterio di verifica}
 \label{sec:fem-criterio}
-% Cosa significa "verificato", dichiarato prima delle verifiche:
-%   - quale tensione equivalente, contro quale limite del materiale
-%   - coefficiente di sicurezza assunto e perche' quel valore
-%   - per la rigidezza: quale spostamento e' accettabile e da dove viene
-%     (requisiti di eccentricita' e parallelismo del cap. 2)
-% NB questo non sta nel libro di Santi-Cesari: e' materia di costruzione di
-% macchine, non di elementi finiti.
+
+Un'analisi restituisce numeri; perché quei numeri costituiscano una verifica
+occorre stabilire in anticipo quali valori si considerano accettabili. Per i
+componenti di questo capitolo i criteri sono due, perché due sono le domande a
+cui rispondere: se il componente regga i carichi applicati, e se si deformi
+abbastanza poco da non compromettere la misura.
+
+La resistenza è verificata confrontando la tensione equivalente di von Mises con
+il carico unitario di snervamento del materiale assegnato al componente nella
+distinta base (tabella~\ref{tab:distinta-base}). La condizione si considera
+soddisfatta quando il rapporto fra i due, ossia il coefficiente di sicurezza,
+non scende al di sotto di 1,5.
+% VALORE DA CONFERMARE con il relatore.
+Il valore è coerente con la natura dell'applicazione: carichi noti e di modesta
+entità, materiali di impiego corrente e proprietà ben caratterizzate, assenza di
+sollecitazioni cicliche sui componenti in esame. I carichi trasmessi alla
+struttura sono infatti sostanzialmente costanti nel riferimento del banco,
+mentre l'alternanza delle tensioni riguarda il provino, che ruota.
+
+La rigidezza non dispone di un limite di materiale a cui riferirsi e il suo
+criterio va ricavato dal requisito di misura. Il paragrafo~\ref{sec:requisiti}
+fissa in alcune decine di micrometri la precisione con cui l'asse del canale
+deve coincidere con l'asse di rotazione; quel centraggio viene eseguito
+manualmente prima della prova, a struttura scarica. Perché non vada perduto
+quando i carichi vengono applicati, lo spostamento del gruppo sotto carico deve
+restare almeno un ordine di grandezza al di sotto di tale tolleranza, ossia
+dell'ordine di pochi micrometri. È questo il criterio che governa il progetto
+dei componenti di interfaccia.
+
+Vale la pena precisare che cosa i due criteri tutelano. La cedevolezza della
+catena non altera la coppia letta dalla cella: in una catena in serie essa è la
+stessa in ogni sezione, e un elemento più o meno rigido non la modifica. Altera
+invece il carico effettivamente imposto al provino, perché uno spostamento del
+blocchetto cambia l'ingaggio dello strumento nel canale e quindi la curvatura
+che gli viene imposta. Il criterio di rigidezza tutela dunque la ripetibilità
+della prova, non l'esattezza della lettura.
 
 \subsection{Impostazione delle analisi in SolidWorks}
 \label{sec:fem-solidworks}

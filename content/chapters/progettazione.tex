@@ -142,16 +142,22 @@ crescere al crescere del numero di elementi.
 \subsection{Criterio di verifica}
 \label{sec:fem-criterio}
 
-In questa sezione cercherò di stabilire in base a quali considerazioni sulle analisi ho considerato verificati i componenti. Queste considerazioni si basano su due criteri: se il componente regga i carichi applicati, e se si deformi
-senza compromettere la misura.
+Questa sezione stabilisce in base a quali condizioni i componenti si considerano
+verificati. I criteri sono due, corrispondenti alle due domande a cui l'analisi
+deve rispondere: se il componente regga i carichi applicati, e se la sua
+deformazione resti compatibile con la misura.
 
 La resistenza è verificata confrontando la tensione equivalente di von Mises con
 il carico unitario di snervamento del materiale assegnato al componente nella
-distinta base (tabella~\ref{tab:distinta-base}). Questa condizione come vedremo non è così restrittiva per la verifica in quanto i carichi sono minimi rispetto alla tensione di snervamento di questi componenti.
+distinta base (tabella~\ref{tab:distinta-base}). La condizione si considera
+soddisfatta quando il rapporto fra i due, ossia il coefficiente di sicurezza,
+non scende al di sotto di 1,5.
 % VALORE DA CONFERMARE con il relatore.
-I carichi trasmessi alla
-struttura sono costanti nel riferimento del banco,
-mentre l'alternanza delle tensioni riguarda lo strumento, che ruota.
+Come si vedrà, questo criterio non risulta vincolante: i carichi in gioco sono di
+entità tale che il margine rispetto allo snervamento resta ovunque ampio. La
+verifica è inoltre condotta in campo statico, poiché i carichi trasmessi alla
+struttura sono sostanzialmente costanti nel riferimento del banco, mentre
+l'alternanza delle tensioni riguarda lo strumento, che ruota.
 
 La rigidezza non dispone di un limite di materiale a cui riferirsi e il suo
 criterio va ricavato dal requisito di misura. Il paragrafo~\ref{sec:requisiti}

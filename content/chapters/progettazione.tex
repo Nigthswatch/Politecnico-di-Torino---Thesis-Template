@@ -45,7 +45,8 @@ diversa e riguarda la forza di serraggio trasmessa al gambo dello strumento.
 
 Il risultato dell'analisi non viene però assunto come verità. Dove la
 geometria consente una schematizzazione ragionevole, il valore ottenuto è
-confrontato, usufruendo dei risultati ottenuti dalla trave Eulero-Bernolli, per verificare il corretto ordine di grandezza. Il confronto non
+confrontato con la stima che si ricava dalla teoria della trave di
+Eulero-Bernoulli, per verificarne l'ordine di grandezza. Il confronto non
 serve a validare il componente, ma il modello: un errore nei vincoli, nelle
 unità di misura o nell'entità dei carichi si manifesta come uno scarto di ordini
 di grandezza, non come una piccola differenza. Il confronto è svolto al
@@ -54,11 +55,12 @@ paragrafo~\ref{sec:piastra-inferiore}, sulla piastra di accoppiamento inferiore.
 \subsection{Principi del metodo}
 \label{sec:fem-principi}
 
-Il problema elastico si ottiene combinando tre equazioni : l'equilibrio, che lega
+Il problema elastico si ottiene combinando tre equazioni: l'equilibrio, che lega
 le tensioni ai carichi applicati; la congruenza, che lega le deformazioni agli
 spostamenti; il legame costitutivo, che lega tensioni e deformazioni attraverso
 le costanti elastiche del materiale. Insieme alle condizioni al contorno queste
-equazioni determinano la soluzione, ma la loro soluzione analitica resta possibile solo per geometrie riconducibili a schemi elementari
+equazioni ne determinano la soluzione, ma l'integrazione analitica resta
+possibile solo per geometrie riconducibili a schemi elementari
 \cite[cap.~3]{santi2024}.
 
 Il metodo degli elementi finiti non impone quelle equazioni punto per punto.
@@ -83,24 +85,28 @@ La soluzione andrebbe cercata fra tutti i campi di spostamento ammissibili, che
 sono infiniti. Il metodo restringe la ricerca ai soli campi ottenuti
 interpolando i valori assunti in un numero finito di punti, i nodi, all'interno
 di porzioni di volume di forma semplice, gli elementi. Dette $N$ le funzioni
-interpolanti, o funzioni di forma, e $a$ i valori nodali, lo spostamento in un
-punto qualsiasi dell'elemento vale $u = N a$. Ciascuna funzione di forma vale uno
+interpolanti, o funzioni di forma, e $\Delta$ i valori nodali, lo spostamento in
+un punto qualsiasi dell'elemento vale $u = N \Delta$. Ciascuna funzione di forma vale uno
 sul proprio nodo e zero su tutti gli altri, e la loro somma vale uno in ogni
 punto: i parametri incogniti sono quindi gli spostamenti effettivi dei nodi, ed
 è su di essi che si impongono i vincoli.
 
 Con questa restrizione l'energia potenziale cessa di dipendere da una funzione e
 diventa funzione di un numero finito di parametri. La condizione di
-stazionarietà si riduce allora a un sistema di equazioni algebriche lineari, la
-cui matrice si ottiene integrando sul volume dell'elemento:
+stazionarietà si riduce allora a un sistema di equazioni algebriche lineari
 \begin{equation}
-    K a = F , \qquad K = \int_V B^{\mathsf{T}} D\, B \; \mathrm{d}V .
+    K \Delta = F ,
 \end{equation}
-Qui $B$ raccoglie le derivate delle funzioni di forma e $D$ le costanti
-elastiche del materiale. La matrice di rigidezza dipende dunque dalla sola
-geometria, dal tipo di elemento e dal materiale; il vettore $F$ raccoglie i
-carichi applicati; i valori nodali $a$ sono l'incognita. Risolto il sistema, le
-deformazioni si ottengono per derivazione, $\varepsilon = B a$, e le tensioni per
+nel quale $\Delta$ è il vettore dei valori nodali incogniti e $F$ raccoglie i
+carichi applicati. La matrice di rigidezza si ottiene integrando sul volume
+dell'elemento
+\begin{equation}
+    K = \int_V B^{\mathsf{T}} D\, B \; \mathrm{d}V ,
+\end{equation}
+dove $B$ raccoglie le derivate delle funzioni di forma e $D$ le costanti
+elastiche del materiale: essa dipende dunque dalla sola geometria, dal tipo di
+elemento e dal materiale. Risolto il sistema, le deformazioni si ottengono per
+derivazione, $\varepsilon = B \Delta$, e le tensioni per
 applicazione del legame costitutivo, $\sigma = D \varepsilon$. Le tensioni sono
 quindi grandezze derivate, ricavate differenziando un campo già approssimato, e
 per questo costituiscono il risultato meno accurato dell'analisi.

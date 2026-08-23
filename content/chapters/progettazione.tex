@@ -54,12 +54,11 @@ paragrafo~\ref{sec:piastra-inferiore}, sulla piastra di accoppiamento inferiore.
 \subsection{Principi del metodo}
 \label{sec:fem-principi}
 
-Il problema elastico è retto da tre gruppi di equazioni: l'equilibrio, che lega
+Il problema elastico si ottiene combinando tre equazioni : l'equilibrio, che lega
 le tensioni ai carichi applicati; la congruenza, che lega le deformazioni agli
 spostamenti; il legame costitutivo, che lega tensioni e deformazioni attraverso
-le costanti elastiche del materiale. Insieme alle condizioni al contorno questi
-gruppi determinano interamente la soluzione, ma la loro integrazione in forma
-chiusa resta possibile solo per geometrie riconducibili a schemi elementari
+le costanti elastiche del materiale. Insieme alle condizioni al contorno queste
+equazioni determinano la soluzione, ma la loro soluzione analitica resta possibile solo per geometrie riconducibili a schemi elementari
 \cite[cap.~3]{santi2024}.
 
 Il metodo degli elementi finiti non impone quelle equazioni punto per punto.
@@ -67,9 +66,8 @@ Scritte negli spostamenti, esse contengono derivate seconde, e soddisfarle
 ovunque richiederebbe una soluzione derivabile due volte in ogni punto del
 corpo. Il metodo ricorre invece alla forma integrale del problema, equivalente
 alla forma differenziale ma di ordine inferiore: in essa compaiono solo derivate
-prime \cite[cap.~11]{santi2024}. La regolarità richiesta si abbassa, e diventa
-lecito descrivere lo spostamento a tratti, con funzioni continue ma di derivata
-discontinua da un tratto all'altro. È questo passaggio a rendere possibile la
+prime \cite[cap.~11]{santi2024}. La regolarità richiesta si abbassa, è possibile descrivere lo spostamento a tratti, con funzioni continue ma di derivata
+discontinua. È questo passaggio a rendere possibile la
 suddivisione del corpo in elementi.
 
 Per un materiale elastico e per carichi che non variano con la configurazione,
@@ -106,16 +104,14 @@ deformazioni si ottengono per derivazione, $\varepsilon = B a$, e le tensioni pe
 applicazione del legame costitutivo, $\sigma = D \varepsilon$. Le tensioni sono
 quindi grandezze derivate, ricavate differenziando un campo già approssimato, e
 per questo costituiscono il risultato meno accurato dell'analisi.
-
 Perché infittendo la suddivisione la soluzione converga a quella esatta, gli
 elementi devono soddisfare due requisiti \cite[cap.~11]{santi2024}. Devono
-essere \emph{completi}, cioè saper rappresentare i moti rigidi e gli stati di
+essere completi, cioè saper rappresentare i moti rigidi e gli stati di
 deformazione costante: infittendo, la deformazione all'interno di ciascun
 elemento tende a essere costante, e un elemento incapace di descriverla non
-potrebbe convergere. Devono inoltre essere \emph{compatibili}, cioè garantire la
+potrebbe convergere. Devono inoltre essere compatibili, cioè garantire la
 continuità dello spostamento attraverso i bordi comuni, perché in caso contrario
 l'energia di deformazione non sarebbe definita sui bordi stessi.
-
 L'errore che permane, detto di discretizzazione, non nasce da imprecisioni di
 calcolo ma dall'aver ristretto la ricerca a un insieme più piccolo di quello dei
 campi ammissibili. Esso decresce secondo una potenza della dimensione
@@ -126,7 +122,6 @@ la suddivisione, oppure innalzando il grado delle funzioni di forma. Si noti che
 la dimensione caratteristica così definita penalizza gli elementi distorti, il
 cui cerchio circoscritto resta ampio anche a parità di volume: infittire non è
 sufficiente se gli elementi introdotti sono di forma allungata.
-
 Da queste premesse discende una proprietà usata nel seguito come controllo.
 Cercando il minimo dell'energia in un sottoinsieme anziché nell'insieme
 completo, il valore che si trova è superiore a quello vero: il modello risulta

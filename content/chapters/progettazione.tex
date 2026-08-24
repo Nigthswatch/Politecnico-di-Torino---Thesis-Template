@@ -169,13 +169,23 @@ restare almeno un ordine di grandezza al di sotto di tale tolleranza, ossia
 dell'ordine di pochi micrometri. È questo il criterio che governa il progetto
 dei componenti di interfaccia.
 
-Vale la pena precisare che cosa i due criteri tutelano. La cedevolezza della
-catena non altera la coppia letta dalla cella: in una catena in serie essa è la
-stessa in ogni sezione, e un elemento più o meno rigido non la modifica. Altera
-invece il carico effettivamente imposto al provino, perché uno spostamento del
-blocchetto cambia l'ingaggio dello strumento nel canale e quindi la curvatura
-che gli viene imposta. Il criterio di rigidezza tutela dunque la ripetibilità
-della prova, non l'esattezza della lettura.
+I due criteri tutelano cose diverse. Quello di resistenza garantisce l'integrità
+del componente, cioè che non si snervi né si rompa sotto i carichi di prova.
+Quello di rigidezza garantisce invece che la prova sia quella progettata.
+
+Su quest'ultimo punto vale la pena una precisazione, perché non riguarda
+l'esattezza della lettura. La coppia generata dallo strumento raggiunge la cella
+attraverso un'unica via, e in una catena in serie essa è la stessa in ogni
+sezione: un elemento più o meno rigido cambia di quanto si deforma, non quanta
+coppia lo attraversa. La cella legge dunque il valore corretto anche se la
+catena cede. Ciò che la cedevolezza altera è la condizione di prova.
+L'allineamento fra l'asse del canale e l'asse di rotazione viene regolato
+manualmente a struttura scarica; se sotto carico il gruppo si sposta, quello non
+è più l'allineamento impostato, e lo strumento lavora su una curvatura diversa
+da quella prevista. Poiché inoltre lo spostamento è proporzionale al carico, e
+il carico dipende dal singolo strumento in prova, ogni provino verrebbe
+sollecitato in condizioni leggermente diverse: verrebbe meno proprio il
+confronto fra strumenti che il banco deve rendere possibile.
 
 \subsection{Impostazione delle analisi in SolidWorks}
 \label{sec:fem-solidworks}

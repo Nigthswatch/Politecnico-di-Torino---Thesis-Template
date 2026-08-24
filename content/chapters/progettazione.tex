@@ -190,120 +190,205 @@ confronto fra strumenti che il banco deve rendere possibile.
 
 \subsection{Impostazione delle analisi in SolidWorks}
 \label{sec:fem-solidworks}
-% E' la sottosezione che deve pesare di piu': e' l'unica con lavoro proprio.
-% Il metro e' la riproducibilita': chi legge deve poter rifare l'analisi e
-% ottenere gli stessi numeri. NON e' un tutorial di SolidWorks: si scrivono le
-% scelte fatte e i controlli eseguiti, non le funzioni del programma.
+
+Le verifiche sono state condotte con SOLIDWORKS 2025 SP5.0, Student Edition,
+mediante studi statici lineari in ipotesi di piccoli spostamenti. Questo
+paragrafo dichiara le scelte con cui i modelli sono stati costruiti. Non
+descrive il funzionamento del programma: elenca le impostazioni necessarie
+perché la verifica sia riproducibile, cioè perché chi la ripetesse a partire
+dagli stessi dati ottenga gli stessi numeri.
+
+\paragraph{Composizione del modello.}
+Il modello riproduce la catena completa, dal collegamento con la traversa
+superiore fino al blocchetto. I componenti non progettati in questo lavoro vi
+compaiono come condizioni al contorno e non come oggetti di verifica: la tavola
+di posizionamento e la cella di carico sono trattate come corpi rigidi. La
+scelta non risponde soltanto a una delimitazione dell'ambito, ma è anche la più
+corretta sul piano del modello. Entrambe contengono al proprio interno elementi
+volventi e sezioni flessibili lavorate che l'assieme non riproduce; attribuire
+loro le proprietà elastiche del materiale dell'involucro ne sovrastimerebbe la
+rigidezza in misura grossolana, con l'aggravante di presentarsi come una
+verifica. La loro cedevolezza viene reintrodotta separatamente, per via
+analitica, al paragrafo~\ref{sec:assieme-procedura}.
+
+Lo strumento e il clamshell sono esclusi. Lo strumento è il provino e non la
+struttura, ed è inoltre l'elemento di gran lunga più cedevole dell'assieme:
+includerlo richiederebbe di modellare il contatto fra la lima e la parete del
+canale, che i dati disponibili non consentono di caratterizzare. Il modello
+viene quindi interrotto nel punto in cui il carico è trasferito, e in quel punto
+il carico viene applicato: lo strumento è sostituito dalle sue azioni. Le viti
+non sono modellate come geometria, secondo quanto discusso più avanti.
+
+\begin{table}[!tb]
+    \centering
+    \caption{Trattamento dei componenti negli studi agli elementi finiti.}
+    \label{tab:modello-fem}
+    \footnotesize
+    \setlength{\tabcolsep}{4pt}
+    \begin{tabularx}{\linewidth}{@{}
+        >{\hsize=1.0\hsize\raggedright\arraybackslash}X
+        >{\hsize=0.75\hsize\raggedright\arraybackslash}X
+        >{\hsize=1.25\hsize\raggedright\arraybackslash}X@{}}
+        \toprule
+        Componente & Trattamento & Motivo \\
+        \midrule
+        Piastra superiore & Deformabile & Progettato, in catena \\
+        Tavola di posizionamento & Corpo rigido & Commerciale, guide interne non riprodotte \\
+        Piastra inferiore & Deformabile & Progettato, in catena \\
+        Cella di carico & Corpo rigido & Commerciale, sezioni flessibili non riprodotte \\
+        Sede del blocchetto & Deformabile & Progettato, in catena \\
+        Blocchetto & Deformabile & Trasferisce il carico, non verificato \\
+        Strumento & Escluso & Provino, sostituito dalle sue azioni \\
+        Clamshell & Escluso & Oltre il punto di applicazione del carico \\
+        Viti & Escluse & Collegamenti trattati come incollati \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\paragraph{Materiali.}
+A ciascun corpo deformabile è assegnato il materiale indicato nella distinta
+base (tabella~\ref{tab:distinta-base}), con le proprietà elastiche della
+libreria del programma. Fa eccezione la resina del blocchetto, per la quale il
+costruttore non dichiara caratteristiche meccaniche: le sono state attribuite le
+proprietà di una resina epossidica generica. Il blocchetto figura quindi nel
+modello perché trasferisce il carico, ma non è oggetto di verifica, né di
+resistenza né di rigidezza; le conseguenze della scelta sono discusse al
+paragrafo~\ref{sec:fem-limiti}.
+
+\paragraph{Vincolo.}
+È imposto un unico incastro, sul tratto di codolo effettivamente afferrato dalle
+ganasce del mandrino superiore. Un solo vincolo è sufficiente perché, una volta
+sostituito lo strumento con le sue azioni, la catena resta aperta e possiede un
+unico collegamento con il telaio della macchina. Nessun vincolo ausiliario è
+stato introdotto: ogni vincolo aggiuntivo costituirebbe un percorso di scarico
+parassita e irrigidirebbe artificialmente proprio la grandezza che si vuole
+misurare.
+
+\paragraph{Carichi.}
+I carichi sono applicati come carico remoto a trasferimento diretto, riferito a
+un punto posto sull'asse del canale alla quota di ingaggio dello strumento, a
+90\,mm dal vincolo. L'applicazione remota evita di dover caricare la parete del
+canale, superficie minuta e curva sulla quale una forza concentrata
+produrrebbe una concentrazione di tensione priva di riscontro fisico, e conserva
+invece ciò che conta, cioè il braccio rispetto al resto della catena. Il
+trasferimento diretto è preferito alla connessione rigida perché quest'ultima
+irrigidirebbe le facce di applicazione, che appartengono a componenti da
+verificare.
+
+Sono definiti due casi di carico distinti, perché distinte sono le domande a cui
+rispondono. La verifica di rigidezza impiega una forza trasversale di 100\,N
+applicata in quel punto. Il valore non corrisponde ad alcuna condizione reale:
+è un carico unitario di comodo, che la linearità del modello consente di
+riscalare, e il risultato viene infatti riportato come cedevolezza, cioè come
+spostamento per unità di forza. La verifica è ripetuta nelle due direzioni
+ortogonali all'asse di rotazione, poiché la catena non è simmetrica e la
+direzione più sfavorevole non è nota a priori.
+
+La verifica di resistenza impiega invece le portate dei componenti commerciali,
+assunte come scenario di errore: una forza assiale di 180\,N e un momento di
+1\,N$\cdot$m attorno all'asse di rotazione, applicati simultaneamente. Il valore
+assiale è quello della tavola e non quello della cella, che vale 200\,N: i due
+componenti sono in serie e percorsi dalla stessa forza, per cui la portata del
+banco coincide con la più restrittiva delle due. Oltre 180\,N la tavola
+risulterebbe già danneggiata, e quella condizione non rientra fra quelle che i
+componenti di interfaccia devono sopportare.
+
+\paragraph{Trattamento dei collegamenti.}
+Tutti i collegamenti fra corpi sono trattati come incollati, con mesh
+indipendenti alle interfacce. L'ipotesi equivale ad ammettere che i giunti
+imbullonati non si aprano mai, e in quanto tale va giustificata anziché assunta.
+Un giunto precaricato comincia ad aprirsi quando la trazione prodotta dal
+momento flettente annulla la compressione uniforme dovuta al serraggio,
+condizione che per un'interfaccia di area $A$ e modulo di resistenza $W$ si
+scrive
+\begin{equation}
+    M_{\mathrm{ap}} = P \, \frac{W}{A} ,
+\end{equation}
+dove $P$ è il precarico complessivo delle viti del giunto. Il collegamento più
+debole della catena è quello fra piastra inferiore e cella, sei viti M2 disposte
+su una circonferenza di raggio 20\,mm; assumendo un serraggio al 70\,\% del
+carico di snervamento si ottiene $P = 3{,}9$\,kN e $M_{\mathrm{ap}} =
+19{,}6$\,N$\cdot$m, corrispondente a una forza trasversale di circa 218\,N. Il
+criterio di rigidezza, come si vedrà, limita quella forza a un valore oltre
+trenta volte inferiore: i giunti restano chiusi in tutto il campo di
+funzionamento, l'ipotesi di collegamento incollato risulta verificata e con essa
+la linearità dell'intero modello.
+
+\paragraph{Discretizzazione.}
+La suddivisione è ottenuta con elementi tetraedrici parabolici, generati dal
+mesher a curvatura variabile con dimensione massima di 3\,mm, dimensione minima
+di 1,5\,mm, dodici elementi per circonferenza e rapporto di crescita 1,4. La
+dimensione massima non è arbitraria: discende dal requisito di disporre di
+almeno tre elementi nello spessore del componente più sottile sollecitato a
+flessione. Sulla piastra di accoppiamento inferiore, per la quale la sola mesh
+globale ne produceva due, è stato aggiunto un controllo locale che ne porta il
+numero a quattro; è il componente la cui rigidezza pesa di più sul risultato, ed
+è anche quello sul quale si esegue il confronto analitico del
+paragrafo~\ref{sec:piastra-inferiore}. Il modello risultante conta 167\,563
+elementi e 290\,820 nodi, per circa 872\,000 gradi di libertà, e si risolve in
+una trentina di minuti.
+
+\paragraph{Controlli sul modello.}
+Prima di leggere qualunque risultato, ciascuno studio è stato sottoposto a un
+controllo di equilibrio: la risultante delle reazioni sulla faccia vincolata
+deve coincidere con il carico applicato. Negli studi di rigidezza lo scarto
+risulta inferiore a tre centesimi di punto percentuale, e le componenti
+ortogonali alla direzione di carico si mantengono al di sotto del due per
+diecimila del carico stesso. Il controllo verifica insieme tre cose: che il
+carico sia stato applicato dove e come si intendeva, che le unità di misura
+siano coerenti e che non esistano percorsi di scarico non voluti, poiché la
+reazione risulta interamente concentrata sull'unica faccia vincolata.
+
+Va osservato che i momenti di reazione restituiti dal programma sono
+identicamente nulli. Gli elementi solidi non possiedono gradi di libertà
+rotazionali, e l'equilibrio alla rotazione è assicurato dalla distribuzione
+delle forze nodali sulla faccia vincolata anziché da momenti nodali: la verifica
+del braccio di applicazione è stata quindi condotta sulle coordinate del punto
+remoto e sulla forma della deformata.
+
+\paragraph{Lettura degli spostamenti.}
+La grandezza confrontata con il criterio del paragrafo~\ref{sec:fem-criterio}
+non è lo spostamento risultante, che sommerebbe anche la componente lungo
+l'asse di rotazione, ininfluente sul centraggio. Sono lette le due componenti
+ortogonali a quell'asse e da esse ricavato lo spostamento nel piano
+perpendicolare. Il valore è inoltre sondato sull'interfaccia fra la sede e il
+blocchetto, non sul canale: è là che termina la struttura progettata e comincia
+il substrato di prova, la cui cedevolezza è una proprietà del blocchetto
+commerciale e non del banco.
+
+% ---------------------------------------------------------------------------
+% DA SCRIVERE: CONTROLLO DI CONVERGENZA
+% E' l'ultimo paragrafo di questa sottosezione e l'unico ancora mancante.
+% Senza, la frase finale della 3.1.2 -- "gli spostamenti calcolati devono
+% crescere al crescere del numero di elementi" -- resta una promessa non
+% mantenuta.
 %
-% --- COSA DICHIARARE ---
-%   - versione e tipo di studio (statico lineare, piccoli spostamenti)
-%   - materiali: da libreria o inseriti a mano, con quali dati
-%   - tipo e dimensione degli elementi, infittimenti locali
-%   - trattamento dei collegamenti fra corpi
-%   - vincoli imposti
+% Procedura: quattro run sulla PIASTRA INFERIORE, moltiplicando la dimensione
+% massima globale per 0,7 ogni volta (4,0 / 2,8 / 2,0 / 1,4 mm) e scalando i
+% controlli locali dello STESSO fattore. Cambia solo la dimensione: vincoli,
+% carichi e tipo di elemento restano identici, altrimenti non si studia la
+% convergenza, si cambia modello.
 %
-% --- DUE CASI DI CARICO, DA TENERE DISTINTI ---
-% 200 N e 1 Nm sono limiti di CAPACITA', non carichi di prova. Usarli come
-% scenario di errore e' corretto, ma vale solo per la resistenza.
-% DA CHIARIRE: 200 N e' anche la portata Fz della cella (cap. 1 e par. 2.2).
-% Verificare se il 200 N usato nelle analisi e' il limite della tavola o quello
-% della cella, e dichiararlo: sono due limiti diversi che danno lo stesso numero.
-%   caso A, errore: 200 N / 1 Nm         -> RESISTENZA (von Mises, CS >= 1,5)
-%   caso B, prova:  carichi di esercizio -> RIGIDEZZA (criterio del par. 3.1.3)
-% Il criterio dei pochi micrometri e' riferito alla prova, non all'errore:
-% misurare la freccia a 200 N risponde a una domanda diversa da quella posta e
-% restituisce un valore decine di volte piu' grande del vero. Dichiarare che i
-% due carichi sono limiti di capacita' assunti come caso peggiore, non
-% condizioni di esercizio.
+% Tabella: dim. elemento | gradi di liberta' | spostamento sondato |
+%          von Mises max | tempo di calcolo
 %
-% --- IMPOSTAZIONI DEI RUN (operative: non tutte vanno scritte in tesi) ---
-%   - elementi PARABOLICI (qualita' alta), mai draft: con fori e raccordi la
-%     differenza e' sostanziale
-%   - blended curvature-based mesh, piu' controlli locali su raccordi, bordi
-%     dei fori e sede della spina
-%   - guardare i grafici di rapporto d'aspetto e Jacobiano: sono la faccia
-%     pratica di cio' che la 3.1.2 dice sul cerchio circoscritto -- un elemento
-%     distorto non migliora infittendo
-%   - vincoli: non sovravincolare. Fixed geometry su tutta una faccia elimina
-%     la cedevolezza locale e restituisce spostamenti falsamente piccoli. Per
-%     piastre imbullonate: appoggio sulla superficie di contatto piu' vincolo
-%     sulle facce cilindriche dei fori, oppure bolt connector con precarico
-%   - il momento NON si applica a una faccia piana: gli elementi solidi non
-%     hanno gradi di liberta' rotazionali. Torsione su faccia cilindrica,
-%     oppure Remote Load riferito al punto reale di applicazione. Se e' stato
-%     applicato altrove, la rigidezza letta non e' quella del pezzo
-%   - solutore Intel Direct Sparse; Large displacement OFF (statica lineare,
-%     da dichiarare al par. 3.1.5)
+% Esito atteso: la freccia CRESCE e si assesta (convergenza dal basso).
+% La mesh adottata si giustifica come il punto oltre il quale la variazione
+% rispetto al run precedente scende sotto una soglia dichiarata (un paio di
+% punti percentuali). Il tempo di calcolo motiva perche' ci si e' fermati li'.
 %
-% --- COME SI LEGGE LO SPOSTAMENTO ---
-% Non il massimo di URES sulla scala colori: include il basculamento indotto
-% dal vincolo, che non e' cio' che si perde in centraggio. Sondare punti
-% precisi (Probe) sulle due interfacce che devono restare allineate e riportare
-% la componente nel piano di centraggio, o meglio lo spostamento RELATIVO fra i
-% due punti. E' l'unico numero confrontabile con la tolleranza del cap. 2.
-%
-% --- CONTROLLI SUL MODELLO, PRIMA DI GUARDARE I RISULTATI ---
-%   - forza di reazione al vincolo = carico applicato. Se non torna, il modello
-%     e' sbagliato prima ancora della mesh
-%   - nessun moto rigido residuo
-%   - tensione nodale contro tensione elementare nella stessa zona: se
-%     differiscono molto, li' la mesh e' insufficiente. Indicatore gratuito
-%
-% --- STUDIO DI CONVERGENZA ---
-% VA QUI, non nella sezione del componente. La convergenza non e' una
-% proprieta' della piastra ma della DISCRETIZZAZIONE: e' il controllo che rende
-% credibili tutti i numeri del capitolo. Messo al par. 3.5 sembrerebbe un
-% accertamento locale, valido per quel pezzo soltanto. E' inoltre l'unica parte
-% di questa sottosezione che contiene giudizio proprio: senza, resta un elenco
-% di impostazioni che si legge come riassunto del manuale.
-%
-% COMPONENTE SCELTO: piastra di accoppiamento inferiore. Perche':
-%   - il criterio governante e' la rigidezza, quindi la convergenza si mostra
-%     sulla grandezza che conta davvero, la freccia e non la tensione
-%   - geometria con fori e raccordi ma senza spigoli rientranti vivi: la
-%     tensione converge e la curva si legge pulita. Sede del blocchetto e
-%     clamshell hanno singolarita' o contatti che sporcherebbero il messaggio
-%   - e' lo stesso componente del confronto analitico (par. 3.5): il lettore fa
-%     la conoscenza di un solo modello e lo ritrova due volte, per due
-%     controlli diversi
-%
-% I DUE CONTROLLI VERIFICANO COSE DIVERSE, ed e' coerente che stiano separati:
-%   convergenza        -> la discretizzazione e' sufficiente      (par. 3.1.4)
-%   confronto analitico -> vincoli, carichi e unita' sono giusti  (par. 3.5)
-%
-% FRASE DI INQUADRAMENTO, necessaria: il controllo e' stato ripetuto su tutti i
-% componenti, se ne riporta per esteso un caso. Poi una tabellina con la
-% dimensione di mesh adottata per ciascuno. Mostrare solo il caso che converge
-% bene e tacere gli altri e' esattamente cio' che genera la domanda in
-% discussione.
-%
-% IMPOSTAZIONE: quattro run, dimensione globale che si dimezza circa
-% (default, x0,7, x0,5, x0,35). Cambia SOLO la dimensione dell'elemento:
-% vincoli, carichi, tipo di elemento e controlli locali restano identici,
-% altrimenti non si studia la convergenza, si cambia modello.
-%
-% DA REGISTRARE per ogni run, una riga di tabella:
-%   dim. elemento | gradi di liberta' | spostamento sondato (non il massimo
-%   globale) | von Mises massima | tempo di calcolo
-%
-% ESITO ATTESO: la freccia CRESCE e si assesta (convergenza dal basso, par.
-% 3.1.2); se diminuisse ci sarebbe un errore nel modello. La mesh adottata si
-% giustifica come il punto oltre il quale la variazione rispetto al run
-% precedente scende sotto una soglia dichiarata -- un paio di punti percentuali
-% e' ragionevole. Il tempo di calcolo serve a motivare perche' ci si e' fermati
-% li' e non si e' continuato a infittire.
-%
-% Se la tensione continua a salire mentre la freccia si assesta non e' un
-% errore: e' una singolarita' geometrica. Dichiarare dove si e' sondato e
-% perche'.
-%
-% --- ANALISI DELL'ASSIEME ---
-% Una volta sola, e non per riverificare i pezzi ma per controllare le
-% INTERFACCE: e' li' che la catena perde rigidezza, e nessuna analisi sul
-% singolo componente lo dice. Contatto Bonded globale, che tiene il problema
-% lineare ma SOVRASTIMA la rigidezza: il numero ottenuto e' ottimistico e va
-% dichiarato tale al par. 3.1.5. No penetration solo dove un giunto puo'
-% aprirsi sotto carico. Se possibile, mesh compatibile alle interfacce.
+% Frase di inquadramento necessaria: il controllo e' stato ripetuto su tutti i
+% componenti, se ne riporta per esteso un caso. Poi una riga con la dimensione
+% di mesh adottata per ciascuno.
+% ---------------------------------------------------------------------------
+
+% NB da completare quando disponibili:
+%   - i due valori del controllo mesh locale sulla piastra inferiore
+%   - il raggio della circonferenza dei fori M2: nel testo e' 20 mm, ma il
+%     datasheet della cella indica una circonferenza di 17 mm di DIAMETRO.
+%     Verificare quale sia la quota corretta. La conclusione non cambia
+%     (con R = 8,5 mm si ottiene 8,3 N.m, pari a 92 N, ancora quattordici
+%     volte il limite di rigidezza), ma il numero va scritto giusto.
 
 \subsection{Limiti del modello}
 \label{sec:fem-limiti}

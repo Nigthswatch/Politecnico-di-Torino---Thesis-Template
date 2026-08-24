@@ -191,16 +191,115 @@ confronto fra strumenti che il banco deve rendere possibile.
 \label{sec:fem-solidworks}
 % E' la sottosezione che deve pesare di piu': e' l'unica con lavoro proprio.
 % Il metro e' la riproducibilita': chi legge deve poter rifare l'analisi e
-% ottenere gli stessi numeri.
-%   - versione e tipo di studio
+% ottenere gli stessi numeri. NON e' un tutorial di SolidWorks: si scrivono le
+% scelte fatte e i controlli eseguiti, non le funzioni del programma.
+%
+% --- COSA DICHIARARE ---
+%   - versione e tipo di studio (statico lineare, piccoli spostamenti)
 %   - materiali: da libreria o inseriti a mano, con quali dati
 %   - tipo e dimensione degli elementi, infittimenti locali
 %   - trattamento dei collegamenti fra corpi
 %   - vincoli imposti
-%   - controllo di convergenza: un caso mostrato per esteso, con la curva
-%     tensione/spostamento al variare della dimensione di mesh. Deve risultare
-%     che le frecce CRESCONO infittendo (convergenza dal basso): se
-%     diminuissero, ci sarebbe un errore nel modello.
+%
+% --- DUE CASI DI CARICO, DA TENERE DISTINTI ---
+% 200 N e 1 Nm sono CAPACITA' (tavola e cella), non carichi di prova. Usarli
+% come scenario di errore e' corretto, ma vale solo per la resistenza.
+%   caso A, errore: 200 N / 1 Nm         -> RESISTENZA (von Mises, CS >= 1,5)
+%   caso B, prova:  carichi di esercizio -> RIGIDEZZA (criterio del par. 3.1.3)
+% Il criterio dei pochi micrometri e' riferito alla prova, non all'errore:
+% misurare la freccia a 200 N risponde a una domanda diversa da quella posta e
+% restituisce un valore decine di volte piu' grande del vero. Dichiarare che i
+% due carichi sono limiti di capacita' assunti come caso peggiore, non
+% condizioni di esercizio.
+%
+% --- IMPOSTAZIONI DEI RUN (operative: non tutte vanno scritte in tesi) ---
+%   - elementi PARABOLICI (qualita' alta), mai draft: con fori e raccordi la
+%     differenza e' sostanziale
+%   - blended curvature-based mesh, piu' controlli locali su raccordi, bordi
+%     dei fori e sede della spina
+%   - guardare i grafici di rapporto d'aspetto e Jacobiano: sono la faccia
+%     pratica di cio' che la 3.1.2 dice sul cerchio circoscritto -- un elemento
+%     distorto non migliora infittendo
+%   - vincoli: non sovravincolare. Fixed geometry su tutta una faccia elimina
+%     la cedevolezza locale e restituisce spostamenti falsamente piccoli. Per
+%     piastre imbullonate: appoggio sulla superficie di contatto piu' vincolo
+%     sulle facce cilindriche dei fori, oppure bolt connector con precarico
+%   - il momento NON si applica a una faccia piana: gli elementi solidi non
+%     hanno gradi di liberta' rotazionali. Torsione su faccia cilindrica,
+%     oppure Remote Load riferito al punto reale di applicazione. Se e' stato
+%     applicato altrove, la rigidezza letta non e' quella del pezzo
+%   - solutore Intel Direct Sparse; Large displacement OFF (statica lineare,
+%     da dichiarare al par. 3.1.5)
+%
+% --- COME SI LEGGE LO SPOSTAMENTO ---
+% Non il massimo di URES sulla scala colori: include il basculamento indotto
+% dal vincolo, che non e' cio' che si perde in centraggio. Sondare punti
+% precisi (Probe) sulle due interfacce che devono restare allineate e riportare
+% la componente nel piano di centraggio, o meglio lo spostamento RELATIVO fra i
+% due punti. E' l'unico numero confrontabile con la tolleranza del cap. 2.
+%
+% --- CONTROLLI SUL MODELLO, PRIMA DI GUARDARE I RISULTATI ---
+%   - forza di reazione al vincolo = carico applicato. Se non torna, il modello
+%     e' sbagliato prima ancora della mesh
+%   - nessun moto rigido residuo
+%   - tensione nodale contro tensione elementare nella stessa zona: se
+%     differiscono molto, li' la mesh e' insufficiente. Indicatore gratuito
+%
+% --- STUDIO DI CONVERGENZA ---
+% VA QUI, non nella sezione del componente. La convergenza non e' una
+% proprieta' della piastra ma della DISCRETIZZAZIONE: e' il controllo che rende
+% credibili tutti i numeri del capitolo. Messo al par. 3.5 sembrerebbe un
+% accertamento locale, valido per quel pezzo soltanto. E' inoltre l'unica parte
+% di questa sottosezione che contiene giudizio proprio: senza, resta un elenco
+% di impostazioni che si legge come riassunto del manuale.
+%
+% COMPONENTE SCELTO: piastra di accoppiamento inferiore. Perche':
+%   - il criterio governante e' la rigidezza, quindi la convergenza si mostra
+%     sulla grandezza che conta davvero, la freccia e non la tensione
+%   - geometria con fori e raccordi ma senza spigoli rientranti vivi: la
+%     tensione converge e la curva si legge pulita. Sede del blocchetto e
+%     clamshell hanno singolarita' o contatti che sporcherebbero il messaggio
+%   - e' lo stesso componente del confronto analitico (par. 3.5): il lettore fa
+%     la conoscenza di un solo modello e lo ritrova due volte, per due
+%     controlli diversi
+%
+% I DUE CONTROLLI VERIFICANO COSE DIVERSE, ed e' coerente che stiano separati:
+%   convergenza        -> la discretizzazione e' sufficiente      (par. 3.1.4)
+%   confronto analitico -> vincoli, carichi e unita' sono giusti  (par. 3.5)
+%
+% FRASE DI INQUADRAMENTO, necessaria: il controllo e' stato ripetuto su tutti i
+% componenti, se ne riporta per esteso un caso. Poi una tabellina con la
+% dimensione di mesh adottata per ciascuno. Mostrare solo il caso che converge
+% bene e tacere gli altri e' esattamente cio' che genera la domanda in
+% discussione.
+%
+% IMPOSTAZIONE: quattro run, dimensione globale che si dimezza circa
+% (default, x0,7, x0,5, x0,35). Cambia SOLO la dimensione dell'elemento:
+% vincoli, carichi, tipo di elemento e controlli locali restano identici,
+% altrimenti non si studia la convergenza, si cambia modello.
+%
+% DA REGISTRARE per ogni run, una riga di tabella:
+%   dim. elemento | gradi di liberta' | spostamento sondato (non il massimo
+%   globale) | von Mises massima | tempo di calcolo
+%
+% ESITO ATTESO: la freccia CRESCE e si assesta (convergenza dal basso, par.
+% 3.1.2); se diminuisse ci sarebbe un errore nel modello. La mesh adottata si
+% giustifica come il punto oltre il quale la variazione rispetto al run
+% precedente scende sotto una soglia dichiarata -- un paio di punti percentuali
+% e' ragionevole. Il tempo di calcolo serve a motivare perche' ci si e' fermati
+% li' e non si e' continuato a infittire.
+%
+% Se la tensione continua a salire mentre la freccia si assesta non e' un
+% errore: e' una singolarita' geometrica. Dichiarare dove si e' sondato e
+% perche'.
+%
+% --- ANALISI DELL'ASSIEME ---
+% Una volta sola, e non per riverificare i pezzi ma per controllare le
+% INTERFACCE: e' li' che la catena perde rigidezza, e nessuna analisi sul
+% singolo componente lo dice. Contatto Bonded globale, che tiene il problema
+% lineare ma SOVRASTIMA la rigidezza: il numero ottenuto e' ottimistico e va
+% dichiarato tale al par. 3.1.5. No penetration solo dove un giunto puo'
+% aprirsi sotto carico. Se possibile, mesh compatibile alle interfacce.
 
 \subsection{Limiti del modello}
 \label{sec:fem-limiti}

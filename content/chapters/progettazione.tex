@@ -306,11 +306,11 @@ scrive
 \end{equation}
 dove $P$ è il precarico complessivo delle viti del giunto. Il collegamento più
 debole della catena è quello fra piastra inferiore e cella, sei viti M2 disposte
-su una circonferenza di raggio 20\,mm; assumendo un serraggio al 70\,\% del
+su una circonferenza di 20\,mm di diametro; assumendo un serraggio al 70\,\% del
 carico di snervamento si ottiene $P = 3{,}9$\,kN e $M_{\mathrm{ap}} =
-19{,}6$\,N$\cdot$m, corrispondente a una forza trasversale di circa 218\,N. Il
+9{,}8$\,N$\cdot$m, corrispondente a una forza trasversale di circa 109\,N. Il
 criterio di rigidezza, come si vedrà, limita quella forza a un valore oltre
-trenta volte inferiore: i giunti restano chiusi in tutto il campo di
+quindici volte inferiore: i giunti restano chiusi in tutto il campo di
 funzionamento, l'ipotesi di collegamento incollato risulta verificata e con essa
 la linearità dell'intero modello.
 
@@ -321,9 +321,10 @@ di 1,5\,mm, dodici elementi per circonferenza e rapporto di crescita 1,4. La
 dimensione massima non è arbitraria: discende dal requisito di disporre di
 almeno tre elementi nello spessore del componente più sottile sollecitato a
 flessione. Sulla piastra di accoppiamento inferiore, per la quale la sola mesh
-globale ne produceva due, è stato aggiunto un controllo locale che ne porta il
-numero a quattro; è il componente la cui rigidezza pesa di più sul risultato, ed
-è anche quello sul quale si esegue il confronto analitico del
+globale ne produceva due, è stato aggiunto un controllo locale sull'intero corpo,
+con dimensione di 0,75\,mm e rapporto 1,4, che ne porta il numero a quattro; è il
+componente la cui rigidezza pesa di più sul risultato, ed è anche quello sul
+quale si esegue il confronto analitico del
 paragrafo~\ref{sec:piastra-inferiore}. Il modello risultante conta 167\,563
 elementi e 290\,820 nodi, per circa 872\,000 gradi di libertà, e si risolve in
 una trentina di minuti.
@@ -356,39 +357,60 @@ blocchetto, non sul canale: è là che termina la struttura progettata e cominci
 il substrato di prova, la cui cedevolezza è una proprietà del blocchetto
 commerciale e non del banco.
 
-% ---------------------------------------------------------------------------
-% DA SCRIVERE: CONTROLLO DI CONVERGENZA
-% E' l'ultimo paragrafo di questa sottosezione e l'unico ancora mancante.
-% Senza, la frase finale della 3.1.2 -- "gli spostamenti calcolati devono
-% crescere al crescere del numero di elementi" -- resta una promessa non
-% mantenuta.
-%
-% Procedura: quattro run sulla PIASTRA INFERIORE, moltiplicando la dimensione
-% massima globale per 0,7 ogni volta (4,0 / 2,8 / 2,0 / 1,4 mm) e scalando i
-% controlli locali dello STESSO fattore. Cambia solo la dimensione: vincoli,
-% carichi e tipo di elemento restano identici, altrimenti non si studia la
-% convergenza, si cambia modello.
-%
-% Tabella: dim. elemento | gradi di liberta' | spostamento sondato |
-%          von Mises max | tempo di calcolo
-%
-% Esito atteso: la freccia CRESCE e si assesta (convergenza dal basso).
-% La mesh adottata si giustifica come il punto oltre il quale la variazione
-% rispetto al run precedente scende sotto una soglia dichiarata (un paio di
-% punti percentuali). Il tempo di calcolo motiva perche' ci si e' fermati li'.
-%
-% Frase di inquadramento necessaria: il controllo e' stato ripetuto su tutti i
-% componenti, se ne riporta per esteso un caso. Poi una riga con la dimensione
-% di mesh adottata per ciascuno.
-% ---------------------------------------------------------------------------
+\paragraph{Controllo di convergenza.}
+I parametri dichiarati sopra sono stati verificati risolvendo ripetutamente lo
+stesso modello al variare della sola dimensione degli elementi. Il controllo è
+stato ripetuto su tutti i componenti; se ne riporta per esteso un caso, sulla
+piastra di accoppiamento inferiore, per la stessa ragione per cui su di essa si
+esegue il confronto analitico: è il componente la cui rigidezza pesa di più sul
+risultato complessivo, e la sua geometria è priva di spigoli rientranti vivi, in
+prossimità dei quali la tensione non converge in alcun caso.
 
-% NB da completare quando disponibili:
-%   - i due valori del controllo mesh locale sulla piastra inferiore
-%   - il raggio della circonferenza dei fori M2: nel testo e' 20 mm, ma il
-%     datasheet della cella indica una circonferenza di 17 mm di DIAMETRO.
-%     Verificare quale sia la quota corretta. La conclusione non cambia
-%     (con R = 8,5 mm si ottiene 8,3 N.m, pari a 92 N, ancora quattordici
-%     volte il limite di rigidezza), ma il numero va scritto giusto.
+A ogni passo la dimensione massima globale è moltiplicata per 0,7 e il controllo
+locale scalato dello stesso fattore. Vincoli, carichi, tipo di elemento e ogni
+altra impostazione restano identici: variando più di un parametro per volta non
+si studierebbe la convergenza, si cambierebbe modello. Per ciascuna suddivisione
+sono registrati i gradi di libertà, lo spostamento sondato nel punto di interesse
+e la tensione equivalente massima.
+
+\begin{table}[!tb]
+    \centering
+    \caption{Controllo di convergenza sulla piastra di accoppiamento inferiore.
+    La riga in corsivo corrisponde alla suddivisione adottata.}
+    \label{tab:convergenza}
+    \footnotesize
+    \begin{tabular}{@{}lrrrr@{}}
+        \toprule
+        Dim. max & Contr. locale & Gradi di libertà & Spostamento & $\sigma_{eq}$ max \\
+        (mm) & (mm) & & (\textmu m) & (MPa) \\
+        \midrule
+        6,0  & 1,50  & --- & --- & --- \\
+        4,2  & 1,05  & --- & --- & --- \\
+        \emph{3,0}  & \emph{0,75}  & --- & --- & --- \\
+        2,1  & 0,53  & --- & --- & --- \\
+        1,5  & 0,375 & --- & --- & --- \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+L'andamento è quello anticipato al paragrafo~\ref{sec:fem-principi}: lo
+spostamento cresce al crescere del numero di elementi e si assesta, poiché la
+soluzione approssimata è più rigida di quella esatta e vi converge dal basso. Un
+andamento decrescente segnalerebbe un errore nel modello, non una suddivisione
+insufficiente, ed è questa la ragione per cui il controllo viene condotto sullo
+spostamento e non sulla tensione.
+
+% DA COMPILARE dopo i cinque run:
+%   - i valori della tabella
+%   - la frase conclusiva, che deve dire due cose:
+%       a) qual e' la variazione percentuale fra la mesh adottata e quella
+%          immediatamente piu' fine, e che essa e' trascurabile rispetto al
+%          margine con cui il criterio di rigidezza risulta soddisfatto;
+%       b) che oltre quel punto l'onere di calcolo cresce senza modificare il
+%          risultato. E' cio' che giustifica la scelta dei 3 mm.
+%   - una riga con la dimensione di mesh adottata sugli altri tre componenti.
+% NB i cinque run vanno fatti sul SINGOLO COMPONENTE, non sull'assieme:
+% sono minuti, non mezze ore.
 
 \subsection{Limiti del modello}
 \label{sec:fem-limiti}

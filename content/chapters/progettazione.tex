@@ -32,10 +32,11 @@ rigidezza cambia, ed è quanto la semplificazione cancella per primo.
 
 C'è però una ragione più stringente, e viene dal capitolo precedente. Per questi
 componenti la domanda non è soltanto se resistano. Il
-paragrafo~\ref{sec:requisiti} ha stabilito che ogni cedevolezza e ogni
-disallineamento lungo la catena fra provino e cella si traduce in un errore
-sulla coppia misurata: per le due piastre e per la sede del blocchetto il
-requisito che governa il progetto è la rigidezza, non la resistenza. I carichi
+paragrafo~\ref{sec:requisiti} ha stabilito che la cedevolezza della catena
+altera le condizioni in cui la prova si svolge, e che i disallineamenti
+raggiungono la cella sotto forma di momenti parassiti: per le due piastre e per
+la sede del blocchetto il requisito che governa il progetto è quindi la
+rigidezza, non la resistenza. I carichi
 in gioco sono infatti modesti al punto che il margine sulla tensione, come si
 vedrà, resta sempre ampio. Occorre quindi conoscere il campo di spostamento, e
 non solo il valore massimo della tensione: è la grandezza che più risente della
@@ -202,8 +203,11 @@ confronto fra strumenti che il banco deve rendere possibile.
 %   - vincoli imposti
 %
 % --- DUE CASI DI CARICO, DA TENERE DISTINTI ---
-% 200 N e 1 Nm sono CAPACITA' (tavola e cella), non carichi di prova. Usarli
-% come scenario di errore e' corretto, ma vale solo per la resistenza.
+% 200 N e 1 Nm sono limiti di CAPACITA', non carichi di prova. Usarli come
+% scenario di errore e' corretto, ma vale solo per la resistenza.
+% DA CHIARIRE: 200 N e' anche la portata Fz della cella (cap. 1 e par. 2.2).
+% Verificare se il 200 N usato nelle analisi e' il limite della tavola o quello
+% della cella, e dichiararlo: sono due limiti diversi che danno lo stesso numero.
 %   caso A, errore: 200 N / 1 Nm         -> RESISTENZA (von Mises, CS >= 1,5)
 %   caso B, prova:  carichi di esercizio -> RIGIDEZZA (criterio del par. 3.1.3)
 % Il criterio dei pochi micrometri e' riferito alla prova, non all'errore:
@@ -312,8 +316,13 @@ confronto fra strumenti che il banco deve rendere possibile.
 \label{sec:tavola}
 % Selezione a catalogo, non verifica strutturale. Precede i componenti
 % progettati perche' ne condiziona le interfacce.
-%   - criteri dal capitolo 2: capacita' di carico, rigidezza, massa e momenti
-%     parassiti, ingombro e accessibilita' delle testine, dima di foratura
+%   - criteri dal capitolo 2: capacita' di carico, rigidezza, ingombro e
+%     accessibilita' delle testine, dima di foratura
+%   NB LA MASSA NON E' UN CRITERIO DI SCELTA. La tavola sta SOPRA la cella: il
+%   suo peso non viene letto e non genera momenti parassiti sulla misura. Conta
+%   solo attraverso la rigidezza. Il compromesso "rigidezza contro peso" del
+%   progetto iniziale varrebbe se la tavola stesse sul lato sensibile, e qui
+%   non e' il caso: a parita' di ingombro conviene la tavola piu' rigida.
 %   - confronto fra le alternative considerate
 %   - scelta e conseguenze sulle due piastre
 

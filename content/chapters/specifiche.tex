@@ -79,9 +79,9 @@ due conseguenze.
 La prima riguarda la risoluzione: le coppie da misurare valgono fra il 2,5\,\% e
 il 10\,\% del fondo scala, e la catena di misura deve essere in grado di
 risolverle. La seconda è di natura strutturale: essendo la cella sensibile anche
-ai momenti flettenti, qualsiasi massa disposta fuori asse genera momenti
-parassiti che competono con il segnale utile sulla medesima portata di
-1\,N$\cdot$m. Il progetto dei componenti di interfaccia deve quindi contenere sia
+ai momenti flettenti, qualsiasi massa sospesa fuori asse al di sotto di essa
+genera momenti parassiti che competono con il segnale utile sulla medesima
+portata di 1\,N$\cdot$m. Il progetto dei componenti di interfaccia deve quindi contenere sia
 l'eccentricità delle masse sia gli errori di parallelismo.
 
 \paragraph{Posizionamento del blocchetto.}
@@ -281,13 +281,12 @@ ritardo apprezzabile mescolerebbe letture relative a posizioni angolari diverse.
 \end{comment}
 
 \paragraph{Azzeramento e derive.}
-La cella sostiene tutto il gruppo posto al di sopra di essa e ne legge il peso
-come una componente costante di $F_z$; se quella massa non è centrata, compare
-anche una coppia flettente permanente su $M_x$ e $M_y$. Sono entrambi contributi
-statici, che la tara cancella. Perché li cancelli davvero, però, la tara va
-eseguita dopo il centraggio del blocchetto e immediatamente prima di avviare
-prova: ogni spostamento della tavola successivo all'azzeramento reintroduce un
-offset non compensato. Quello che la tara non può cancellare è la deriva che si
+La cella sostiene la sede e il blocchetto, sospesi al di sotto di essa, e ne
+legge il peso come una componente costante di $F_z$; se quella massa non è
+centrata, compare anche una coppia flettente permanente su $M_x$ e $M_y$. Sono
+entrambi contributi statici, che la tara cancella. Perché li cancelli davvero,
+però, la tara va eseguita a configurazione definitiva, cioè dopo il centraggio
+del blocchetto e immediatamente prima di avviare la prova. Quello che la tara non può cancellare è la deriva che si
 accumula durante la prova, la cui durata massima, diecimila giri alla velocità
 massima, sfiora la mezz'ora, un tempo confrontabile con i venti minuti sui quali
 il creep è specificato. Alla deriva contribuisce anche la temperatura: il

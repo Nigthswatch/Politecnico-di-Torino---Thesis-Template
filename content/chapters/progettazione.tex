@@ -474,11 +474,21 @@ calcolati sono dell'ordine dei micrometri e le tensioni restano ovunque assai al
 di sotto dello snervamento. La linearità richiede inoltre che i giunti non si
 aprano, condizione dimostrata al paragrafo~\ref{sec:fem-solidworks}.
 
-Il comportamento dinamico non è analizzato. La velocità massima di rotazione,
-350 giri al minuto, corrisponde a poco meno di sei hertz: una frequenza lontana
-da quelle proprie di componenti metallici compatti come quelli in esame.
-L'instabilità non si applica, poiché nessun elemento della catena è snello e
-compresso.
+Il comportamento dinamico in esercizio non è analizzato, ma la legittimità del
+trattamento statico è stata verificata con uno studio modale. Il modello è lo
+stesso, con due differenze: una suddivisione più grossolana e la tavola resa
+deformabile. Le frequenze proprie dipendono da come massa e rigidezza si
+distribuiscono nell'insieme, non dai dettagli locali, e non richiedono quindi la
+suddivisione impiegata nelle verifiche.
+
+La prima frequenza propria vale 160\,Hz. La massima velocità di rotazione, 350
+giri al minuto, corrisponde a 5,8\,Hz, e le armoniche dovute all'ingaggio dei
+taglienti restano nell'ordine delle decine di hertz. I modi più bassi risultano
+inoltre localizzati sulle testine micrometriche della tavola, elementi esterni
+al percorso del carico: quelli che coinvolgono il gruppo nel suo insieme stanno
+più in alto, e il valore riportato è quindi un limite inferiore.
+
+L'instabilità non si applica: nessun elemento della catena è snello e compresso.
 
 \paragraph{Ciò che è rappresentato come rigido.}
 La tavola di posizionamento e la cella di carico sono corpi rigidi, e la loro
@@ -536,10 +546,6 @@ ragione per cui la verifica di rigidezza è riferita all'interfaccia fra la sede
 e il blocchetto e non al canale: dove le semplificazioni pendono nel verso
 sbagliato, il risultato non viene usato.
 
-% NB da aggiungere se si esegue lo studio di frequenza suggerito:
-% una riga con la prima frequenza propria, che sostituirebbe l'argomento
-% qualitativo sulla dinamica con un numero. Costa due minuti e chiude
-% la questione invece di lasciarla a un "lontana da".
 
 \section{Scelta della tavola di posizionamento}
 \label{sec:tavola}

@@ -461,10 +461,85 @@ una grandezza derivata, ottenuta differenziando un campo già approssimato.
 
 \subsection{Limiti del modello}
 \label{sec:fem-limiti}
-% Cio' che il modello NON rappresenta, e perche': precarico dei serraggi,
-% attrito, comportamento della resina. Qui va anche la frase che dichiara che
-% le analisi sono statiche lineari.
-% Dichiarare le semplificazioni protegge; farle scoprire in discussione no.
+
+Ogni modello rappresenta una parte della realtà e trascura il resto. Questo
+paragrafo elenca ciò che i modelli descritti non rappresentano e, per ciascuna
+semplificazione, in quale verso essa sbaglia.
+
+\paragraph{Campo di validità.}
+Le analisi sono statiche e lineari, in ipotesi di piccoli spostamenti. Le
+condizioni che lo consentono sono verificate: i carichi sono applicati
+lentamente e restano costanti nel riferimento del banco, gli spostamenti
+calcolati sono dell'ordine dei micrometri e le tensioni restano ovunque assai al
+di sotto dello snervamento. La linearità richiede inoltre che i giunti non si
+aprano, condizione dimostrata al paragrafo~\ref{sec:fem-solidworks}.
+
+Il comportamento dinamico non è analizzato. La velocità massima di rotazione,
+350 giri al minuto, corrisponde a poco meno di sei hertz: una frequenza lontana
+da quelle proprie di componenti metallici compatti come quelli in esame.
+L'instabilità non si applica, poiché nessun elemento della catena è snello e
+compresso.
+
+\paragraph{Ciò che è rappresentato come rigido.}
+La tavola di posizionamento e la cella di carico sono corpi rigidi, e la loro
+cedevolezza non compare nel calcolo. Vi rientra per via analitica al
+paragrafo~\ref{sec:assieme-procedura}, dai dati di catalogo e di datasheet.
+
+Il vincolo sul codolo è un incastro ideale. La cedevolezza delle ganasce del
+mandrino e i microscorrimenti dell'afferraggio non sono rappresentati. Sul bordo
+della faccia vincolata la tensione presenta inoltre una singolarità priva di
+significato fisico, di cui si tiene conto sondando a distanza dal bordo.
+
+Il telaio della macchina è assunto indeformabile. La sua deformazione fra
+l'attacco superiore e il mandrino inferiore, che definisce l'asse di rotazione,
+resta fuori dal modello.
+
+Queste semplificazioni agiscono tutte nello stesso verso: rendono il modello più
+rigido del banco reale.
+
+\paragraph{I collegamenti.}
+I giunti sono trattati come incollati. Non sono quindi rappresentati il
+precarico delle viti, l'attrito fra le superfici accoppiate e l'assestamento
+iniziale dei contatti. Le viti non compaiono come geometria: attorno ai fori
+mancano sia le tensioni dovute al serraggio sia la pressione sotto le teste, e
+quelle zone non sono verificate.
+
+Anche qui il verso dell'errore è noto: un giunto incollato è più rigido di un
+giunto reale.
+
+\paragraph{Il blocchetto e lo strumento.}
+La resina che ingloba il blocchetto nella sede non è modellata. Nel calcolo il
+blocchetto è quindi più libero di quanto sia in realtà, dove è sostenuto
+sull'intera superficie, e la sua deformazione risulta sovrastimata. Alla stessa
+incertezza contribuiscono le proprietà del materiale, prese dalla libreria del
+programma perché il costruttore non ne dichiara.
+
+Lo strumento è sostituito dalle sue azioni, applicate a un punto remoto. Il
+contatto fra la lima e la parete del canale non è rappresentato: la
+distribuzione locale delle tensioni nel blocchetto non ha significato fisico,
+mentre la risultante trasmessa alla catena è corretta.
+
+\paragraph{Errore di discretizzazione.}
+È l'unico limite quantificato. Il paragrafo~\ref{sec:fem-solidworks} lo misura
+in un 6,5\,\% sullo spostamento, sempre per difetto, e le cedevolezze riportate
+ne tengono conto.
+
+\paragraph{Il verso complessivo.}
+Le semplificazioni non si compensano fra loro, e conviene guardare da che parte
+pendono. Quasi tutte irrigidiscono il modello: corpi rigidi, vincolo ideale,
+giunti incollati, discretizzazione. Le cedevolezze calcolate sono quindi
+sottostime, e il margine reale sul criterio di centraggio è minore di quello che
+i numeri mostrano.
+
+Fa eccezione il blocchetto, che nel modello è più cedevole del vero. È la
+ragione per cui la verifica di rigidezza è riferita all'interfaccia fra la sede
+e il blocchetto e non al canale: dove le semplificazioni pendono nel verso
+sbagliato, il risultato non viene usato.
+
+% NB da aggiungere se si esegue lo studio di frequenza suggerito:
+% una riga con la prima frequenza propria, che sostituirebbe l'argomento
+% qualitativo sulla dinamica con un numero. Costa due minuti e chiude
+% la questione invece di lasciarla a un "lontana da".
 
 \section{Scelta della tavola di posizionamento}
 \label{sec:tavola}

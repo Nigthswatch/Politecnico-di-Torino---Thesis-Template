@@ -549,17 +549,160 @@ sbagliato, il risultato non viene usato.
 
 \section{Scelta della tavola di posizionamento}
 \label{sec:tavola}
-% Selezione a catalogo, non verifica strutturale. Precede i componenti
-% progettati perche' ne condiziona le interfacce.
-%   - criteri dal capitolo 2: capacita' di carico, rigidezza, ingombro e
-%     accessibilita' delle testine, dima di foratura
-%   NB LA MASSA NON E' UN CRITERIO DI SCELTA. La tavola sta SOPRA la cella: il
-%   suo peso non viene letto e non genera momenti parassiti sulla misura. Conta
-%   solo attraverso la rigidezza. Il compromesso "rigidezza contro peso" del
-%   progetto iniziale varrebbe se la tavola stesse sul lato sensibile, e qui
-%   non e' il caso: a parita' di ingombro conviene la tavola piu' rigida.
-%   - confronto fra le alternative considerate
-%   - scelta e conseguenze sulle due piastre
+
+La tavola di posizionamento è scelta a catalogo, non progettata. La sua
+trattazione precede quella dei componenti progettati perché ne condiziona le
+interfacce: la dima di foratura e le dimensioni del piano determinano la
+geometria delle due piastre di accoppiamento, e la sua portata diventa uno dei
+limiti dell'intero banco.
+
+\paragraph{Requisiti.}
+Il capitolo~\ref{cap:specifiche} ne fissa i requisiti. Alcuni sono immediati: la
+portata deve bastare ai carichi di prova, la capacità sui momenti superare
+1\,N$\cdot$m, la corsa consentire di portare il canale sull'asse di rotazione.
+Due meritano invece un argomento.
+
+Il primo è il bloccaggio. Il centraggio è manuale e precede la prova. Se la
+tavola non può essere bloccata, le vibrazioni della macchina possono ruotare
+l'organo di regolazione, spostare il blocchetto e rompere lo strumento. Un
+dispositivo di fissaggio non è quindi un accessorio, è un requisito.
+
+Il secondo è il tipo di guida. Una guida a sfere realizza un contatto
+puntiforme: offre minore rigidezza torsionale e minore resistenza ai momenti
+ribaltanti di una guida a rulli incrociati, che lavora per contatto lineare.
+Sotto carico ciclico il contatto puntiforme è inoltre esposto a vaiolatura delle
+piste di rotolamento, con conseguente insorgere di giochi. Il
+paragrafo~\ref{sec:architettura} stabilisce che ogni gioco della catena falsa la
+prova: la guida a rulli incrociati è quindi preferita.
+
+\paragraph{Le alternative.}
+Sono stati confrontati sei modelli di tre costruttori, riportati nella
+tabella~\ref{tab:tavole}. Due ulteriori modelli sono stati scartati prima del
+confronto perché non approvvigionabili attraverso il fornitore di riferimento.
+
+\begin{table}[!tb]
+    \centering
+    \caption{Tavole di posizionamento messe a confronto. I prezzi sono di
+    listino e riferiti al momento della scelta.}
+    \label{tab:tavole}
+    \footnotesize
+    \setlength{\tabcolsep}{5pt}
+    \begin{tabularx}{\linewidth}{@{}
+        >{\hsize=1.0\hsize\raggedright\arraybackslash}X
+        >{\hsize=0.9\hsize\raggedright\arraybackslash}X
+        r r
+        >{\hsize=1.1\hsize\raggedright\arraybackslash}X@{}}
+        \toprule
+        Modello & Costruttore & Portata & Prezzo & Esito \\
+         & & (N) & (\texteuro) & \\
+        \midrule
+        XYCRS120   & MISUMI        & 180 & 630 & Scelta \\
+        XYLBS60    & MISUMI        & 192 & 440 & Corsa e tipo di guida \\
+        B21-120C   & Suruga Seiki  & 180 & 851 & Costo \\
+        XYPG120    & MISUMI        & 180 & 950--1170 & Costo \\
+        TAM-100SXY & NBK           & --- & 1700 & Specifiche non dichiarate \\
+        LD-7042    & THK CHUO      & --- & 974  & Specifiche non dichiarate \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\paragraph{Le esclusioni.}
+La XYLBS60 è esclusa due volte. La corsa, $\pm 6{,}5$\,mm, è meno di un terzo di
+quella necessaria al centraggio. E la guida è a sfere.
+
+La XYPG120 offre spine di centraggio, utili alla ripetibilità del rimontaggio,
+ma costa quasi il doppio. Il vantaggio non giustifica la differenza.
+
+Le due tavole di costruttori diversi da MISUMI non pubblicano le specifiche di
+accuratezza. In un lavoro in cui le caratteristiche dello strumentario vanno
+riportate, una specifica che il costruttore non dichiara non è riportabile: i
+due modelli sono esclusi per questa ragione, prima ancora che per il prezzo.
+
+\paragraph{Il confronto finale.}
+Restano la XYCRS120 e la B21-120C. Entrambe soddisfano tutti i requisiti.
+
+La B21-120C è meccanicamente superiore. Dichiara una rettilineità di
+3\,\textmu m contro 30, un'ortogonalità di 10\,\textmu m dove la XYCRS120 non la
+dichiara affatto, e una maggiore rigidezza torsionale. Costa però circa
+duecento euro in più.
+
+La scelta è caduta sulla XYCRS120, e la rinuncia va dichiarata per quello che è:
+si accettano una rettilineità di un ordine di grandezza maggiore e
+un'ortogonalità non documentata.
+
+È una rinuncia sostenibile, e la ragione sta nel modo in cui il centraggio viene
+eseguito. Non è un posizionamento in catena aperta, nel quale l'errore di
+traiettoria della tavola si trasferirebbe sul risultato. È un'operazione in
+retroazione: si sposta il piano, si osserva dove è finito l'asse del canale, si
+corregge. L'errore di traiettoria viene assorbito dall'iterazione successiva.
+Ciò che conta sono allora la risoluzione della regolazione, il gioco
+all'inversione e la tenuta del bloccaggio, e su questi tre la XYCRS120 non è
+inferiore.
+
+\paragraph{La tavola scelta.}
+La tabella~\ref{tab:xycrs120} confronta ciascun requisito con il valore
+dichiarato dal costruttore \cite[pp.~1917, 1942]{misumi2014}.
+
+\begin{table}[!tb]
+    \centering
+    \caption{Verifica dei requisiti sulla tavola MISUMI XYCRS120.}
+    \label{tab:xycrs120}
+    \footnotesize
+    \setlength{\tabcolsep}{5pt}
+    \begin{tabularx}{\linewidth}{@{}
+        >{\hsize=1.0\hsize\raggedright\arraybackslash}X
+        >{\hsize=1.2\hsize\raggedright\arraybackslash}X
+        >{\hsize=0.8\hsize\raggedright\arraybackslash}X@{}}
+        \toprule
+        Requisito & Origine & XYCRS120 \\
+        \midrule
+        Portata assiale & Carichi di prova & 180\,N \\
+        Capacità sui momenti & Portata della cella, 1\,N$\cdot$m
+            & 44,7--57,2\,N$\cdot$m \\
+        Corsa & Centraggio del blocchetto & $\pm 25$\,mm \\
+        Risoluzione della regolazione & Precisione di centraggio,
+            par.~\ref{sec:requisiti} & 0,01\,mm/div \\
+        Bloccaggio & Tenuta durante la prova & Morsetto M3, 49--98\,N \\
+        Tipo di guida & Rigidezza ai momenti ribaltanti & Rulli incrociati \\
+        Piano di appoggio & Montaggio della sede & $120 \times 120$\,mm \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+Merita una nota la risoluzione della testina micrometrica. La precisione di
+centraggio richiesta al paragrafo~\ref{sec:requisiti} è di alcune decine di
+micrometri, e la graduazione vale 10\,\textmu m: la finezza dello strumento di
+regolazione è dello stesso ordine del requisito, né sovrabbondante né
+insufficiente.
+
+Le rimanenti specifiche dichiarate, non vincolanti ma registrate per
+completezza, sono una rettilineità di 30\,\textmu m, un parallelismo di
+traiettoria di 60\,\textmu m, un parallelismo statico di 120\,\textmu m e una
+massa di 1,91\,kg.
+
+\paragraph{Conseguenze sul resto del progetto.}
+La scelta si ripercuote in tre punti.
+
+La dima di foratura, quattro fori $\varnothing$4,5 con lamatura
+$\varnothing$8 su interasse $100 \times 100$\,mm, vincola la geometria delle due
+piastre di accoppiamento, trattate ai
+paragrafi~\ref{sec:piastra-inferiore} e~\ref{sec:piastra-superiore}.
+
+La portata assiale di 180\,N è inferiore ai 200\,N della cella. La tavola
+diventa quindi l'elemento più restrittivo della catena, ed è il suo limite, non
+quello della cella, a definire la condizione di errore verificata al
+paragrafo~\ref{sec:fem-solidworks}.
+
+La rigidezza ai momenti, 0,04 secondi d'arco per newton-centimetro, non compare
+nel modello agli elementi finiti, dove la tavola è rappresentata come corpo
+rigido. Il suo contributo alla cedevolezza della catena è reintrodotto per via
+analitica al paragrafo~\ref{sec:assieme-procedura}.
+
+% NB il peso NON e' un criterio di scelta e non compare fra i requisiti.
+% La tavola sta sopra la cella: non viene pesata e non genera momenti parassiti
+% sulla misura. Il compromesso "rigidezza contro peso" del progetto iniziale
+% varrebbe solo se la tavola stesse sul lato sensibile.
+% La massa conta unicamente attraverso la dinamica, verificata al par. 3.1.5.
 
 \section{Clamshell di protezione dello strumento}
 \label{sec:clamshell}

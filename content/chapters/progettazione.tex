@@ -361,56 +361,90 @@ commerciale e non del banco.
 I parametri dichiarati sopra sono stati verificati risolvendo ripetutamente lo
 stesso modello al variare della sola dimensione degli elementi. Il controllo è
 stato ripetuto su tutti i componenti; se ne riporta per esteso un caso, sulla
-piastra di accoppiamento inferiore, per la stessa ragione per cui su di essa si
-esegue il confronto analitico: è il componente la cui rigidezza pesa di più sul
-risultato complessivo, e la sua geometria è priva di spigoli rientranti vivi, in
-prossimità dei quali la tensione non converge in alcun caso.
+piastra di accoppiamento superiore. È il componente sul quale cade il minimo
+coefficiente di sicurezza dell'assieme, in corrispondenza del raccordo
+all'attacco del codolo, ed è anche l'unico privo di controlli locali di mesh: la
+suddivisione dipende quindi da un solo parametro, il che rende la successione
+più semplice da interpretare.
 
-A ogni passo la dimensione massima globale è moltiplicata per 0,7 e il controllo
-locale scalato dello stesso fattore. Vincoli, carichi, tipo di elemento e ogni
-altra impostazione restano identici: variando più di un parametro per volta non
-si studierebbe la convergenza, si cambierebbe modello. Per ciascuna suddivisione
-sono registrati i gradi di libertà, lo spostamento sondato nel punto di interesse
-e la tensione equivalente massima.
+La verifica è condotta sul componente isolato, vincolato al codolo e caricato
+attraverso lo stesso punto remoto impiegato nell'assieme. Le condizioni al
+contorno non coincidono con quelle che il componente ha nel complessivo, e i
+valori assoluti che se ne ricavano non vanno confrontati con i risultati delle
+verifiche: lo scopo è misurare l'effetto della discretizzazione, non riprodurre
+quei risultati.
+
+A ogni passo la dimensione massima è moltiplicata per 0,7 e quella minima
+scalata dello stesso fattore, mentre il numero di elementi per circonferenza e
+il rapporto di crescita restano invariati, non essendo lunghezze. Vincoli,
+carichi e tipo di elemento non cambiano: variando più di un parametro per volta
+non si studierebbe la convergenza, si cambierebbe modello. La grandezza
+osservata è la media dello spostamento trasversale sulla faccia di
+accoppiamento, preferita al valore in un singolo punto perché indipendente da
+quale nodo cada dove.
 
 \begin{table}[!tb]
     \centering
-    \caption{Controllo di convergenza sulla piastra di accoppiamento inferiore.
-    La riga in corsivo corrisponde alla suddivisione adottata.}
+    \caption{Controllo di convergenza sulla piastra di accoppiamento superiore.
+    La riga in corsivo corrisponde alla suddivisione adottata nelle verifiche.}
     \label{tab:convergenza}
     \footnotesize
-    \begin{tabular}{@{}lrrrr@{}}
+    \begin{tabular}{@{}rrrrr@{}}
         \toprule
-        Dim. max & Contr. locale & Gradi di libertà & Spostamento & $\sigma_{eq}$ max \\
-        (mm) & (mm) & & (\textmu m) & (MPa) \\
+        Dim. max & Dim. min & Elementi & Spostamento & Variazione \\
+        (mm) & (mm) & & (\textmu m) & (\%) \\
         \midrule
-        6,0  & 1,50  & --- & --- & --- \\
-        4,2  & 1,05  & --- & --- & --- \\
-        \emph{3,0}  & \emph{0,75}  & --- & --- & --- \\
-        2,1  & 0,53  & --- & --- & --- \\
-        1,5  & 0,375 & --- & --- & --- \\
+        6,0 & 3,0 & 4\,899 & 5,088 & --- \\
+        4,2 & 2,1 & 12\,908 & 5,420 & $+6{,}5$ \\
+        \emph{3,0} & \emph{1,5} & \emph{24\,673} & \emph{5,531} & \emph{$+2{,}0$} \\
+        2,1 & 1,05 & 70\,776 & 5,825 & $+5{,}3$ \\
+        1,5 & 0,75 & 193\,803 & 5,916 & $+1{,}6$ \\
         \bottomrule
     \end{tabular}
 \end{table}
 
-L'andamento è quello anticipato al paragrafo~\ref{sec:fem-principi}: lo
-spostamento cresce al crescere del numero di elementi e si assesta, poiché la
-soluzione approssimata è più rigida di quella esatta e vi converge dal basso. Un
-andamento decrescente segnalerebbe un errore nel modello, non una suddivisione
-insufficiente, ed è questa la ragione per cui il controllo viene condotto sullo
-spostamento e non sulla tensione.
+Lo spostamento cresce a ogni infittimento e si assesta, come anticipato al
+paragrafo~\ref{sec:fem-principi}: la soluzione approssimata è più rigida di
+quella esatta e vi converge dal basso. Un andamento decrescente avrebbe
+segnalato un errore nel modello, non una suddivisione insufficiente. Fra le due
+suddivisioni più fini la variazione scende all'1,6\,\%, al di sotto della soglia
+del 2\,\% assunta come criterio, e il valore convergente può considerarsi pari a
+5,92\,\textmu m.
 
-% DA COMPILARE dopo i cinque run:
-%   - i valori della tabella
-%   - la frase conclusiva, che deve dire due cose:
-%       a) qual e' la variazione percentuale fra la mesh adottata e quella
-%          immediatamente piu' fine, e che essa e' trascurabile rispetto al
-%          margine con cui il criterio di rigidezza risulta soddisfatto;
-%       b) che oltre quel punto l'onere di calcolo cresce senza modificare il
-%          risultato. E' cio' che giustifica la scelta dei 3 mm.
+Gli scarti intermedi non decrescono in modo regolare, e la ragione si legge
+nella colonna del numero di elementi: il mesher a curvatura variabile non
+infittisce in modo uniforme, e a una riduzione costante della dimensione
+nominale non corrisponde un incremento costante del numero di elementi. È
+quest'ultimo, e non il parametro impostato, a misurare l'infittimento effettivo.
+
+La suddivisione adottata restituisce uno spostamento inferiore del 6,5\,\% a
+quello convergente. Anziché ripetere le analisi con una mesh più fine, il cui
+onere di calcolo cresce di quasi un ordine di grandezza, lo scarto è assunto
+come errore di discretizzazione noto e portato dentro i risultati: le
+cedevolezze riportate al paragrafo~\ref{sec:assieme-procedura} sono corrette di
+quel fattore. La correzione agisce nel verso della sicurezza, poiché la
+convergenza dal basso garantisce che il valore calcolato sia sempre una
+sottostima di quello esatto.
+
+Il controllo è stato esteso alla tensione equivalente, con un esito che merita
+di essere dichiarato. Fra le due suddivisioni più fini il massimo varia dello
+0,5\,\% e può considerarsi convergente, ma il suo valore supera di oltre il
+settanta per cento quello restituito dalla suddivisione adottata: fra la terza e
+la quarta suddivisione il modello ha risolto una concentrazione locale che prima
+non coglieva. Riscalati in proporzione, i coefficienti di sicurezza dei
+componenti progettati restano comunque assai superiori alla soglia assunta al
+paragrafo~\ref{sec:fem-criterio}. Che la tensione richieda una suddivisione più
+fine dello spostamento non sorprende: è una grandezza derivata, ottenuta
+differenziando un campo già approssimato.
+
+% DA COMPLETARE:
+%   - verificare DOVE cade il massimo di tensione nel run piu' fine: nel quinto
+%     run massimo (388,1 MPa) e valore al raccordo (358,8 MPa) si separano.
+%     Se il massimo sta sul bordo della faccia vincolata e' un artefatto del
+%     vincolo e va dichiarato; se sta sul raccordo e' un risultato.
 %   - una riga con la dimensione di mesh adottata sugli altri tre componenti.
-% NB i cinque run vanno fatti sul SINGOLO COMPONENTE, non sull'assieme:
-% sono minuti, non mezze ore.
+%   - il coefficiente di sicurezza minimo riscalato va scritto nella sezione del
+%     componente: 18,4 corretto di un fattore 1,73 da' circa 10,6.
 
 \subsection{Limiti del modello}
 \label{sec:fem-limiti}

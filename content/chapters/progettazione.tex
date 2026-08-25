@@ -358,35 +358,37 @@ il substrato di prova, la cui cedevolezza è una proprietà del blocchetto
 commerciale e non del banco.
 
 \paragraph{Controllo di convergenza.}
-I parametri dichiarati sopra sono stati verificati risolvendo ripetutamente lo
-stesso modello al variare della sola dimensione degli elementi. Il controllo è
+I parametri dichiarati sopra sono stati verificati risolvendo più volte lo
+stesso modello, al variare della sola dimensione degli elementi. Il controllo è
 stato ripetuto su tutti i componenti; se ne riporta per esteso un caso, sulla
-piastra di accoppiamento superiore. È il componente sul quale cade il minimo
-coefficiente di sicurezza dell'assieme, in corrispondenza del raccordo
-all'attacco del codolo, ed è anche l'unico privo di controlli locali di mesh: la
-suddivisione dipende quindi da un solo parametro, il che rende la successione
-più semplice da interpretare.
+piastra di accoppiamento superiore.
+
+La scelta del componente ha due ragioni. È quello sul quale cade il minimo
+coefficiente di sicurezza dell'assieme, al raccordo dell'attacco del codolo. Ed
+è l'unico privo di controlli locali di mesh, per cui la suddivisione dipende da
+un solo parametro e la successione si legge senza ambiguità.
 
 La verifica è condotta sul componente isolato, vincolato al codolo e caricato
 attraverso lo stesso punto remoto impiegato nell'assieme. Le condizioni al
-contorno non coincidono con quelle che il componente ha nel complessivo, e i
-valori assoluti che se ne ricavano non vanno confrontati con i risultati delle
-verifiche: lo scopo è misurare l'effetto della discretizzazione, non riprodurre
-quei risultati.
+contorno non sono quelle che il componente ha nel complessivo, e i valori
+assoluti non vanno confrontati con i risultati delle verifiche: lo scopo è
+misurare l'effetto della discretizzazione, non riprodurre quei risultati.
 
 A ogni passo la dimensione massima è moltiplicata per 0,7 e quella minima
-scalata dello stesso fattore, mentre il numero di elementi per circonferenza e
-il rapporto di crescita restano invariati, non essendo lunghezze. Vincoli,
-carichi e tipo di elemento non cambiano: variando più di un parametro per volta
-non si studierebbe la convergenza, si cambierebbe modello. La grandezza
-osservata è la media dello spostamento trasversale sulla faccia di
-accoppiamento, preferita al valore in un singolo punto perché indipendente da
-quale nodo cada dove.
+scalata dello stesso fattore. Numero di elementi per circonferenza e rapporto di
+crescita restano invariati, non essendo lunghezze. Vincoli, carichi e tipo di
+elemento non cambiano: variando più di un parametro per volta non si studierebbe
+la convergenza, si cambierebbe modello.
+
+La grandezza osservata è la media dello spostamento trasversale sulla faccia di
+accoppiamento. È preferita al valore in un singolo punto perché non dipende da
+dove cadono i nodi, che cambiano a ogni suddivisione.
 
 \begin{table}[!tb]
     \centering
     \caption{Controllo di convergenza sulla piastra di accoppiamento superiore.
-    La riga in grassetto corrisponde alla suddivisione adottata nelle verifiche.}
+    La riga in corsivo corrisponde alla suddivisione impiegata nelle analisi
+    d'assieme.}
     \label{tab:convergenza}
     \footnotesize
     \begin{tabular}{@{}rrrrr@{}}
@@ -396,7 +398,7 @@ quale nodo cada dove.
         \midrule
         6,0 & 3,0 & 4\,899 & 5,088 & --- \\
         4,2 & 2,1 & 12\,908 & 5,420 & $+6{,}5$ \\
-        \textbf{3,0} & \textbf{1,5} & \textbf{24\,673} & \textbf{5,531} & \textbf{$+2{,}0$} \\
+        \emph{3,0} & \emph{1,5} & \emph{24\,673} & \emph{5,531} & \emph{$+2{,}0$} \\
         2,1 & 1,05 & 70\,776 & 5,825 & $+5{,}3$ \\
         1,5 & 0,75 & 193\,803 & 5,916 & $+1{,}6$ \\
         \bottomrule
@@ -406,36 +408,47 @@ quale nodo cada dove.
 Lo spostamento cresce a ogni infittimento e si assesta, come anticipato al
 paragrafo~\ref{sec:fem-principi}: la soluzione approssimata è più rigida di
 quella esatta e vi converge dal basso. Un andamento decrescente avrebbe
-segnalato un errore nel modello, non una suddivisione insufficiente. Fra le due
-suddivisioni più fini la variazione scende all'1,6\,\%, al di sotto della soglia
-del 2\,\% assunta come criterio, e il valore convergente può considerarsi pari a
-5,92\,\textmu m.
+segnalato un errore nel modello. Fra le due suddivisioni più fini la variazione
+scende all'1,6\,\%, sotto la soglia del 2\,\% assunta come criterio: il valore
+convergente è 5,92\,\textmu m.
 
-Gli scarti intermedi non decrescono in modo regolare, e la ragione si legge
-nella colonna del numero di elementi: il mesher a curvatura variabile non
-infittisce in modo uniforme, e a una riduzione costante della dimensione
-nominale non corrisponde un incremento costante del numero di elementi. È
-quest'ultimo, e non il parametro impostato, a misurare l'infittimento effettivo.
+Gli scarti intermedi non decrescono in modo regolare. La ragione si legge nella
+colonna degli elementi: il mesher a curvatura variabile non infittisce in modo
+uniforme, e a riduzioni costanti della dimensione nominale non corrispondono
+incrementi costanti del numero di elementi. È quest'ultimo, non il parametro
+impostato, a misurare l'infittimento effettivo.
 
-La suddivisione adottata restituisce uno spostamento inferiore del 6,5\,\% a
-quello convergente. Anziché ripetere le analisi con una mesh più fine, il cui
-onere di calcolo cresce di quasi un ordine di grandezza, lo scarto è assunto
-come errore di discretizzazione noto e portato dentro i risultati: le
+L'assieme non è stato ricalcolato con una suddivisione più fine. Alla
+suddivisione impiegata conta già 167\,563 elementi e richiede una trentina di
+minuti per studio; riducendo la dimensione degli elementi il loro numero cresce
+con il cubo, e con esso il tempo di calcolo e la memoria richiesta. Ripetere i
+quattro studi in quelle condizioni eccede le risorse di calcolo disponibili per
+questo lavoro.
+
+Lo studio di convergenza sostituisce quell'infittimento. L'errore misurato sul
+componente isolato, che costa minuti, fornisce il fattore con cui correggere un
+risultato d'assieme che costerebbe ore rifare. La suddivisione impiegata
+restituisce uno spostamento inferiore del 6,5\,\% a quello convergente: le
 cedevolezze riportate al paragrafo~\ref{sec:assieme-procedura} sono corrette di
-quel fattore. La correzione agisce nel verso della sicurezza, poiché la
-convergenza dal basso garantisce che il valore calcolato sia sempre una
-sottostima di quello esatto.
+quel fattore, e il valore che ne risulta è quello che si otterrebbe con la
+suddivisione più fine.
 
-Il controllo è stato esteso alla tensione equivalente, con un esito che merita
-di essere dichiarato. Fra le due suddivisioni più fini il massimo varia dello
-0,5\,\% e può considerarsi convergente, ma il suo valore supera di oltre il
-settanta per cento quello restituito dalla suddivisione adottata: fra la terza e
-la quarta suddivisione il modello ha risolto una concentrazione locale che prima
-non coglieva. Riscalati in proporzione, i coefficienti di sicurezza dei
-componenti progettati restano comunque assai superiori alla soglia assunta al
-paragrafo~\ref{sec:fem-criterio}. Che la tensione richieda una suddivisione più
-fine dello spostamento non sorprende: è una grandezza derivata, ottenuta
-differenziando un campo già approssimato.
+Il fattore è ricavato su un componente ed esteso all'intero assieme. È
+un'approssimazione, presumibilmente in favore di sicurezza: nell'assieme la
+cedevolezza si distribuisce fra quattro corpi, e l'errore complessivo
+difficilmente supera quello del componente che ne concentra la quota maggiore.
+La correzione agisce comunque nel verso giusto, poiché la convergenza dal basso
+garantisce che il valore calcolato sia una sottostima.
+
+Il controllo è stato esteso alla tensione equivalente, con un esito che va
+dichiarato. Fra le due suddivisioni più fini il massimo varia dello 0,5\,\% e può
+considerarsi convergente. Il suo valore supera però di oltre il settanta per
+cento quello della suddivisione impiegata: fra la terza e la quarta suddivisione
+il modello ha risolto una concentrazione locale che prima non coglieva.
+Riscalati in proporzione, i coefficienti di sicurezza dei componenti progettati
+restano assai superiori alla soglia del paragrafo~\ref{sec:fem-criterio}. Che la
+tensione richieda una suddivisione più fine dello spostamento non sorprende: è
+una grandezza derivata, ottenuta differenziando un campo già approssimato.
 
 % DA COMPLETARE:
 %   - verificare DOVE cade il massimo di tensione nel run piu' fine: nel quinto

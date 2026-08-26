@@ -741,17 +741,14 @@ analitica al paragrafo~\ref{sec:assieme-procedura}.
 % preceduta da un commento "% DATO MANCANTE".
 % ---------------------------------------------------------------------------
 
-Il clamshell è il primo componente della catena a partire dallo strumento, e
-l'unico del gruppo inferiore. È una boccola bipartita interposta fra le ganasce
-del mandrino e il gambo del provino.
+Il clamshell è una boccola bipartita interposta fra le ganasce del mandrino
+inferiore e il gambo dello strumento, ed è l'unico componente del gruppo
+inferiore.
 
-La sua necessità nasce dal divario di scala fra la macchina e il provino, già
-richiamato al capitolo~\ref{cap:specifiche}: il gambo dello strumento ha un
-diametro di 2,5\,mm, mentre gli organi di afferraggio della macchina sono
-dimensionati su una portata di due ordini di grandezza superiore. Senza un
-elemento interposto, la forza di serraggio si scaricherebbe direttamente sul
-gambo lungo due linee di contatto, con pressioni sufficienti a danneggiarlo
-prima ancora dell'inizio della prova.
+Il gambo ha diametro 2,5\,mm, gli organi di afferraggio della macchina portate
+di due ordini di grandezza superiori. Senza un elemento interposto il serraggio
+si scaricherebbe sul gambo lungo due linee di contatto, danneggiandolo prima
+della prova.
 
 % Suggerimento: aggiungere \label{sec:afferraggio} al paragrafo "Afferraggio e
 % protezione dello strumento" del capitolo 2, e sostituire qui il rimando
@@ -759,46 +756,47 @@ prima ancora dell'inizio della prova.
 
 \paragraph{Requisiti.}
 Il paragrafo \emph{Afferraggio e protezione dello strumento} del
-capitolo~\ref{cap:specifiche} assegna al componente tre funzioni distinte, che
-governano tre porzioni diverse della sua geometria.
+capitolo~\ref{cap:specifiche} assegna al componente tre funzioni, ciascuna
+affidata a una porzione diversa della geometria.
 
-La prima è proteggere il gambo. La forza di serraggio deve essere ricevuta dal
-clamshell e trasmessa allo strumento su superfici estese, non su linee di
-contatto.
+\begin{description}
+  \item[Proteggere il gambo.] Il serraggio deve raggiungere lo strumento su
+    superfici estese, non su linee di contatto.
+  \item[Trasmettere la coppia per forma.] L'attrito renderebbe la coppia
+    trasmissibile dipendente dal serraggio, che non è misurato né ripetibile. Lo
+    scambio avviene sulla superficie piana del gambo.
+  \item[Bloccare assialmente.] Il gambo presenta una sede di diametro ridotto,
+    nella quale un risalto interno del clamshell si impegna opponendosi alla
+    spinta di reazione.
+\end{description}
 
-La seconda è trasmettere la coppia per forma. L'affidamento all'attrito
-renderebbe la coppia trasmissibile dipendente dalla forza di serraggio, che non
-è né misurata né ripetibile fra un montaggio e il successivo; il gambo dello
-strumento dispone di una superficie piana, ed è su quella che la coppia viene
-scambiata.
-
-La terza è il bloccaggio assiale. Lo strumento avanza contro la parete del
-canale e riceve una spinta di reazione diretta lungo il proprio asse; il gambo
-presenta una sede di diametro ridotto, nella quale un risalto interno del
-clamshell si impegna e impedisce lo sfilamento.
-
-Ne discende un criterio che orienta tutto il progetto del componente: le sole
-superfici in contatto con il gambo devono essere il piano e la sede. La
-superficie cilindrica dell'alesaggio deve restare libera, perché un contatto in
-quella zona reintrodurrebbe proprio la pressione da cui il componente deve
+Ne discende il criterio che governa il progetto: le sole superfici in contatto
+con il gambo sono il piano e la sede. La cilindrica dell'alesaggio resta libera,
+perché un contatto lì reintrodurrebbe la pressione da cui il componente deve
 proteggere.
 
 \paragraph{Soluzione costruttiva.}
-Il componente è realizzato come boccola cilindrica divisa in due semigusci
-lungo un piano diametrale, riportati in figura~\ref{fig:clamshell-3d}. Le
-ganasce del mandrino agiscono su due piani ricavati sulla superficie esterna;
-l'alesaggio riproduce la geometria del gambo con il gioco necessario a
+Il componente è una boccola cilindrica divisa in due semigusci lungo un piano
+diametrale (figura~\ref{fig:clamshell-3d}). Le ganasce agiscono su due piani
+esterni; l'alesaggio riproduce la geometria del gambo con il gioco necessario a
 localizzare il contatto dove previsto.
 
-La divisione in due parti non è una scelta di comodo. Una boccola intera
-andrebbe infilata sul gambo, e per farlo dovrebbe avere gioco su tutta la
-lunghezza; una boccola bipartita si chiude attorno al gambo già in posizione,
-e consente di impegnare il piano e la sede senza vincoli di montaggio. Rende
-inoltre il componente estraibile a strumento rotto, condizione ordinaria in
-una prova condotta fino a rottura.
+La divisione in due parti ha due ragioni. Una boccola intera richiederebbe gioco
+su tutta la lunghezza per essere infilata, mentre una bipartita si chiude sul
+gambo già in posizione. Ed è estraibile a strumento rotto, condizione ordinaria
+in una prova condotta fino a rottura.
 
-Le dimensioni caratteristiche sono raccolte nella
-tabella~\ref{tab:clamshell-geometria}.
+\begin{figure}[htbp]
+    \centering
+    % SEGNAPOSTO figura: modello 3D del clamshell, i due semigusci separati.
+    % Sostituire la cornice con:
+    % \includegraphics[width=0.7\linewidth]{images/clamshell/clamshell-3d.pdf}
+    \fbox{\parbox[c][0.22\textheight][c]{0.68\linewidth}{\centering
+    \textsf{SEGNAPOSTO --- modello 3D del clamshell}}}
+    \caption{Clamshell di protezione: i due semigusci e la loro posizione
+    rispetto al gambo dello strumento.}
+    \label{fig:clamshell-3d}
+\end{figure}
 
 \begin{table}[!tb]
     \centering
@@ -827,130 +825,98 @@ tabella~\ref{tab:clamshell-geometria}.
     \end{tabularx}
 \end{table}
 
-\begin{figure}[htbp]
-    \centering
-    % SEGNAPOSTO figura: modello 3D del clamshell, i due semigusci separati.
-    % Sostituire la cornice con:
-    % \includegraphics[width=0.7\linewidth]{images/clamshell/clamshell-3d.pdf}
-    \fbox{\parbox[c][0.22\textheight][c]{0.68\linewidth}{\centering
-    \textsf{SEGNAPOSTO --- modello 3D del clamshell}}}
-    \caption{Clamshell di protezione: i due semigusci e la loro posizione
-    rispetto al gambo dello strumento.}
-    \label{fig:clamshell-3d}
-\end{figure}
-
 \paragraph{Materiali.}
 Ai semigusci è assegnato l'acciaio inossidabile austenitico AISI 304, con
-carico unitario di snervamento pari a 205\,MPa.
+snervamento 205\,MPa.
 % DATO MANCANTE: confermare la fonte del valore di snervamento (libreria del
 % programma oppure norma di prodotto) e citarla.
-La scelta risponde a tre esigenze concorrenti. Il componente lavora a contatto
-con un provino in lega nichel-titanio e non deve innescarne la corrosione per
-contatto; deve essere lavorabile per asportazione nelle dimensioni ridotte in
-gioco; e deve avere un carico di snervamento inferiore a quello del gambo,
-perché in caso di sovraccarico sia il clamshell a cedere per primo. È questo il
-senso in cui il componente è sacrificale.
+La scelta risponde a tre esigenze: compatibilità con un provino in lega
+nichel-titanio, lavorabilità nelle dimensioni in gioco, e snervamento inferiore
+a quello del gambo, perché in caso di sovraccarico ceda il clamshell. È questo
+il senso in cui il componente è sacrificale.
 
-Al gambo dello strumento è assegnata una lega nichel-titanio inserita
-manualmente nella libreria del programma. La libreria in dotazione non
-comprende leghe a memoria di forma, e i valori adottati sono ripresi dalla
-letteratura \cite{iacono2021}.
+Al gambo è assegnata una lega nichel-titanio inserita manualmente, perché la
+libreria del programma non comprende leghe a memoria di forma; i valori sono
+ripresi dalla letteratura \cite{iacono2021}.
 % DATO MANCANTE: confermare la fonte del modulo elastico e riportarne il valore
 % numerico adottato. Sostituire la citazione se la fonte e' un'altra.
-Il paragrafo~\ref{sec:fem-limiti} dichiara i limiti di questa
-rappresentazione: il comportamento superelastico non è riprodotto, e il
-materiale è trattato come elastico lineare. La semplificazione è accettabile
-finché le tensioni nel gambo restano lontane dalla soglia di trasformazione,
-condizione che il calcolo verifica a posteriori.
+Il paragrafo~\ref{sec:fem-limiti} ne dichiara il limite: il comportamento
+superelastico non è riprodotto. La semplificazione regge finché le tensioni nel
+gambo restano sotto la soglia di trasformazione, e il calcolo lo verifica a
+posteriori.
 
 \paragraph{Carichi.}
-Sul componente agiscono tre azioni, di natura e di origine diversa, e la
-differenza va dichiarata perché una di esse non è un dato.
+Agiscono tre azioni. Una non è un dato.
 
-La forza di serraggio delle ganasce non è nota. Il costruttore della macchina
-non la specifica, la scelta fra morsa a cuneo e mandrino a pinza non è ancora
-stata compiuta, e in nessuno dei due casi il valore effettivo verrà misurato in
-esercizio. Un ordine di grandezza plausibile per organi di questa taglia è il
-migliaio di newton, ed è l'ipotesi da cui il lavoro era partito. Assumere quel
-numero e verificarlo, però, produrrebbe un risultato che dipende interamente da
-un'assunzione. Il calcolo è stato quindi impostato in modo diverso: risolto per
-un valore di riferimento, e presentato in forma di \emph{forza di serraggio
-limite}, ossia il valore oltre il quale il componente si snerva. È lo stesso
-criterio adottato al paragrafo~\ref{sec:fem-criterio} per la rigidezza, dove al
-posto di un carico non misurato si dichiara il limite che non deve essere
-superato.
+La forza di serraggio non è nota: il costruttore non la specifica, la scelta fra
+morsa a cuneo e mandrino a pinza non è compiuta, e in esercizio non verrà
+misurata. Assumerla produrrebbe un risultato che dipende interamente da
+un'assunzione. Il calcolo è quindi risolto per un valore di riferimento e
+presentato come \emph{forza di serraggio limite}, oltre la quale il componente
+si snerva: lo stesso criterio adottato al paragrafo~\ref{sec:fem-criterio} per
+la rigidezza.
 
-La coppia da trasmettere discende invece dai requisiti di
+La coppia da trasmettere discende dai requisiti di
 prova (tabella~\ref{tab:requisiti}) ed è un dato.
 
-La spinta assiale è assunta pari a 180\,N, portata della tavola di
-posizionamento scelta al paragrafo~\ref{sec:tavola}. Non è la spinta apicale
-reale, che è largamente inferiore, ma il limite superiore che la catena può
-trasmettere: verificare la sede su quel valore significa verificarla
-sull'ipotesi più sfavorevole compatibile con il banco.
+La spinta assiale è assunta pari a 180\,N, portata della tavola scelta al
+paragrafo~\ref{sec:tavola}: non è la spinta apicale reale, largamente inferiore,
+ma il limite superiore che la catena può trasmettere.
 
 \paragraph{Verifica analitica preliminare.}
-Tre delle verifiche non richiedono il calcolo numerico, perché riguardano
-superfici piane e carichi noti in direzione.
+Tre verifiche non richiedono il calcolo numerico, perché riguardano superfici
+piane e carichi noti in direzione.
 
-Sul piano esterno, la pressione trasmessa dalle ganasce è il rapporto fra la
-forza di serraggio e l'area del piano. Per l'ipotesi di 1000\,N si ottengono
-137,6\,MPa, con un coefficiente di sicurezza di 1,49 rispetto allo snervamento
-del 304.
+Sul piano esterno la pressione è il rapporto fra forza di serraggio e area: per
+1000\,N si ottengono 137,6\,MPa, con coefficiente di sicurezza 1,49.
 
-Sulla sede, la spinta assiale si ripartisce sulla corona di contatto:
+Sulla sede la spinta assiale si ripartisce sulla corona di contatto:
 \begin{equation}
     p = \frac{F}{\pi \left( R^2 - r^2 \right)}
       = \frac{180}{3{,}05} = 59{,}1 \; \mathrm{MPa} ,
 \end{equation}
-con un coefficiente di sicurezza di 3,47. La sede non è dimensionante.
+con coefficiente di sicurezza 3,47. La sede non è dimensionante.
 
-Sul piano interno, la coppia trasmissibile è il prodotto della forza di
-rifollamento ammissibile per il braccio con cui essa agisce rispetto all'asse:
+Sul piano interno la coppia trasmissibile è il prodotto della forza di
+rifollamento ammissibile per il braccio con cui agisce:
 \begin{equation}
     M_{\mathrm{lim}} = \frac{R_{p0,2}}{\nu} \, A \, b .
 \end{equation}
-Il braccio $b$ non è determinato dalla sola geometria, perché dipende da come
-la pressione si distribuisce lungo la corda: vale $c/2$ se la risultante si
-concentra al bordo, $c/6$ se la distribuzione è triangolare a partire dal
-centro. Ne discende un intervallo, da 0,17 a 0,50\,N$\cdot$m, contro una coppia
-di prova di 0,1\,N$\cdot$m. Il margine è quindi compreso fra 1,7 e 5. Si
-adotta l'estremo conservativo.
+Il braccio $b$ non discende dalla sola geometria: vale $c/2$ se la risultante si
+concentra al bordo, $c/6$ se la distribuzione è triangolare dal centro. Ne
+risulta un intervallo, da 0,17 a 0,50\,N$\cdot$m, contro una coppia di prova di
+0,1\,N$\cdot$m. Il margine è compreso fra 1,7 e 5; si adotta l'estremo
+conservativo.
 
-Una quarta verifica non riguarda il componente ma la sua necessità. Se le
-ganasce afferrassero il gambo nudo, il contatto sarebbe fra due cilindri e la
-pressione massima si otterrebbe dalla teoria di Hertz per contatto lineare:
+Una quarta verifica riguarda la necessità del componente. Se le ganasce
+afferrassero il gambo nudo, il contatto sarebbe fra due cilindri:
 \begin{equation}
     p_{\max} = \sqrt{\frac{F' E^*}{\pi R}} , \qquad
     \frac{1}{E^*} = \frac{1 - \nu_1^2}{E_1} + \frac{1 - \nu_2^2}{E_2} .
 \end{equation}
-Con una forza di 1000\,N distribuita sulla lunghezza di presa si ottengono
-1817\,MPa, un valore che il gambo non sopporterebbe. È la giustificazione
-quantitativa dell'esistenza del componente.
+Con 1000\,N distribuiti sulla lunghezza di presa si ottengono 1817\,MPa, che il
+gambo non sopporterebbe.
 
 \paragraph{Il modello di calcolo.}
-Lo studio del clamshell costituisce l'unica eccezione all'impostazione descritta
-al paragrafo~\ref{sec:fem-solidworks}. Là le parti a contatto sono trattate come
-unite, perché collegate da viti precaricate e destinate a non separarsi; qui la
-domanda è proprio quali superfici entrino in contatto e con quale ripartizione
-del carico, e il modello è quindi risolto con contatto non lineare.
+Lo studio è l'unica eccezione all'impostazione del
+paragrafo~\ref{sec:fem-solidworks}, dove le parti a contatto sono trattate come
+unite. Qui la domanda è quali superfici entrino in contatto e con quale
+ripartizione del carico, e il modello è risolto con contatto non lineare.
 
-Il modello comprende i due semigusci e un tronco di gambo, di lunghezza pari
-alla presa più un margine. Le ganasce non sono modellate: la loro azione entra
-come forza applicata sui piani esterni. Il resto dello strumento è troncato,
-poiché la zona di interesse è locale.
+Comprende i due semigusci e un tronco di gambo. Le ganasce non sono modellate:
+la loro azione entra come forza applicata sui piani esterni.
 
-Sono definite quattro interazioni di contatto senza attrito, con formulazione
-superficie a superficie: piano interno, sede, piano di separazione fra i due
-semigusci, e superficie cilindrica. L'ultima non è attesa in contatto, ed è
-introdotta proprio per questo: una forza non nulla su quella coppia segnala che
-il gioco è insufficiente. L'assenza di attrito è coerente con il progetto, in
-cui la coppia è trasmessa per forma, ed è la condizione più sfavorevole.
+Quattro interazioni di contatto senza attrito, formulazione superficie a
+superficie: piano interno, sede, piano di separazione, superficie cilindrica.
+L'ultima non è attesa in contatto ed è introdotta come controllo, perché una
+forza non nulla su quella coppia segnala che il gioco è insufficiente.
+L'assenza di attrito è coerente con la trasmissione per forma ed è la condizione
+più sfavorevole.
 
-Il vincolo è applicato alla sola faccia di troncamento del gambo. I due
-semigusci restano liberi e sono trattenuti dal contatto; per evitare i moti
-rigidi che ne conseguono nelle prime iterazioni è attivata la stabilizzazione a
-molle di rigidezza trascurabile.
+Il vincolo è applicato alla sola faccia di troncamento del gambo. I semigusci
+restano liberi e sono trattenuti dal contatto; per eliminare i moti rigidi delle
+prime iterazioni è attivata la stabilizzazione a molle di rigidezza
+trascurabile.
 
 % DATO MANCANTE: parametri e dimensione della mesh adottata, numero di nodi ed
 % elementi del modello definitivo.
@@ -959,26 +925,22 @@ con controlli locali sulle superfici di contatto e sui raccordi.
 
 \paragraph{Le modifiche indotte dall'analisi.}
 Il calcolo ha prodotto due correzioni della geometria, entrambe prima della
-messa in fabbricazione.
+fabbricazione.
 
 La prima riguarda il gioco. Nella configurazione iniziale la tensione massima
 cadeva sulla superficie cilindrica dell'alesaggio, dove il progetto non prevede
-contatto. Il bilancio delle forze lo confermava: la somma delle risultanti sulle
-superfici previste non chiudeva l'equilibrio di uno dei due semigusci, e la
-differenza corrispondeva a un carico trasmesso attraverso la superficie
-cilindrica. Il diametro dell'alesaggio è stato aumentato di 0,08\,mm, ottenendo
-un gioco radiale di 0,04\,mm. È il valore minimo che sopravvive alle tolleranze
-di lavorazione dei due pezzi accoppiati.
+contatto; il bilancio delle forze lo confermava, perché le risultanti sulle
+superfici previste non chiudevano l'equilibrio di un semiguscio. Il diametro è
+stato aumentato di 0,08\,mm, con un gioco radiale di 0,04\,mm: il minimo che
+sopravvive alle tolleranze di lavorazione.
 
 La seconda riguarda lo spigolo interno della sede. Rimosso il contatto
-cilindrico, la tensione massima si è spostata su quello spigolo, con un valore
-che cresce indefinitamente al raffinarsi della discretizzazione. È il
-comportamento tipico di una singolarità geometrica: uno spigolo vivo non ha una
-tensione finita nel modello elastico, e il valore letto è una proprietà della
-mesh, non del componente. Lo spigolo, del resto, non esiste nemmeno nel pezzo
-reale, dove la lavorazione per asportazione lascia sempre il raggio
-dell'utensile. È stato quindi introdotto un raccordo, verificato compatibile con
-lo spigolo corrispondente del gambo perché i due non si contendano l'angolo.
+cilindrico, il massimo si è spostato lì, con un valore che cresce
+indefinitamente al raffinarsi della mesh. È una singolarità geometrica: uno
+spigolo vivo non ha tensione finita nel modello elastico, e il valore letto è
+una proprietà della discretizzazione. Del resto non esiste nemmeno nel pezzo
+reale, dove la lavorazione lascia il raggio dell'utensile. È stato introdotto un
+raccordo, verificato compatibile con lo spigolo del gambo.
 
 Nessuna delle due correzioni sarebbe emersa da una verifica analitica, che
 assume la ripartizione del contatto invece di determinarla.
@@ -1013,49 +975,44 @@ serraggio fra le superfici di contatto.
     \end{tabularx}
 \end{table}
 
-La quota che raggiunge il gambo è \textbf{[XX]} della forza applicata: il resto
-è deviato sul piano di separazione, che entra in battuta sotto carico e si
-comporta da fine corsa. Ne discende una proprietà rilevante per l'esercizio: la
-pressione trasmessa al gambo è limitata dalla geometria e non cresce
+Al gambo raggiunge \textbf{[XX]} della forza applicata. Il resto è deviato sul
+piano di separazione, che entra in battuta sotto carico e fa da fine corsa: la
+pressione trasmessa al gambo è quindi limitata dalla geometria e non cresce
 indefinitamente con la stretta delle ganasce.
 
 La tensione massima nel gambo vale \textbf{[XX]}\,MPa, contro i 1817\,MPa della
-verifica hertziana condotta in assenza di clamshell. Il componente riduce
-quindi di un fattore \textbf{[XX]} la sollecitazione sul provino.
+verifica hertziana in assenza di clamshell: il componente riduce di un fattore
+\textbf{[XX]} la sollecitazione sul provino.
 
 \paragraph{Esito.}
 % DATO MANCANTE: valore numerico della forza di serraggio limite, ricavato
 % dalla tensione massima converge sul raccordo.
 Il componente resta in campo elastico fino a una forza di serraggio di
-\textbf{[XX]}\,N. Al di sopra di quel valore si snerva, prima del gambo dello
-strumento: è il comportamento voluto, ma comporta due prescrizioni.
+\textbf{[XX]}\,N. Oltre quel valore si snerva, prima del gambo: è il
+comportamento voluto, e comporta due prescrizioni.
 
 La prima è operativa e trova posto nella procedura del
 paragrafo~\ref{sec:assieme-procedura}: la stretta delle ganasce va contenuta
 entro il limite dichiarato.
 
-La seconda riguarda la sostituzione. Il clamshell è un componente di consumo. Va
-sostituito quando la deformazione plastica ne altera la geometria interna,
-perché il braccio con cui la coppia viene scambiata sul piano dipende da quella
-geometria, e una sua variazione modifica la coppia trasmissibile senza darne
-segno.
+La seconda riguarda la sostituzione. Il clamshell è di consumo, e va sostituito
+quando la deformazione plastica ne altera la geometria interna: il braccio con
+cui la coppia viene scambiata dipende da quella geometria, e una sua variazione
+modifica la coppia trasmissibile senza darne segno.
 
 \paragraph{Geometria definitiva.}
 Il disegno quotato è riportato in figura~\ref{fig:clamshell-disegno}. Tre
-tolleranze non discendono dalla lavorazione ma dalle verifiche appena esposte, e
-vanno lette come requisiti funzionali.
+tolleranze non discendono dalla lavorazione ma dalle verifiche esposte, e vanno
+lette come requisiti funzionali.
 
 \begin{itemize}
-    \item Il gioco al piano di separazione è quotato con tolleranza, e non al
-    solo valore nominale, perché nella combinazione più sfavorevole le due
-    facce devono comunque impegnare il gambo prima di andare in battuta fra
+    \item Gioco al piano di separazione, perché nella combinazione più
+    sfavorevole le due facce impegnino il gambo prima di andare in battuta fra
     loro.
-    \item Il gioco radiale sull'alesaggio cilindrico è quotato con tolleranza
-    per la ragione opposta: nella combinazione più sfavorevole quella
-    superficie non deve entrare in contatto.
-    \item Il raccordo sullo spigolo interno della sede ha un raggio minimo
-    prescritto, ed è vincolato a restare inferiore al raccordo corrispondente
-    del gambo.
+    \item Gioco radiale sull'alesaggio cilindrico, per la ragione opposta:
+    quella superficie non deve entrare in contatto in nessuna combinazione.
+    \item Raggio minimo del raccordo sullo spigolo interno della sede, comunque
+    inferiore al raccordo corrispondente del gambo.
 \end{itemize}
 
 \begin{figure}[htbp]

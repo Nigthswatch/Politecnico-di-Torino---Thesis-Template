@@ -317,14 +317,21 @@ la linearità dell'intero modello.
 \paragraph{Discretizzazione.}
 La suddivisione è ottenuta con elementi tetraedrici parabolici, generati dal
 mesher a curvatura variabile con dimensione massima di 3\,mm, dimensione minima
-di 1,5\,mm, dodici elementi per circonferenza e rapporto di crescita 1,4. La
-dimensione massima non è arbitraria: discende dal requisito di disporre di
-almeno tre elementi nello spessore del componente più sottile sollecitato a
-flessione. Sulla piastra di accoppiamento inferiore, per la quale la sola mesh
-globale ne produceva due, è stato aggiunto un controllo locale sull'intero corpo,
-con dimensione di 0,75\,mm e rapporto 1,4, che ne porta il numero a quattro; è il
-componente la cui rigidezza pesa di più sul risultato, ed è anche quello sul
-quale si esegue il confronto analitico del
+di 1,5\,mm, dodici elementi per circonferenza e rapporto di crescita 1,4. Sono
+un compromesso fra accuratezza e onere di calcolo su un assieme di quelle
+dimensioni.
+
+Il criterio che governa la suddivisione è però un altro: nei componenti
+sollecitati a flessione occorrono almeno tre elementi nello spessore, perché la
+variazione della tensione lungo di esso sia colta. Le piastre di accoppiamento
+sono spesse 4 e 5\,mm, e la verifica in sezione ha mostrato che la sola mesh
+globale ne produce due nella piastra inferiore, mentre negli altri componenti
+l'infittimento indotto dalle curvature ne garantisce più di tre.
+
+Sulla piastra inferiore è stato quindi aggiunto un controllo locale sull'intero
+corpo, con dimensione di 0,75\,mm e rapporto 1,4, che porta a quattro il numero
+di elementi nello spessore. È il componente la cui rigidezza pesa di più sul
+risultato, ed è anche quello sul quale si esegue il confronto analitico del
 paragrafo~\ref{sec:piastra-inferiore}. Il modello risultante conta 167\,563
 elementi e 290\,820 nodi, per circa 872\,000 gradi di libertà, e si risolve in
 una trentina di minuti.
@@ -520,9 +527,14 @@ giunto reale.
 \paragraph{Il blocchetto e lo strumento.}
 La resina che ingloba il blocchetto nella sede non è modellata. Nel calcolo il
 blocchetto è quindi più libero di quanto sia in realtà, dove è sostenuto
-sull'intera superficie, e la sua deformazione risulta sovrastimata. Alla stessa
-incertezza contribuiscono le proprietà del materiale, prese dalla libreria del
-programma perché il costruttore non ne dichiara.
+sull'intera superficie, e la sua deformazione risulta sovrastimata.
+
+Sul blocchetto pesano altre due approssimazioni. Le proprietà del materiale sono
+prese dalla libreria del programma, perché il costruttore non ne dichiara. E la
+geometria non è quella del costruttore: il modello nativo è disponibile come
+sola maglia superficiale, e nel modello di calcolo è stato ricostruito
+riportandone i parametri uno per uno. Per queste ragioni il blocchetto figura
+nel modello soltanto perché trasferisce il carico, e non è oggetto di verifica.
 
 Lo strumento è sostituito dalle sue azioni, applicate a un punto remoto. Il
 contatto fra la lima e la parete del canale non è rappresentato: la
@@ -680,13 +692,32 @@ completezza, sono una rettilineità di 30\,\textmu m, un parallelismo di
 traiettoria di 60\,\textmu m, un parallelismo statico di 120\,\textmu m e una
 massa di 1,91\,kg.
 
+\paragraph{Montaggio sospeso.}
+Nel banco la tavola è impiegata capovolta rispetto all'uso corrente. La base è
+fissata in alto, alla piastra di accoppiamento superiore; il piano mobile guarda
+verso il basso e sostiene la cella, la sede e il blocchetto.
+
+Il verso di montaggio non è però arbitrario: è quello previsto dal costruttore.
+I quattro fori della base sono passanti e lamati, destinati a viti inserite dal
+lato base, ed è quello il lato pensato per l'ancoraggio alla struttura fissa.
+Ciò che si inverte non è il percorso del carico, è il verso della gravità.
+
+Il gruppo appeso al piano mobile pesa pochi newton, contro i 180 dichiarati.
+Il precarico dei rulli non viene quindi mai vinto, e i rulli incrociati
+sostengono il carico in entrambi i versi grazie all'orientamento alternato fra
+le piste a V. Va comunque dichiarato che la portata di catalogo è riferita al
+carico in compressione.
+
 \paragraph{Conseguenze sul resto del progetto.}
 La scelta si ripercuote in tre punti.
 
-La dima di foratura, quattro fori $\varnothing$4,5 con lamatura
-$\varnothing$8 su interasse $100 \times 100$\,mm, vincola la geometria delle due
-piastre di accoppiamento, trattate ai
-paragrafi~\ref{sec:piastra-inferiore} e~\ref{sec:piastra-superiore}.
+Le due piastre di accoppiamento si interfacciano a due dime distinte. La piastra
+superiore si fissa alla base della tavola, su quattro fori $\varnothing$4,5 con
+lamatura $\varnothing$8 disposti su interasse $100 \times 100$\,mm
+(paragrafo~\ref{sec:piastra-superiore}). La piastra inferiore si fissa al piano
+mobile, sulla griglia di fori filettati che questo mette a disposizione, con
+quattro fori $\varnothing$4,5 passanti su interasse $50 \times 50$\,mm
+(paragrafo~\ref{sec:piastra-inferiore}).
 
 La portata assiale di 180\,N è inferiore ai 200\,N della cella. La tavola
 diventa quindi l'elemento più restrittivo della catena, ed è il suo limite, non

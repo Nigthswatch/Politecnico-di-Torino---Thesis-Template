@@ -732,24 +732,641 @@ analitica al paragrafo~\ref{sec:assieme-procedura}.
 
 \section{Clamshell di protezione dello strumento}
 \label{sec:clamshell}
-% Schema comune (vedi testa del capitolo).
-%   1. funzione: adattare il diametro e proteggere il gambo dalla forza di
-%      serraggio; rimando al par. "Afferraggio e protezione" del cap. 2
-%   3. carichi: forza di serraggio delle ganasce e coppia da trasmettere.
-%      Se la forza di serraggio e' un'assunzione e non un dato, scrivilo,
-%      con il ragionamento che l'ha prodotta
-%   4. verifica: pressione trasmessa al gambo, tenuta senza strisciamento
-%   5. esito: componente sacrificale, criterio di sostituzione
+
+% ---------------------------------------------------------------------------
+% BOZZA. I punti marcati [XX] attendono i risultati del calcolo sulla geometria
+% definitiva (alesaggio maggiorato e spigoli raccordati). Ogni occorrenza e'
+% preceduta da un commento "% DATO MANCANTE".
+% ---------------------------------------------------------------------------
+
+Il clamshell è il primo componente della catena a partire dallo strumento, e
+l'unico del gruppo inferiore. È una boccola bipartita interposta fra le ganasce
+del mandrino e il gambo del provino.
+
+La sua necessità nasce dal divario di scala fra la macchina e il provino, già
+richiamato al capitolo~\ref{cap:specifiche}: il gambo dello strumento ha un
+diametro di 2,5\,mm, mentre gli organi di afferraggio della macchina sono
+dimensionati su una portata di due ordini di grandezza superiore. Senza un
+elemento interposto, la forza di serraggio si scaricherebbe direttamente sul
+gambo lungo due linee di contatto, con pressioni sufficienti a danneggiarlo
+prima ancora dell'inizio della prova.
+
+% Suggerimento: aggiungere \label{sec:afferraggio} al paragrafo "Afferraggio e
+% protezione dello strumento" del capitolo 2, e sostituire qui il rimando
+% discorsivo con \ref{sec:afferraggio}.
+
+\paragraph{Requisiti.}
+Il paragrafo \emph{Afferraggio e protezione dello strumento} del
+capitolo~\ref{cap:specifiche} assegna al componente tre funzioni distinte, che
+governano tre porzioni diverse della sua geometria.
+
+La prima è proteggere il gambo. La forza di serraggio deve essere ricevuta dal
+clamshell e trasmessa allo strumento su superfici estese, non su linee di
+contatto.
+
+La seconda è trasmettere la coppia per forma. L'affidamento all'attrito
+renderebbe la coppia trasmissibile dipendente dalla forza di serraggio, che non
+è né misurata né ripetibile fra un montaggio e il successivo; il gambo dello
+strumento dispone di una superficie piana, ed è su quella che la coppia viene
+scambiata.
+
+La terza è il bloccaggio assiale. Lo strumento avanza contro la parete del
+canale e riceve una spinta di reazione diretta lungo il proprio asse; il gambo
+presenta una sede di diametro ridotto, nella quale un risalto interno del
+clamshell si impegna e impedisce lo sfilamento.
+
+Ne discende un criterio che orienta tutto il progetto del componente: le sole
+superfici in contatto con il gambo devono essere il piano e la sede. La
+superficie cilindrica dell'alesaggio deve restare libera, perché un contatto in
+quella zona reintrodurrebbe proprio la pressione da cui il componente deve
+proteggere.
+
+\paragraph{Soluzione costruttiva.}
+Il componente è realizzato come boccola cilindrica divisa in due semigusci
+lungo un piano diametrale, riportati in figura~\ref{fig:clamshell-3d}. Le
+ganasce del mandrino agiscono su due piani ricavati sulla superficie esterna;
+l'alesaggio riproduce la geometria del gambo con il gioco necessario a
+localizzare il contatto dove previsto.
+
+La divisione in due parti non è una scelta di comodo. Una boccola intera
+andrebbe infilata sul gambo, e per farlo dovrebbe avere gioco su tutta la
+lunghezza; una boccola bipartita si chiude attorno al gambo già in posizione,
+e consente di impegnare il piano e la sede senza vincoli di montaggio. Rende
+inoltre il componente estraibile a strumento rotto, condizione ordinaria in
+una prova condotta fino a rottura.
+
+Le dimensioni caratteristiche sono raccolte nella
+tabella~\ref{tab:clamshell-geometria}.
+
+\begin{table}[!tb]
+    \centering
+    \caption{Grandezze geometriche del clamshell e del gambo dello strumento.}
+    \label{tab:clamshell-geometria}
+    \footnotesize
+    \begin{tabularx}{\linewidth}{@{}
+        >{\hsize=1.6\hsize\raggedright\arraybackslash}X
+        r
+        >{\hsize=1.2\hsize\raggedright\arraybackslash}X@{}}
+        \toprule
+        Grandezza & Valore & Origine \\
+        \midrule
+        Diametro esterno del clamshell & 5,16\,mm & Progetto \\
+        Campo di apertura delle ganasce & 0--8\,mm & Costruttore \\
+        Lunghezza di presa nelle ganasce & 2,24\,mm & Progetto \\
+        Area di un piano esterno & 7,27\,mm$^2$ & Progetto \\
+        Raggio esterno del gambo & 1,25\,mm & Provino \\
+        Corda del piano del gambo & 2,19\,mm & Provino \\
+        Altezza del piano dall'asse & 0,60\,mm & Ricavata \\
+        Area del piano interno & 3,34\,mm$^2$ & Progetto \\
+        Raggio di fondo della sede & 0,77\,mm & Provino \\
+        Area della corona della sede & 3,05\,mm$^2$ & Ricavata \\
+        Gioco radiale sull'alesaggio cilindrico & 0,04\,mm & Progetto \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\begin{figure}[htbp]
+    \centering
+    % SEGNAPOSTO figura: modello 3D del clamshell, i due semigusci separati.
+    % Sostituire la cornice con:
+    % \includegraphics[width=0.7\linewidth]{images/clamshell/clamshell-3d.pdf}
+    \fbox{\parbox[c][0.22\textheight][c]{0.68\linewidth}{\centering
+    \textsf{SEGNAPOSTO --- modello 3D del clamshell}}}
+    \caption{Clamshell di protezione: i due semigusci e la loro posizione
+    rispetto al gambo dello strumento.}
+    \label{fig:clamshell-3d}
+\end{figure}
+
+\paragraph{Materiali.}
+Ai semigusci è assegnato l'acciaio inossidabile austenitico AISI 304, con
+carico unitario di snervamento pari a 205\,MPa.
+% DATO MANCANTE: confermare la fonte del valore di snervamento (libreria del
+% programma oppure norma di prodotto) e citarla.
+La scelta risponde a tre esigenze concorrenti. Il componente lavora a contatto
+con un provino in lega nichel-titanio e non deve innescarne la corrosione per
+contatto; deve essere lavorabile per asportazione nelle dimensioni ridotte in
+gioco; e deve avere un carico di snervamento inferiore a quello del gambo,
+perché in caso di sovraccarico sia il clamshell a cedere per primo. È questo il
+senso in cui il componente è sacrificale.
+
+Al gambo dello strumento è assegnata una lega nichel-titanio inserita
+manualmente nella libreria del programma. La libreria in dotazione non
+comprende leghe a memoria di forma, e i valori adottati sono ripresi dalla
+letteratura \cite{iacono2021}.
+% DATO MANCANTE: confermare la fonte del modulo elastico e riportarne il valore
+% numerico adottato. Sostituire la citazione se la fonte e' un'altra.
+Il paragrafo~\ref{sec:fem-limiti} dichiara i limiti di questa
+rappresentazione: il comportamento superelastico non è riprodotto, e il
+materiale è trattato come elastico lineare. La semplificazione è accettabile
+finché le tensioni nel gambo restano lontane dalla soglia di trasformazione,
+condizione che il calcolo verifica a posteriori.
+
+\paragraph{Carichi.}
+Sul componente agiscono tre azioni, di natura e di origine diversa, e la
+differenza va dichiarata perché una di esse non è un dato.
+
+La forza di serraggio delle ganasce non è nota. Il costruttore della macchina
+non la specifica, la scelta fra morsa a cuneo e mandrino a pinza non è ancora
+stata compiuta, e in nessuno dei due casi il valore effettivo verrà misurato in
+esercizio. Un ordine di grandezza plausibile per organi di questa taglia è il
+migliaio di newton, ed è l'ipotesi da cui il lavoro era partito. Assumere quel
+numero e verificarlo, però, produrrebbe un risultato che dipende interamente da
+un'assunzione. Il calcolo è stato quindi impostato in modo diverso: risolto per
+un valore di riferimento, e presentato in forma di \emph{forza di serraggio
+limite}, ossia il valore oltre il quale il componente si snerva. È lo stesso
+criterio adottato al paragrafo~\ref{sec:fem-criterio} per la rigidezza, dove al
+posto di un carico non misurato si dichiara il limite che non deve essere
+superato.
+
+La coppia da trasmettere discende invece dai requisiti di
+prova (tabella~\ref{tab:requisiti}) ed è un dato.
+
+La spinta assiale è assunta pari a 180\,N, portata della tavola di
+posizionamento scelta al paragrafo~\ref{sec:tavola}. Non è la spinta apicale
+reale, che è largamente inferiore, ma il limite superiore che la catena può
+trasmettere: verificare la sede su quel valore significa verificarla
+sull'ipotesi più sfavorevole compatibile con il banco.
+
+\paragraph{Verifica analitica preliminare.}
+Tre delle verifiche non richiedono il calcolo numerico, perché riguardano
+superfici piane e carichi noti in direzione.
+
+Sul piano esterno, la pressione trasmessa dalle ganasce è il rapporto fra la
+forza di serraggio e l'area del piano. Per l'ipotesi di 1000\,N si ottengono
+137,6\,MPa, con un coefficiente di sicurezza di 1,49 rispetto allo snervamento
+del 304.
+
+Sulla sede, la spinta assiale si ripartisce sulla corona di contatto:
+\begin{equation}
+    p = \frac{F}{\pi \left( R^2 - r^2 \right)}
+      = \frac{180}{3{,}05} = 59{,}1 \; \mathrm{MPa} ,
+\end{equation}
+con un coefficiente di sicurezza di 3,47. La sede non è dimensionante.
+
+Sul piano interno, la coppia trasmissibile è il prodotto della forza di
+rifollamento ammissibile per il braccio con cui essa agisce rispetto all'asse:
+\begin{equation}
+    M_{\mathrm{lim}} = \frac{R_{p0,2}}{\nu} \, A \, b .
+\end{equation}
+Il braccio $b$ non è determinato dalla sola geometria, perché dipende da come
+la pressione si distribuisce lungo la corda: vale $c/2$ se la risultante si
+concentra al bordo, $c/6$ se la distribuzione è triangolare a partire dal
+centro. Ne discende un intervallo, da 0,17 a 0,50\,N$\cdot$m, contro una coppia
+di prova di 0,1\,N$\cdot$m. Il margine è quindi compreso fra 1,7 e 5. Si
+adotta l'estremo conservativo.
+
+Una quarta verifica non riguarda il componente ma la sua necessità. Se le
+ganasce afferrassero il gambo nudo, il contatto sarebbe fra due cilindri e la
+pressione massima si otterrebbe dalla teoria di Hertz per contatto lineare:
+\begin{equation}
+    p_{\max} = \sqrt{\frac{F' E^*}{\pi R}} , \qquad
+    \frac{1}{E^*} = \frac{1 - \nu_1^2}{E_1} + \frac{1 - \nu_2^2}{E_2} .
+\end{equation}
+Con una forza di 1000\,N distribuita sulla lunghezza di presa si ottengono
+1817\,MPa, un valore che il gambo non sopporterebbe. È la giustificazione
+quantitativa dell'esistenza del componente.
+
+\paragraph{Il modello di calcolo.}
+Lo studio del clamshell costituisce l'unica eccezione all'impostazione descritta
+al paragrafo~\ref{sec:fem-solidworks}. Là le parti a contatto sono trattate come
+unite, perché collegate da viti precaricate e destinate a non separarsi; qui la
+domanda è proprio quali superfici entrino in contatto e con quale ripartizione
+del carico, e il modello è quindi risolto con contatto non lineare.
+
+Il modello comprende i due semigusci e un tronco di gambo, di lunghezza pari
+alla presa più un margine. Le ganasce non sono modellate: la loro azione entra
+come forza applicata sui piani esterni. Il resto dello strumento è troncato,
+poiché la zona di interesse è locale.
+
+Sono definite quattro interazioni di contatto senza attrito, con formulazione
+superficie a superficie: piano interno, sede, piano di separazione fra i due
+semigusci, e superficie cilindrica. L'ultima non è attesa in contatto, ed è
+introdotta proprio per questo: una forza non nulla su quella coppia segnala che
+il gioco è insufficiente. L'assenza di attrito è coerente con il progetto, in
+cui la coppia è trasmessa per forma, ed è la condizione più sfavorevole.
+
+Il vincolo è applicato alla sola faccia di troncamento del gambo. I due
+semigusci restano liberi e sono trattenuti dal contatto; per evitare i moti
+rigidi che ne conseguono nelle prime iterazioni è attivata la stabilizzazione a
+molle di rigidezza trascurabile.
+
+% DATO MANCANTE: parametri e dimensione della mesh adottata, numero di nodi ed
+% elementi del modello definitivo.
+La discretizzazione segue il criterio del paragrafo~\ref{sec:fem-solidworks},
+con controlli locali sulle superfici di contatto e sui raccordi.
+
+\paragraph{Le modifiche indotte dall'analisi.}
+Il calcolo ha prodotto due correzioni della geometria, entrambe prima della
+messa in fabbricazione.
+
+La prima riguarda il gioco. Nella configurazione iniziale la tensione massima
+cadeva sulla superficie cilindrica dell'alesaggio, dove il progetto non prevede
+contatto. Il bilancio delle forze lo confermava: la somma delle risultanti sulle
+superfici previste non chiudeva l'equilibrio di uno dei due semigusci, e la
+differenza corrispondeva a un carico trasmesso attraverso la superficie
+cilindrica. Il diametro dell'alesaggio è stato aumentato di 0,08\,mm, ottenendo
+un gioco radiale di 0,04\,mm. È il valore minimo che sopravvive alle tolleranze
+di lavorazione dei due pezzi accoppiati.
+
+La seconda riguarda lo spigolo interno della sede. Rimosso il contatto
+cilindrico, la tensione massima si è spostata su quello spigolo, con un valore
+che cresce indefinitamente al raffinarsi della discretizzazione. È il
+comportamento tipico di una singolarità geometrica: uno spigolo vivo non ha una
+tensione finita nel modello elastico, e il valore letto è una proprietà della
+mesh, non del componente. Lo spigolo, del resto, non esiste nemmeno nel pezzo
+reale, dove la lavorazione per asportazione lascia sempre il raggio
+dell'utensile. È stato quindi introdotto un raccordo, verificato compatibile con
+lo spigolo corrispondente del gambo perché i due non si contendano l'angolo.
+
+Nessuna delle due correzioni sarebbe emersa da una verifica analitica, che
+assume la ripartizione del contatto invece di determinarla.
+
+\paragraph{Risultati.}
+% DATO MANCANTE: l'intero paragrafo attende i risultati del calcolo sulla
+% geometria definitiva. Dati da inserire:
+%   - risultante sul piano di separazione, sul piano interno, sulla sede
+%   - risultante sulla superficie cilindrica (attesa nulla)
+%   - tensione di von Mises massima nei semigusci e sua posizione
+%   - tensione di von Mises massima nel gambo
+%   - esito del controllo di convergenza sul raccordo
+La tabella~\ref{tab:clamshell-carico} riporta la ripartizione della forza di
+serraggio fra le superfici di contatto.
+
+\begin{table}[!tb]
+    \centering
+    \caption{Ripartizione della forza di serraggio fra le superfici di
+    contatto, in frazione del valore applicato.}
+    \label{tab:clamshell-carico}
+    \footnotesize
+    \begin{tabularx}{\linewidth}{@{}
+        >{\hsize=1.6\hsize\raggedright\arraybackslash}X r r@{}}
+        \toprule
+        Superficie & Forza (N) & Frazione \\
+        \midrule
+        Piano di separazione & \textbf{[XX]} & \textbf{[XX]} \\
+        Piano interno & \textbf{[XX]} & \textbf{[XX]} \\
+        Sede & \textbf{[XX]} & \textbf{[XX]} \\
+        Superficie cilindrica & \textbf{[XX]} & \textbf{[XX]} \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+La quota che raggiunge il gambo è \textbf{[XX]} della forza applicata: il resto
+è deviato sul piano di separazione, che entra in battuta sotto carico e si
+comporta da fine corsa. Ne discende una proprietà rilevante per l'esercizio: la
+pressione trasmessa al gambo è limitata dalla geometria e non cresce
+indefinitamente con la stretta delle ganasce.
+
+La tensione massima nel gambo vale \textbf{[XX]}\,MPa, contro i 1817\,MPa della
+verifica hertziana condotta in assenza di clamshell. Il componente riduce
+quindi di un fattore \textbf{[XX]} la sollecitazione sul provino.
+
+\paragraph{Esito.}
+% DATO MANCANTE: valore numerico della forza di serraggio limite, ricavato
+% dalla tensione massima converge sul raccordo.
+Il componente resta in campo elastico fino a una forza di serraggio di
+\textbf{[XX]}\,N. Al di sopra di quel valore si snerva, prima del gambo dello
+strumento: è il comportamento voluto, ma comporta due prescrizioni.
+
+La prima è operativa e trova posto nella procedura del
+paragrafo~\ref{sec:assieme-procedura}: la stretta delle ganasce va contenuta
+entro il limite dichiarato.
+
+La seconda riguarda la sostituzione. Il clamshell è un componente di consumo. Va
+sostituito quando la deformazione plastica ne altera la geometria interna,
+perché il braccio con cui la coppia viene scambiata sul piano dipende da quella
+geometria, e una sua variazione modifica la coppia trasmissibile senza darne
+segno.
+
+\paragraph{Geometria definitiva.}
+Il disegno quotato è riportato in figura~\ref{fig:clamshell-disegno}. Tre
+tolleranze non discendono dalla lavorazione ma dalle verifiche appena esposte, e
+vanno lette come requisiti funzionali.
+
+\begin{itemize}
+    \item Il gioco al piano di separazione è quotato con tolleranza, e non al
+    solo valore nominale, perché nella combinazione più sfavorevole le due
+    facce devono comunque impegnare il gambo prima di andare in battuta fra
+    loro.
+    \item Il gioco radiale sull'alesaggio cilindrico è quotato con tolleranza
+    per la ragione opposta: nella combinazione più sfavorevole quella
+    superficie non deve entrare in contatto.
+    \item Il raccordo sullo spigolo interno della sede ha un raggio minimo
+    prescritto, ed è vincolato a restare inferiore al raccordo corrispondente
+    del gambo.
+\end{itemize}
+
+\begin{figure}[htbp]
+    \centering
+    % SEGNAPOSTO figura: disegno quotato del semiguscio.
+    % Sostituire la cornice con:
+    % \includegraphics[width=0.9\linewidth]{images/clamshell/clamshell-disegno.pdf}
+    \fbox{\parbox[c][0.28\textheight][c]{0.88\linewidth}{\centering
+    \textsf{SEGNAPOSTO --- disegno quotato del semiguscio}}}
+    \caption{Disegno quotato del semiguscio.}
+    \label{fig:clamshell-disegno}
+\end{figure}
 
 \section{Sede del blocchetto}
 \label{sec:sede}
-%   3. carichi: coppia di reazione e peso
-%   4. verifica: resistenza e soprattutto rigidezza, perche' ogni cedevolezza
-%      qui si somma direttamente fra provino e cella
-%   ATTENZIONE: il blocchetto inglobato nella resina e' il caso piu' scomodo da
-%   modellare (proprieta' della resina, comportamento dell'incollaggio).
-%   Qualunque semplificazione adottata va dichiarata qui, esplicitamente.
-%   - sostituzione del blocchetto fra una prova e la successiva
+
+% ---------------------------------------------------------------------------
+% BOZZA. I punti marcati [XX] attendono dati non ancora disponibili. Ogni
+% occorrenza e' preceduta da un commento "% DATO MANCANTE".
+%
+% VOCE DI BIBLIOGRAFIA DA AGGIUNGERE a bibliography.bib:
+%
+% @manual{araldite2020,
+%   title        = {Araldite 2020-1 (XW 396-1 / XW 397-1). Technical Data Sheet},
+%   organization = {Huntsman Advanced Materials},
+%   year         = {2025},
+% }
+% ---------------------------------------------------------------------------
+
+La sede è il componente che rende il blocchetto solidale alla catena di misura.
+È l'ultimo elemento progettato prima del provino, e la sua posizione lo rende
+particolare: sta fra il blocchetto e la cella, quindi ogni sua cedevolezza si
+somma per intero a quella letta fra strumento e sensore.
+
+\paragraph{Requisiti.}
+Il capitolo~\ref{cap:specifiche} e la natura del blocchetto assegnano al
+componente tre funzioni.
+
+La prima è trattenere il blocchetto senza deformarlo. La resina epossidica di
+cui è fatto è fragile e relativamente cedevole rispetto al metallo: un serraggio
+concentrato la scheggia.
+
+La seconda è mantenere l'asse del canale allineato all'asse di rotazione. Il
+centraggio fine è affidato alla tavola di posizionamento
+(paragrafo~\ref{sec:tavola}), ma l'orientamento angolare del blocchetto rispetto
+agli assi della cella deve essere ripetibile: da esso dipende la corrispondenza
+fra la direzione della curvatura del canale e i canali $M_x$ e $M_y$ della
+misura.
+
+La terza è consentire la sostituzione del blocchetto fra una prova e la
+successiva. La prova è distruttiva per il canale, quindi il blocchetto è un
+elemento di consumo e il suo ricambio è un'operazione ordinaria, non
+eccezionale.
+
+\paragraph{Le soluzioni scartate.}
+Il componente ha attraversato tre configurazioni prima di quella adottata, e le
+ragioni degli abbandoni sono tutte riconducibili a una sola proprietà del
+blocchetto.
+
+La prima era una morsa a ganasce. È stata abbandonata quando è emerso che le
+facce del blocchetto non sono sufficientemente planari: la pressione di
+serraggio non si distribuisce, si concentra sui punti di contatto, e su un
+materiale fragile questo significa scheggiature.
+
+La seconda era una gabbia in fabbricazione additiva, montata su una base
+metallica e chiusa attorno al blocchetto. Rinunciava alla planarità delle facce
+adattandosi alla forma, ma introduceva un elemento polimerico nel percorso del
+carico, fra il blocchetto e la cella, con la sua cedevolezza e il suo
+scorrimento viscoso.
+
+La terza era una sede autocentrante, con tre grani filettati disposti a
+120$^\circ$ che spingono radialmente sul blocchetto. È stata scartata per una
+ragione geometrica prima che meccanica: un sistema a tre punti equidistanti
+centra un elemento a sezione circolare, mentre il blocchetto è a sezione
+rettangolare. Vi si aggiungevano il contatto puntiforme su materiale fragile e
+la non ripetibilità del serraggio manuale.
+
+\paragraph{Soluzione costruttiva.}
+La soluzione adottata rinuncia al serraggio. Il blocchetto è alloggiato in una
+tasca ricavata a misura della sua sezione e vi è bloccato per annegamento in
+resina.
+
+L'assenza di serraggio risolve alla radice il problema che ha fatto cadere le
+prime due soluzioni: nessuna pressione viene applicata al blocchetto, e la
+resina che indurisce attorno ad esso si adatta alle irregolarità delle facce
+invece di subirle. La forma rettangolare della tasca impone inoltre un'unica
+orientazione di inserimento, e con essa la ripetibilità angolare richiesta dal
+secondo requisito.
+
+Il componente, riportato in figura~\ref{fig:sede-3d}, è un disco di
+$\varnothing$30 e spessore 9\,mm. Le grandezze caratteristiche sono raccolte
+nella tabella~\ref{tab:sede-geometria}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.92\linewidth]{images/sede/sede-fem.png}
+    \caption{Sede del blocchetto, con il campo degli spostamenti sotto il carico
+    di riferimento. La tasca rettangolare impone un'unica orientazione di
+    inserimento; lo scarico circolare di fondo ne libera gli spigoli.}
+    \label{fig:sede-3d}
+\end{figure}
+
+\begin{table}[!tb]
+    \centering
+    \caption{Grandezze geometriche della sede del blocchetto.}
+    \label{tab:sede-geometria}
+    \footnotesize
+    \begin{tabularx}{\linewidth}{@{}
+        >{\hsize=1.5\hsize\raggedright\arraybackslash}X
+        r
+        >{\hsize=1.3\hsize\raggedright\arraybackslash}X@{}}
+        \toprule
+        Grandezza & Valore & Origine \\
+        \midrule
+        Diametro esterno & 30\,mm & Progetto \\
+        Spessore & 9\,mm & Progetto \\
+        Tasca & $10{,}31 \times 10{,}20$\,mm & Sezione del blocchetto \\
+        Profondità della tasca & 6\,mm & Progetto \\
+        Scarico d'angolo & $\varnothing$14,50 $\times$ 1\,mm & Diagonale della tasca \\
+        Sottosquadro di ancoraggio & $\varnothing$15,50\,mm & Progetto \\
+        Spessore di fondo & 2\,mm & Criterio di rigidezza \\
+        Fissaggio alla cella & 6 fori $\varnothing$2,40 H12 & Cella 6A27 \\
+        Lamatura & $\varnothing$4,40 $\times$ 2,40\,mm & Vite M2 TCEI \\
+        Circonferenza dei fori & $\varnothing$20\,mm & Cella 6A27 \\
+        Area di incollaggio & 246\,mm$^2$ & Ricavata \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+Due particolari della tasca meritano di essere spiegati, perché non discendono
+dalla forma del blocchetto.
+
+Lo scarico circolare di fondo, $\varnothing$14,50 per un ulteriore millimetro di
+profondità, ha diametro pari alla diagonale della tasca. Serve a liberarne gli
+spigoli interni dai raccordi che l'utensile di fresatura lascia inevitabilmente
+negli angoli: senza di esso il blocchetto non andrebbe in appoggio pulito contro
+il fondo.
+
+Il sottosquadro $\varnothing$15,50 ha invece una funzione meccanica. Allargando
+la cavità al di sotto dell'apertura, fa sì che la resina indurita formi un
+elemento più largo di ciò che lo sovrasta. La ritenuta assiale del blocchetto
+cessa così di dipendere dalla sola adesione e diventa un vincolo di forma.
+
+\paragraph{Materiali.}
+Alla sede è assegnata la lega di alluminio 7075-T6, con carico unitario di
+snervamento pari a 505\,MPa, ripreso dalla libreria del programma di calcolo.
+La massa del componente è di pochi grammi, e il paragrafo~\ref{sec:fem-limiti}
+mostra che il budget di carico della catena non è in discussione da questo punto
+in poi: la scelta del materiale risponde quindi alla lavorabilità e alla
+rigidezza, non al peso.
+
+Per l'annegamento è previsto l'adesivo epossidico bicomponente Araldite 2020-1.
+La scelta non è indifferente. Gli epossidici strutturali di uso comune hanno
+viscosità dell'ordine delle decine di migliaia di millipascal-secondo e sono
+paste: non colerebbero nell'intercapedine fra blocchetto e parete. Il 2020-1 ha
+viscosità miscelata di 300\,mPa$\cdot$s ed è dichiarato dal costruttore idoneo
+alla colata e all'annegamento di componenti.
+% CITAZIONE: \cite{araldite2020} una volta aggiunta la voce alla bibliografia.
+
+\paragraph{Carichi.}
+I carichi assunti sono le portate della cella, $F_z = 200$\,N e
+$M_z = 1$\,N$\cdot$m. Non sono i carichi di prova, che sono di due ordini di
+grandezza inferiori: sono il limite superiore di ciò che la catena può
+trasmettere, e verificare la sede su quei valori significa verificarla
+sull'ipotesi più sfavorevole compatibile con il banco.
+
+Il modello agli elementi finiti è risolto per un carico di riferimento di
+100\,N. Essendo l'analisi lineare, i risultati si riscalano in proporzione, e
+nel seguito sono riportati sia al valore di riferimento sia alla portata piena.
+
+\paragraph{Verifica dell'incollaggio.}
+È la verifica dimensionante del componente, ed è l'unica dell'intero banco in
+cui il margine non sia ampio.
+
+Entrambi i carichi si trasmettono al metallo per taglio sulle quattro pareti
+della tasca, di area complessiva 246\,mm$^2$. La forza assiale vi produce una
+tensione tangenziale
+\begin{equation}
+    \tau_F = \frac{F_z}{A} = \frac{200}{246} = 0{,}81 \; \mathrm{MPa} ,
+\end{equation}
+mentre il momento, agente su un braccio pari alla semidistanza media fra le
+pareti opposte, ne produce
+\begin{equation}
+    \tau_M = \frac{M_z}{A \, r} = \frac{1000}{246 \cdot 5{,}12}
+    = 0{,}79 \; \mathrm{MPa} .
+\end{equation}
+Sommandole si ottiene 1,61\,MPa. La somma è cautelativa: le due distribuzioni
+non sono parallele su tutte le pareti, e la composizione in quadratura darebbe
+1,14\,MPa.
+
+La scheda tecnica dell'adesivo dichiara, secondo la norma ISO 4587, resistenze
+al taglio per trazione di 18--20\,MPa su alluminio e di 6--8\,MPa su substrati
+polimerici. L'interfaccia debole è quella verso il blocchetto: assumendo il
+valore più basso fra quelli dichiarati si ottiene un coefficiente di sicurezza
+di 3,7, contro l'1,5 richiesto dal paragrafo~\ref{sec:fem-criterio}.
+
+Tre condizioni vanno però dichiarate insieme a quel numero.
+
+I valori della norma sono misurati su un giunto a sovrapposizione, con film
+sottile fra due aderendi rigidi. Il giunto della sede è un getto in una cavità:
+il valore è un riferimento, non un trasferimento diretto.
+
+I valori valgono a superficie preparata. È la ragione per cui il disegno
+prescrive sulle pareti della tasca una rugosità compresa fra Ra 3 e Ra 8, con
+limite inferiore esplicito, e la nota di sgrassaggio prima della colata: la
+finitura richiesta non è una tolleranza di lavorazione, è la preparazione
+superficiale che il dato di catalogo presuppone.
+
+Il blocchetto non è fra i substrati provati. È resina epossidica, e il valore
+adottato è quello del polimero più sfavorevole fra quelli dichiarati. La scelta
+è conservativa, ma resta un'estrapolazione.
+
+Va infine ricordato che il sottosquadro descritto sopra rende questo
+coefficiente meno critico di quanto appaia: l'estrazione del blocchetto è
+impedita per forma, e la verifica di adesione presidia lo scorrimento, non il
+distacco.
+
+\paragraph{Verifica di rigidezza.}
+Il modello, discretizzato in 27\,795 nodi, è caricato secondo lo schema del
+paragrafo~\ref{sec:fem-solidworks},
+con un carico remoto applicato nella posizione in cui lo strumento sollecita il
+blocchetto e distribuito su tutte le facce interne della tasca. La connessione è
+deformabile e non rigida, perché le quattro pareti non sono equivalenti fra loro
+e il carico deve ripartirsi secondo la rigidezza locale di ciascuna.
+
+Lo spostamento massimo risultante, riportato in
+figura~\ref{fig:sede-3d}, vale 0,136\,\textmu m per un carico di 100\,N, ossia
+una cedevolezza di
+\begin{equation}
+    c = 0{,}00136 \; \mathrm{\textmu m/N} ,
+\end{equation}
+corrispondente a 0,27\,\textmu m alla portata piena della cella. Il criterio del
+paragrafo~\ref{sec:fem-criterio} chiede di restare nell'ordine dei pochi
+micrometri: il margine è di un ordine di grandezza.
+
+Il confronto con gli altri componenti chiarisce il ruolo della sede nel bilancio
+complessivo. La piastra di accoppiamento inferiore
+(paragrafo~\ref{sec:piastra-inferiore}) presenta una cedevolezza di
+0,489\,\textmu m/N, oltre trecento volte superiore. La sede non è un contributo
+alla cedevolezza della catena, è un arrotondamento.
+
+La verifica di resistenza, condotta sullo stesso modello, non risulta
+dimensionante. La tensione equivalente di von Mises massima vale 3,73\,MPa al
+carico di riferimento, ossia 7,5\,MPa alla portata piena della cella: contro i
+505\,MPa di snervamento della lega, il coefficiente di sicurezza è di 68. Il
+massimo cade all'interno della tasca, nella zona di applicazione del carico
+remoto, e va quindi letto come un valore di ordine di grandezza più che come una
+tensione locale; con un margine di due ordini di grandezza la distinzione è
+priva di conseguenze.
+
+Sono dunque il criterio di rigidezza e, prima ancora, la verifica
+sull'incollaggio a governare il progetto del componente.
+
+\paragraph{Geometria definitiva.}
+Il disegno quotato è riportato in figura~\ref{fig:sede-disegno}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{images/sede/sede-disegno.png}
+    % Sostituire con l'esportazione PDF del foglio: piu' nitida e scalabile.
+    \caption{Disegno quotato della sede del blocchetto.}
+    \label{fig:sede-disegno}
+\end{figure}
+
+Lo schema di riferimento assume come piano primario la faccia di appoggio contro
+la cella, sulla quale è prescritta una planarità di 0,02\,mm. È la superficie
+che determina l'ortogonalità dell'intero gruppo rispetto all'asse della
+macchina, e da essa dipendono i momenti parassiti che la cella legge senza che
+provengano dalla prova.
+
+Il collegamento alla cella non è affidato alle sei viti. I fori della sede sono
+di passaggio e hanno gioco sul gambo: servono a serrare, non a posizionare. La
+localizzazione è ottenuta per via geometrica, con due elementi che assolvono
+funzioni distinte.
+
+% DATO MANCANTE: riportare il diametro del riscontro leggendolo sul disegno
+% quotato del datasheet della cella (p. 3): la cella dichiara sia un Ø23 con
+% tolleranza 0/-0,025 sia un Ø17 con +0,10/+0,05. Va stabilito quale dei due
+% appartiene alla faccia su cui si monta la sede, e la sede deve accoppiarvisi.
+Il primo è il riscontro cilindrico $\varnothing$[XX], che impegna il
+corrispondente diametro della cella e ne fissa la posizione nel piano. Il
+secondo è una spina cilindrica $\varnothing$2, alloggiata in un foro sulla
+faccia di appoggio, che impedisce la rotazione residua attorno all'asse del
+riscontro.
+
+L'accoppiamento della spina va ripartito fra i due pezzi, e la ripartizione non
+è simmetrica. La cella dichiara sul proprio foro una tolleranza E7, dunque con
+gioco: è il lato che deve poter essere smontato. L'interferenza deve stare
+sull'altro lato, cioè sul foro della sede, altrimenti la spina resta libera in
+entrambe le sedi e non localizza nulla.
+% DA CORREGGERE A DISEGNO: il foro spina della sede riporta oggi la stessa
+% tolleranza E7 della cella. Va sostituita con un accoppiamento di transizione,
+% Ø2 H7, che con una spina m6 dà il classico montaggio a leggera forzatura.
+
+Lo schema di riferimento discende da questa architettura. Il riferimento
+primario è la faccia di appoggio contro la cella. Il secondario è l'asse del
+riscontro, che blocca la traslazione nel piano. Il terziario è l'asse del foro
+della spina, che blocca la rotazione. I sei fori di passaggio sono posizionati
+rispetto a questa terna e non ne fanno parte: fondare la localizzazione su
+elementi che hanno gioco sulla vite significherebbe dichiarare una precisione
+che il collegamento non possiede.
+
+Le tolleranze della tasca discendono dalle verifiche esposte. La larghezza è
+quotata con tolleranza unilaterale positiva, così che nella combinazione più
+sfavorevole resti sempre un gioco e mai un'interferenza: forzare un blocchetto
+in resina in una cavità sottodimensionata significa scheggiarlo al montaggio. Il
+parallelismo fra pareti opposte e la loro perpendicolarità al fondo, entrambi a
+0,05\,mm, garantiscono che il blocchetto si appoggi verticale e non inclinato.
+
+% DA DICHIARARE, lavorabilita' dei sottosquadri: Ø14,50 e Ø15,50 sporgono oltre
+% le pareti della tasca e non sono ottenibili con fresa a candela. Serve utensile
+% da sottosquadro, oppure lo scarico d'angolo va sostituito da quattro scarichi
+% circolari ai soli spigoli.
 
 \section{Piastra di accoppiamento inferiore}
 \label{sec:piastra-inferiore}

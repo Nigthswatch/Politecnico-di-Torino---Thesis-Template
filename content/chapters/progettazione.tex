@@ -1210,7 +1210,7 @@ Lo spostamento massimo risultante, riportato in
 figura~\ref{fig:sede-3d}, vale 0,136\,\textmu m per un carico di 100\,N, ossia
 una cedevolezza di
 \begin{equation}
-    c = 0{,}00136 \; \mathrm{\textmu m/N} ,
+    c = 0{,}00136 \; \text{\textmu m/N} ,
 \end{equation}
 corrispondente a 0,27\,\textmu m alla portata piena della cella. Il criterio del
 paragrafo~\ref{sec:fem-criterio} chiede di restare nell'ordine dei pochi
@@ -1292,51 +1292,211 @@ fresa a T o a disco.
 
 \section{Piastra di accoppiamento inferiore}
 \label{sec:piastra-inferiore}
-%   1. interfacce: sei fori M2 e spina di centraggio sul lato cella,
-%      dima della tavola sul lato opposto
-%      requisiti dominanti: parallelismo, eccentricita' contenuta
-%   4. verifica: rigidezza flessionale -- una piastra che si inflette carica la
-%      cella con momenti che non vengono dalla prova
-%   5. le tolleranze importanti vanno giustificate, non solo disegnate:
-%      il parallelismo viene dal requisito sui momenti parassiti, la sede
-%      della spina dall'accoppiamento imposto dalla cella.
-%      Non stringere cio' che nessuno ha chiesto.
-%
-%   STIMA ANALITICA DI CONFRONTO -- e' questo il componente scelto per il
-%   confronto con il calcolo numerico: la rigidezza e' il suo requisito critico
-%   e la freccia dipende dal cubo dello spessore, quindi anche una stima
-%   grossolana ne coglie la sensibilita' dominante.
-%
-%   Geometria: piastra quadrata di lato a, quattro fori d'angolo verso la
-%   tavola, circonferenza di sei fori al centro per la cella.
-%   Percorso del carico: centro -> quattro angoli.
-%
-%   Schema principale, mensola d'angolo -- e' il piu' vicino al percorso reale
-%   del carico, perche' il corpo della cella irrigidisce il centro come un
-%   disco rigido:
-%     braccio dal bordo del disco centrale al foro d'angolo, lunghezza l
-%     reazione alla punta R = F/4
-%     freccia   d = R l^3 / (3 E I)        con I = b t^3 / 12
-%     momento   M = R l
-%
-%   Schema alternativo, trave diagonale -- luce L = a*sqrt(2) fra due angoli
-%   opposti, meta' del carico per ciascuna diagonale:
-%     estremi appoggiati   d = F L^3 / (96 E I)     M = F L / 8
-%     estremi incastrati   d = F L^3 / (384 E I)    M = F L / 16
-%
-%   Calcolare i due estremi e presentare un INTERVALLO, non un numero singolo:
-%   il valore agli elementi finiti deve cadere dentro. Il vincolo reale, quattro
-%   viti agli angoli, sta fra appoggio e incastro.
-%
-%   ASSUNZIONE DA DICHIARARE: la larghezza efficace b della striscia.
-%   LIMITE DA DICHIARARE: la piastra porta il carico in due direzioni mentre la
-%   striscia in una sola, e c'e' l'effetto Poisson (E -> E/(1-nu^2), circa il
-%   10 per cento). Entrambe le schematizzazioni SOVRASTIMANO quindi la freccia:
-%   distorsione nota e nella direzione della sicurezza.
-%
-%   NB la formula chiusa della lastra quadrata su quattro appoggi d'angolo non
-%   sta in Santi-Cesari: il metodo di Navier (par. 30.1.2) vale per bordi
-%   appoggiati, non per appoggi puntuali. Se serve, sta sui manuali tipo Roark.
+
+La piastra inferiore collega il piano mobile della tavola di posizionamento al
+lato fisso della cella di carico. È l'ultimo componente prima della catena di
+misura, e la sua flessione manda alla cella momenti che non provengono dalla
+prova.
+
+\paragraph{Requisiti.}
+Il componente deve soddisfare tre interfacce distinte e un criterio di
+prestazione.
+
+\begin{description}
+  \item[Verso la tavola.] Fissaggio sulla griglia di fori filettati del piano
+    mobile, con quattro viti M4 su interasse $50 \times 50$\,mm.
+  \item[Verso la cella.] Sei viti M2 sulla circonferenza $\varnothing$20
+    prescritta dal costruttore, più il riscontro e la spina che ne definiscono
+    la posizione.
+  \item[Orientamento.] La piastra fissa la relazione angolare fra gli assi della
+    tavola e gli assi $M_x$ e $M_y$ della cella. Da essa dipende la
+    corrispondenza fra la direzione in cui si sposta il blocchetto e la
+    direzione in cui il momento viene letto.
+  \item[Rigidezza.] Lo spostamento sotto carico deve restare nell'ordine dei
+    pochi micrometri richiesti dal paragrafo~\ref{sec:fem-criterio}.
+\end{description}
+
+\paragraph{Soluzione costruttiva.}
+La piastra è un quadrato di lato 65\,mm e spessore 4\,mm, in lega di alluminio
+7075-T6. Le grandezze sono raccolte nella
+tabella~\ref{tab:piastra-inf-geometria}.
+
+\begin{table}[!tb]
+    \centering
+    \caption{Grandezze geometriche della piastra di accoppiamento inferiore.}
+    \label{tab:piastra-inf-geometria}
+    \footnotesize
+    \begin{tabularx}{\linewidth}{@{}
+        >{\hsize=1.5\hsize\raggedright\arraybackslash}X
+        r
+        >{\hsize=1.3\hsize\raggedright\arraybackslash}X@{}}
+        \toprule
+        Grandezza & Valore & Origine \\
+        \midrule
+        Lato & 65\,mm & Progetto \\
+        Spessore & 4\,mm & Progetto \\
+        Riscontro di centraggio & $\varnothing$23 H7 $\times$ 1,50\,mm & Cella 6A27 \\
+        Foro della spina & $\varnothing$2 H7, passante & Cella 6A27 \\
+        Fissaggio alla cella & 6 fori $\varnothing$2,40 H12 su $\varnothing$20 & Cella 6A27 \\
+        Svasatura & $\varnothing$5,40 $\times$ 90$^\circ$ & Progetto \\
+        Fissaggio alla tavola & 4 fori $\varnothing$4,50 H12 & Tavola XYCRS120 \\
+        Interasse & $50 \times 50$\,mm & Tavola XYCRS120 \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+Il centraggio sulla cella segue lo stesso principio adottato per la sede
+(paragrafo~\ref{sec:sede}): il riscontro cilindrico fissa la posizione nel
+piano, la spina impedisce la rotazione residua, le viti serrano e basta. La
+spina è passante, così da poter essere estratta dal retro, e la sua sporgenza è
+quotata perché senza battuta non avrebbe altra posizione definita.
+
+Le viti verso la cella sono a testa svasata e la svasatura è più profonda di
+quanto la testa richieda. Non è un errore: le teste si affacciano sul lato
+tavola, e se restassero a filo la piastra appoggerebbe sul piano di riferimento
+anche attraverso di esse. Basta una testa leggermente sporgente perché il
+contatto diventi instabile.
+
+\paragraph{Vincoli e carichi.}
+Il modello di calcolo comprende la sola piastra. I carichi sono le portate della
+cella, $F_z = 200$\,N e $M_z = 1$\,N$\cdot$m, applicati con un carico remoto
+distribuito sul fondo del riscontro e sulle sei pareti dei fori M2: l'assiale
+passa per l'appoggio, la coppia per le viti.
+
+Il vincolo merita una precisazione, perché la piastra ha due comportamenti
+diversi secondo il verso del carico.
+
+Quando la forza assiale preme la piastra contro la tavola, il piano di appoggio
+porta per intero e la flessione è impedita. Quando invece la catena tira ---
+sotto il peso di quanto pende dalla cella, o per attrito durante l'estrazione
+dello strumento --- il contatto di faccia non trasmette nulla e la piastra resta
+appesa alle sole quattro viti.
+
+% DA CONFERMARE: il valore del modulo elastico, letto sulla scheda materiale
+% del programma. Lo snervamento, 505 MPa, e' confermato dalla legenda del
+% grafico delle tensioni.
+È il secondo il caso dimensionante, ed è quello adottato: il vincolo di
+geometria fissa è applicato alle superfici cilindriche dei quattro fori
+$\varnothing$4,50. Il calcolo assume per la lega un modulo elastico di
+71,7\,GPa e un carico unitario di snervamento di 505\,MPa.
+
+\paragraph{Stima analitica di confronto.}
+La piastra è il componente scelto per il confronto fra calcolo numerico e stima
+in forma chiusa. La ragione è che il suo requisito critico è la rigidezza, e la
+freccia dipende dal cubo dello spessore: anche una schematizzazione grossolana
+ne coglie la sensibilità dominante.
+
+Si adottano due schemi. Il primo tratta il percorso del carico dal centro verso
+i quattro angoli come una mensola incastrata al foro di fissaggio, di braccio
+pari alla distanza fra il bordo del riscontro e l'asse del foro:
+\begin{equation}
+    \delta = \frac{R \, l^3}{3 E I} , \qquad
+    R = \frac{F}{4} , \qquad
+    I = \frac{b \, t^3}{12} .
+\end{equation}
+Il secondo tratta la piastra come una trave sulla diagonale fra due fori
+opposti, con metà del carico per ciascuna diagonale, e fornisce due valori
+secondo che gli estremi si considerino appoggiati o incastrati.
+
+Entrambi gli schemi richiedono un'assunzione che la geometria non fornisce: la
+larghezza efficace $b$ della striscia che porta il carico. Se ne dichiara il
+valore adottato, e si osserva che il risultato vi è proporzionale.
+
+Si assume $b$ pari a metà del lato, 30\,mm: con il carico al centro e quattro
+reazioni agli angoli, ciascun quadrante della piastra serve un solo foro, e la
+sua larghezza media è dell'ordine della metà del lato.
+
+Ne discende un intervallo, non un numero. Con carico concentrato al centro e
+$F = 200$\,N:
+
+\begin{center}
+\footnotesize
+\begin{tabular}{@{}lr@{}}
+    \toprule
+    Schema & Freccia \\
+    \midrule
+    Mensola d'angolo & 19,7\,\textmu m \\
+    Trave diagonale, estremi incastrati & 16,1\,\textmu m \\
+    Trave diagonale, estremi appoggiati & 64,2\,\textmu m \\
+    \bottomrule
+\end{tabular}
+\end{center}
+
+Le due schematizzazioni condividono lo stesso limite, e va dichiarato: la
+piastra porta il carico in due direzioni mentre la striscia in una sola, e
+manca l'effetto Poisson. Entrambe sovrastimano quindi la freccia. È una
+distorsione nota e va nella direzione della sicurezza.
+
+\paragraph{Risultati.}
+Il modello è discretizzato in 35\,229 nodi e 143\,060 elementi. Il campo delle
+tensioni è riportato in figura~\ref{fig:piastra-inf-fem}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.92\linewidth]{images/piastra-inferiore/piastra-inferiore-fem.png}
+    \caption{Piastra di accoppiamento inferiore: tensione equivalente di von
+    Mises sotto i carichi di riferimento. I picchi si concentrano attorno ai sei
+    fori di fissaggio alla cella, dove il carico entra nel componente.}
+    \label{fig:piastra-inf-fem}
+\end{figure}
+
+Il calcolo è stato condotto in due configurazioni di carico, che rispondono a
+due domande diverse.
+
+Con il carico concentrato al centro, cioè nella stessa ipotesi delle stime in
+forma chiusa, la freccia vale 2,78\,\textmu m. Il valore sta circa sei volte
+sotto il minimo dell'intervallo analitico, sempre dallo stesso lato. Il segno è
+quello atteso, e la sua entità misura quanto pesa il limite dichiarato sopra:
+riprodurre il risultato numerico con lo schema a mensola richiederebbe una
+striscia larga oltre 200\,mm, cioè più del triplo del lato della piastra. È il
+modo quantitativo di dire che il carico non viaggia lungo una striscia ma si
+distribuisce sull'intera lastra. Il confronto serve dunque a confermare
+l'ordine di grandezza e il verso della distorsione, non a riprodurre il valore.
+
+Con il carico ripartito sul riscontro come lo trasmette la cella, cioè nella
+configurazione reale, la freccia scende a 0,451\,\textmu m. Il rapporto fra le
+due è 6,2, e mostra che il limite principale delle stime in forma chiusa non è
+la schematizzazione a striscia ma l'ipotesi di carico concentrato: il riscontro
+$\varnothing$23 copre quasi metà della luce.
+
+Il secondo valore è quello di progetto. Ne discende una cedevolezza di
+\begin{equation}
+    c = 0{,}00226 \; \text{\textmu m/N} ,
+\end{equation}
+alla quale corrisponde una forza di 2200\,N per raggiungere i cinque micrometri
+assunti come limite. La rigidezza non è dunque vincolante, e lo spessore di
+4\,mm è ampiamente sufficiente.
+
+La tensione equivalente massima vale 12,6\,MPa, con un coefficiente di sicurezza
+di 40 rispetto allo snervamento della lega. Il picco cade attorno ai fori M2,
+dove il carico remoto entra nel componente, ed è quindi un valore di
+introduzione del carico più che una tensione di esercizio. Con due ordini di
+grandezza di margine la distinzione non ha conseguenze: la resistenza non è
+dimensionante.
+
+\paragraph{Geometria definitiva.}
+Il disegno quotato è riportato in figura~\ref{fig:piastra-inf-disegno}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{images/piastra-inferiore/piastra-inferiore-disegno.pdf}
+    \caption{Disegno quotato della piastra di accoppiamento inferiore.}
+    \label{fig:piastra-inf-disegno}
+\end{figure}
+
+Lo schema di riferimento poggia sugli elementi che localizzano davvero il pezzo.
+Il riferimento primario è la faccia di appoggio, con planarità 0,02\,mm. Il
+secondario è l'asse del riscontro $\varnothing$23, che blocca la traslazione nel
+piano. Il terziario è l'asse del foro della spina, che blocca la rotazione. I
+fori di fissaggio, verso la cella e verso la tavola, sono posizionati rispetto a
+questa terna e non ne fanno parte: hanno gioco sul gambo della vite e non
+definiscono dove il pezzo si siede.
+
+Le tolleranze dimensionali seguono la stessa logica. Il riscontro è H7 perché
+accoppia il diametro corrispondente della cella; il foro della spina è H7 perché
+l'interferenza deve stare su questo lato, dato che la cella dichiara sul proprio
+foro un accoppiamento con gioco; i fori di passaggio sono H12, che è quanto
+basta a lasciar passare una vite.
 
 \section{Piastra di accoppiamento superiore}
 \label{sec:piastra-superiore}

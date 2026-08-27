@@ -1029,18 +1029,6 @@ lette come requisiti funzionali.
 \section{Sede del blocchetto}
 \label{sec:sede}
 
-% ---------------------------------------------------------------------------
-% BOZZA. I punti marcati [XX] attendono dati non ancora disponibili. Ogni
-% occorrenza e' preceduta da un commento "% DATO MANCANTE".
-%
-% VOCE DI BIBLIOGRAFIA DA AGGIUNGERE a bibliography.bib:
-%
-% @manual{araldite2020,
-%   title        = {Araldite 2020-1 (XW 396-1 / XW 397-1). Technical Data Sheet},
-%   organization = {Huntsman Advanced Materials},
-%   year         = {2025},
-% }
-% ---------------------------------------------------------------------------
 
 La sede è il componente che rende il blocchetto solidale alla catena di misura.
 È l'ultimo elemento progettato prima del provino, e la sua posizione lo rende
@@ -1051,7 +1039,7 @@ somma per intero a quella letta fra strumento e sensore.
 Il capitolo~\ref{cap:specifiche} e la natura del blocchetto assegnano al
 componente tre funzioni.
 
-La prima è trattenere il blocchetto senza deformarlo. 
+La prima è trattenere il blocchetto senza deformarlo.
 
 La seconda è mantenere l'asse del canale allineato all'asse di rotazione. Il
 centraggio fine è affidato alla tavola di posizionamento
@@ -1064,7 +1052,7 @@ La terza è consentire la sostituzione del blocchetto fra una prova e la
 successiva. La prova è distruttiva per il canale, quindi cambiare il blocchetto è un'operazione ordinaria, non eccezionale.
 
 \paragraph{Le soluzioni scartate.}
-Il componente ha attraversato tre configurazioni prima di quella adottata, e le
+Il componente ha attraversato due configurazioni prima di quella adottata, e le
 ragioni degli abbandoni sono tutte riconducibili a una sola proprietà del
 blocchetto.
 
@@ -1124,6 +1112,8 @@ nella tabella~\ref{tab:sede-geometria}.
         Scarico d'angolo & $\varnothing$14,50 $\times$ 1\,mm & Diagonale della tasca \\
         Sottosquadro di ancoraggio & $\varnothing$15,50\,mm & Progetto \\
         Spessore di fondo & 2\,mm & Criterio di rigidezza \\
+        Riscontro di centraggio & $\varnothing$23 H7 $\times$ 1\,mm & Cella 6A27 \\
+        Foro della spina & $\varnothing$2 H7 $\times$ 4\,mm & Cella 6A27 \\
         Fissaggio alla cella & 6 fori $\varnothing$2,40 H12 & Cella 6A27 \\
         Lamatura & $\varnothing$4,40 $\times$ 2,40\,mm & Vite M2 TCEI \\
         Circonferenza dei fori & $\varnothing$20\,mm & Cella 6A27 \\
@@ -1132,7 +1122,7 @@ nella tabella~\ref{tab:sede-geometria}.
     \end{tabularx}
 \end{table}
 
-un particolare della tasca merita di essere spiegato, perché non disce
+Un particolare della tasca merita di essere spiegato, perché non discende
 dalla forma del blocchetto.
 
 Il sottosquadro $\varnothing$15,50 ha invece una funzione meccanica. Allargando
@@ -1148,8 +1138,7 @@ La scelta non è indifferente. Gli epossidici strutturali di uso comune hanno
 viscosità dell'ordine delle decine di migliaia di millipascal-secondo e sono
 paste: non colerebbero nell'intercapedine fra blocchetto e parete. Il 2020-1 ha
 viscosità miscelata di 300\,mPa$\cdot$s ed è dichiarato dal costruttore idoneo
-alla colata e all'annegamento di componenti.
-% CITAZIONE: \cite{araldite2020} una volta aggiunta la voce alla bibliografia.
+alla colata e all'annegamento di componenti \cite{araldite2020}.
 
 \paragraph{Carichi.}
 I carichi assunti sono le portate della cella, $F_z = 200$\,N e
@@ -1250,8 +1239,7 @@ Il disegno quotato è riportato in figura~\ref{fig:sede-disegno}.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=\linewidth]{images/sede/sede-disegno.png}
-    % Sostituire con l'esportazione PDF del foglio: piu' nitida e scalabile.
+    \includegraphics[width=\linewidth]{images/sede/sede-disegno.pdf}
     \caption{Disegno quotato della sede del blocchetto.}
     \label{fig:sede-disegno}
 \end{figure}
@@ -1267,11 +1255,8 @@ di passaggio e hanno gioco sul gambo: servono a serrare, non a posizionare. La
 localizzazione è ottenuta per via geometrica, con due elementi che assolvono
 funzioni distinte.
 
-% DATO MANCANTE: riportare il diametro del riscontro leggendolo sul disegno
-% quotato del datasheet della cella (p. 3): la cella dichiara sia un Ø23 con
-% tolleranza 0/-0,025 sia un Ø17 con +0,10/+0,05. Va stabilito quale dei due
-% appartiene alla faccia su cui si monta la sede, e la sede deve accoppiarvisi.
-Il primo è il riscontro cilindrico $\varnothing$[XX], che impegna il
+Il primo è il riscontro cilindrico $\varnothing$23 H7, profondo 1\,mm, che
+accoglie il
 corrispondente diametro della cella e ne fissa la posizione nel piano. Il
 secondo è una spina cilindrica $\varnothing$2, alloggiata in un foro sulla
 faccia di appoggio, che impedisce la rotazione residua attorno all'asse del
@@ -1282,9 +1267,6 @@ L'accoppiamento della spina va ripartito fra i due pezzi, e la ripartizione non
 gioco: è il lato che deve poter essere smontato. L'interferenza deve stare
 sull'altro lato, cioè sul foro della sede, altrimenti la spina resta libera in
 entrambe le sedi e non localizza nulla.
-% DA CORREGGERE A DISEGNO: il foro spina della sede riporta oggi la stessa
-% tolleranza E7 della cella. Va sostituita con un accoppiamento di transizione,
-% Ø2 H7, che con una spina m6 dà il classico montaggio a leggera forzatura.
 
 Lo schema di riferimento discende da questa architettura. Il riferimento
 primario è la faccia di appoggio contro la cella. Il secondario è l'asse del
@@ -1301,10 +1283,12 @@ in resina in una cavità sottodimensionata significa scheggiarlo al montaggio. I
 parallelismo fra pareti opposte e la loro perpendicolarità al fondo, entrambi a
 0,05\,mm, garantiscono che il blocchetto si appoggi verticale e non inclinato.
 
-% DA DICHIARARE, lavorabilita' dei sottosquadri: Ø14,50 e Ø15,50 sporgono oltre
-% le pareti della tasca e non sono ottenibili con fresa a candela. Serve utensile
-% da sottosquadro, oppure lo scarico d'angolo va sostituito da quattro scarichi
-% circolari ai soli spigoli.
+Una nota di fabbricazione accompagna il disegno. Lo scarico $\varnothing$14,50 e
+il sottosquadro $\varnothing$15,50 sono entrambi più larghi delle pareti della
+tasca che li sovrasta: una fresa a candela non li raggiunge, perché il codolo
+urta contro la parete superiore. La lavorazione richiede un utensile dedicato,
+fresa a T o a disco.
+
 
 \section{Piastra di accoppiamento inferiore}
 \label{sec:piastra-inferiore}

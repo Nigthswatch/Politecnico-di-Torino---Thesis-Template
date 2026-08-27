@@ -1443,8 +1443,162 @@ basta a lasciar passare una vite.
 
 \section{Piastra di accoppiamento superiore}
 \label{sec:piastra-superiore}
-%   1. interfacce: tavola da un lato, mandrino della traversa dall'altro
-%   4. verifica: rigidezza
+
+La piastra superiore sospende la tavola di posizionamento al mandrino della
+traversa superiore. È il primo componente della catena a partire dalla macchina,
+e da esso pende tutto il resto del gruppo.
+
+\paragraph{Requisiti.}
+Il componente ha due interfacce e un vincolo che non discende da nessuna delle
+due.
+
+\begin{description}
+  \item[Verso il mandrino.] Un codolo cilindrico afferrato dalle ganasce della
+    traversa superiore. Il diametro deve cadere nel campo del set di ganasce
+    disponibile, la lunghezza deve garantire l'impegno richiesto dal
+    costruttore.
+  \item[Verso la tavola.] Il pattern di fissaggio della base della
+    XYCRS120: quattro fori su interasse $100 \times 100$\,mm
+    (paragrafo~\ref{sec:tavola}). La dima è imposta e non c'è margine.
+  \item[Rigidezza.] La piastra è interposta fra un afferraggio puntiforme e una
+    tavola di precisione. Ogni svergolamento sotto carico si traduce in un
+    errore di planarità all'interfaccia, che la tavola non è in grado di
+    assorbire: il costruttore dichiara un parallelismo di montaggio di
+    120\,\textmu m e non prevede recuperi.
+\end{description}
+
+\paragraph{Soluzione costruttiva.}
+La piastra è un quadrato di lato 120\,mm e spessore 5\,mm, con un codolo
+cilindrico $\varnothing$8 e lungo 12\,mm, ricavato al centro della faccia
+opposta a quella di appoggio. È quotata nel disegno di
+figura~\ref{fig:piastra-sup-disegno}.
+
+Il materiale è acciaio C45, e la scelta si discosta da quella adottata per la
+piastra inferiore. La ragione è la posizione nella catena: questa piastra sta
+\emph{sopra} la tavola, quindi la sua massa non grava sul limite di carico di
+180\,N della tavola stessa né sulla cella. Il peso smette perciò di essere un
+criterio, e l'acciaio porta due vantaggi. È più rigido a parità di spessore. E
+soprattutto resiste al morso delle ganasce temprate, che su una superficie in
+alluminio lascerebbero ammaccature a ogni serraggio, con perdita di ripetibilità
+del posizionamento.
+
+\paragraph{La lunghezza del codolo.}
+Il codolo è lungo 12\,mm, ed è la quota su cui si concentra il compromesso del
+componente.
+
+La resistenza statica non è in discussione e resterebbe ampiamente verificata
+anche allungandolo. Ma il codolo lavora a sbalzo e sostiene l'intero gruppo, di
+cui la sola tavola pesa 1,91\,kg. La rigidezza laterale di una mensola è
+inversamente proporzionale al cubo della lunghezza, quindi la frequenza propria
+dell'insieme scende con la potenza $3/2$:
+\begin{equation}
+    f \propto L^{-3/2} .
+\end{equation}
+% DATO MANCANTE: confermare la stima di frequenza propria, ripresa dalla
+% relazione di tirocinio. Se possibile sostituirla con il risultato di
+% un'analisi modale sull'assieme piastra + tavola.
+Le stime disponibili danno alcune centinaia di hertz con un codolo di
+12\,mm, contro i 5,8\,Hz della massima velocità di rotazione della macchina.
+Portando il codolo a 50\,mm la frequenza scenderebbe sotto i 50\,Hz, e a
+100\,mm sotto i 20.
+
+Il criterio si inverte quindi rispetto all'intuizione: conviene tenere il codolo
+il più corto possibile, dimensionato sulla reale lunghezza di afferraggio della
+ganascia e non oltre.
+
+% PUNTO APERTO: il costruttore non dichiara, per il set di ganasce cilindriche
+% in dotazione, la lunghezza minima di impegno. Il valore di 12 mm e' quindi
+% assunto e va verificato alla consegna della macchina.
+Resta un punto aperto. Il costruttore non dichiara, per il set di ganasce
+cilindriche in dotazione, la lunghezza minima di impegno raccomandata. I 12\,mm
+sono perciò un valore assunto, e vanno confermati alla consegna della macchina:
+se l'impegno richiesto fosse maggiore, il codolo andrebbe allungato e la
+verifica dinamica rifatta.
+
+\paragraph{Carichi.}
+I carichi che attraversano la piastra non sono quelli della macchina ma quelli
+ammessi dalla tavola, che è l'elemento più debole della catena: 180\,N di carico
+normale e momenti di 57,2 e 44,7\,N$\cdot$m
+(paragrafo~\ref{sec:tavola}). Verificare la piastra su valori superiori non
+avrebbe significato, perché la tavola cederebbe prima.
+
+Sul lato tavola il collegamento è affidato a quattro viti M4 disposte su
+interasse $100 \times 100$\,mm. Con un braccio di quella entità anche un momento
+di alcuni newton-metro si ripartisce in poche decine di newton per vite, valore
+del tutto compatibile con la classe di resistenza.
+
+\paragraph{Verifica.}
+Il modello comprende la sola piastra. Il vincolo di geometria fissa è applicato
+alla superficie cilindrica del codolo, che rappresenta le ganasce; il carico
+entra dalle quattro superfici cilindriche dei fori di fissaggio, perché è da
+esse che la tavola pende. È il rovescio dello schema adottato per la piastra
+inferiore, e ne discende un comportamento diverso: qui l'appoggio è un cilindro
+di 8\,mm al centro e il carico agisce a 70\,mm da esso.
+
+Il modello è discretizzato in 515\,527 nodi e 345\,579 elementi. Al materiale
+sono assegnati un modulo elastico di 190\,GPa e un coefficiente di Poisson di
+0,28, letti sulla scheda del programma.
+
+Lo spostamento massimo vale 17,2\,\textmu m e cade sugli angoli della piastra,
+che sporgono oltre i fori di fissaggio. Il minimo si legge alla radice del
+codolo ed è di fatto nullo, quindi quel valore misura direttamente lo
+svergolamento della faccia di appoggio. Il costruttore della tavola dichiara un
+parallelismo di montaggio di 120\,\textmu m: il margine è di sette volte.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.92\linewidth]{images/piastra-superiore/piastra-superiore-fem.png}
+    \caption{Piastra di accoppiamento superiore: campo degli spostamenti sotto
+    il carico di riferimento. La deformata è assialsimmetrica: la piastra si
+    imbutisce attorno al codolo senza inclinarsi.}
+    \label{fig:piastra-sup-fem}
+\end{figure}
+
+
+Ne discende una cedevolezza di
+\begin{equation}
+    c = 0{,}0957 \; \text{\textmu m/N} ,
+\end{equation}
+oltre quaranta volte superiore a quella della piastra inferiore. La piastra
+superiore è dunque l'elemento più cedevole della catena, ed è la conseguenza
+diretta della sua architettura: un appoggio piccolo al centro e il carico alla
+periferia.
+
+Questo non compromette il centraggio. Il carico è assiale e la coppia agisce
+attorno allo stesso asse, quindi la deformata è assialsimmetrica, come mostra
+la figura~\ref{fig:piastra-sup-fem}: la piastra si imbutisce senza inclinarsi, e l'asse del gruppo sospeso resta dove era. Lo
+spostamento si somma alla cedevolezza assiale della catena, non a quella
+trasversale che governa il centraggio del blocchetto.
+
+La tensione equivalente massima vale 70\,MPa e cade sul raccordo alla base del
+codolo, come atteso: è la sezione in cui si concentra la flessione dello
+sbalzo. Rispetto ai 410\,MPa di snervamento del C45 il coefficiente di
+sicurezza vale 5,9. Il raccordo R1 è quindi una quota funzionale a tutti gli
+effetti, e la sua presenza a disegno non è un dettaglio di lavorazione.
+
+\paragraph{Geometria definitiva.}
+Il disegno quotato è riportato in figura~\ref{fig:piastra-sup-disegno}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{images/piastra-superiore/piastra-superiore-disegno.pdf}
+    \caption{Disegno quotato della piastra di accoppiamento superiore.}
+    \label{fig:piastra-sup-disegno}
+\end{figure}
+
+Lo schema di riferimento discende dalla funzione. Il riferimento primario è la
+faccia di appoggio contro la tavola, con planarità 0,02\,mm. Il secondario è
+l'asse del codolo, al quale è prescritta una perpendicolarità di 0,02\,mm
+rispetto alla faccia: è la tolleranza più importante del pezzo, perché un
+disallineamento del codolo rispetto al piano di appoggio inclina l'intero gruppo
+sospeso e genera sulla cella momenti che non provengono dalla prova. Il
+terziario è il pattern dei quattro fori di fissaggio.
+
+Due prescrizioni completano il disegno. La superficie del codolo e la faccia di
+appoggio portano entrambe una rugosità Ra 1,6, le sole superfici funzionali del
+componente. E alla base del codolo è prescritto un raccordo R1: è una quota
+funzionale, non un dettaglio di lavorazione, perché è lì che si concentrano le
+tensioni di flessione dello sbalzo.
 
 \section{Assieme e procedura di prova}
 \label{sec:assieme-procedura}

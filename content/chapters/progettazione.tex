@@ -1079,42 +1079,55 @@ materiale fragile questo significa scheggiature.
 La seconda era una sede autocentrante, con tre grani filettati disposti a
 120$^\circ$ che spingono radialmente sul blocchetto. È stata scartata per una
 ragione geometrica prima che meccanica: un sistema a tre punti equidistanti
-centra un elemento a sezione circolare, mentre il blocchetto è a sezione
-rettangolare. Vi si aggiungevano il contatto puntiforme su materiale fragile e
+centra un elemento a sezione circolare, mentre il blocchetto ha sezione
+quadrata. Vi si aggiungevano il contatto puntiforme su materiale fragile e
 la non ripetibilità del serraggio manuale.
 
 \paragraph{Soluzione costruttiva.}
 La soluzione adottata rinuncia al serraggio. Il blocchetto è alloggiato in una
-tasca ricavata a misura della sua sezione e vi è bloccato per annegamento in
-resina.
+cavità ricavata sulla sua sezione e vi è bloccato per annegamento in resina.
 
 L'assenza di serraggio risolve alla radice il problema che ha fatto cadere le
 prime due soluzioni: nessuna pressione viene applicata al blocchetto, e la
 resina che indurisce attorno ad esso si adatta alle irregolarità delle facce
-invece di subirle. La forma rettangolare della tasca impone inoltre un'unica
-orientazione di inserimento, e con essa la ripetibilità angolare richiesta dal
-secondo requisito.
+invece di subirle.
 
 Il componente, riportato in figura~\ref{fig:sede-3d}, è un disco di
-$\varnothing$30 e spessore 9\,mm, quotato nel disegno di
-figura~\ref{fig:sede-disegno}.
+$\varnothing$30 e spessore 10\,mm, con la cavità profonda 7\,mm, quotato nel
+disegno di figura~\ref{fig:sede-disegno}.
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.92\linewidth]{images/sede/sede-fem.png}
     \caption{Sede del blocchetto, con il campo degli spostamenti sotto il carico
-    di riferimento. La tasca rettangolare impone un'unica orientazione di
-    inserimento; lo scarico circolare di fondo ne libera gli spigoli.}
+    di riferimento. Il sedile rettangolare sul fondo della cavità blocca la
+    rotazione del blocchetto attorno all'asse; il foro cilindrico che lo
+    sovrasta ne libera gli spigoli e ospita la resina.}
     \label{fig:sede-3d}
 \end{figure}
 
-Un particolare della tasca merita di essere spiegato, perché non discende
+Due particolari della cavità meritano di essere spiegati, perché non discendono
 dalla forma del blocchetto.
 
-Il sottosquadro $\varnothing$15,50 ha invece una funzione meccanica. Allargando
-la cavità al di sotto dell'apertura, fa sì che la resina indurita formi un
-elemento più largo di ciò che lo sovrasta. La ritenuta assiale del blocchetto
-cessa così di dipendere dalla sola adesione e diventa un vincolo di forma.
+Il primo è il sedile rettangolare ricavato sull'ultimo millimetro di profondità,
+$10{,}25 \times 10{,}27$\,mm contro i $10 \times 10$ della sezione del
+blocchetto. Il fondo della tasca è un piano perpendicolare all'asse e non
+fornisce alcun riferimento angolare: sono le quattro pareti del sedile a
+impegnare le facce del blocchetto e a bloccarne la rotazione, dalla quale
+dipende la corrispondenza fra la direzione della curvatura del canale e i canali
+$M_x$ e $M_y$ della misura. Il sedile non sceglie però fra le quattro posizioni
+a 90$^\circ$, perché la sezione del blocchetto è quadrata: quella scelta è
+affidata al riferimento asimmetrico del blocchetto ed è compito dell'operatore.
+Il gioco, compreso fra 0,23 e 0,29\,mm, lascia un'indeterminazione angolare
+residua fra 1,3$^\circ$ e 1,7$^\circ$, cui corrisponde una diafonia fra $M_x$ e
+$M_y$ inferiore al 3\%. Perché quel valore sia effettivamente il limite, il
+blocchetto va accostato a due pareti adiacenti prima della colata: la resina
+congela la posizione, non la stabilisce.
+
+Il secondo è il sottosquadro $\varnothing$15,50. Allargando la cavità al di
+sotto dell'apertura, fa sì che la resina indurita formi un elemento più largo di
+ciò che lo sovrasta. La ritenuta assiale del blocchetto cessa così di dipendere
+dalla sola adesione e diventa un vincolo di forma.
 
 \paragraph{Materiali.}
 Alla sede è assegnata la lega di alluminio 7075-T6, con carico unitario di snervamento pari a 505 MPa, ripreso dalla libreria del programma di calcolo. I carichi in gioco non vincolano la scelta del materiale, come le verifiche seguenti confermano: la lega è adottata per la buona lavorabilità nelle dimensioni ridotte del componente e la massa molto ridotta.
@@ -1141,27 +1154,30 @@ nel seguito sono riportati sia al valore di riferimento sia alla portata piena.
 È la verifica dimensionante del componente, ed è l'unica dell'intero banco in
 cui il margine non sia ampio.
 
-Entrambi i carichi si trasmettono al metallo per taglio sulle quattro pareti
-della tasca, di area complessiva 246\,mm$^2$. La forza assiale vi produce una
-tensione tangenziale
+Entrambi i carichi si trasmettono per taglio attraverso le quattro facce del
+blocchetto, che fra le due interfacce del giunto è la più piccola. La lunghezza
+incollata vale 6\,mm, cioè la profondità della cavità meno il millimetro del
+sedile, dove il film si riduce al gioco di montaggio; con un perimetro di
+40\,mm l'area risulta di 240\,mm$^2$. La forza assiale vi produce una tensione
+tangenziale
 \begin{equation}
-    \tau_F = \frac{F_z}{A} = \frac{200}{246} = 0{,}81 \; \mathrm{MPa} ,
+    \tau_F = \frac{F_z}{A} = \frac{200}{240} = 0{,}83 \; \mathrm{MPa} ,
 \end{equation}
-mentre il momento, agente su un braccio pari alla semidistanza media fra le
-pareti opposte, ne produce
+mentre il momento, agente su un braccio pari alla semidistanza fra le facce
+opposte, ne produce
 \begin{equation}
-    \tau_M = \frac{M_z}{A \, r} = \frac{1000}{246 \cdot 5{,}12}
-    = 0{,}79 \; \mathrm{MPa} .
+    \tau_M = \frac{M_z}{A \, r} = \frac{1000}{240 \cdot 5{,}00}
+    = 0{,}83 \; \mathrm{MPa} .
 \end{equation}
-Sommandole si ottiene 1,61\,MPa. La somma è cautelativa: le due distribuzioni
-non sono parallele su tutte le pareti, e la composizione in quadratura darebbe
-1,14\,MPa.
+Sommandole si ottiene 1,67\,MPa. La somma è cautelativa: le due distribuzioni
+non sono parallele su tutte le facce, e la composizione in quadratura darebbe
+1,18\,MPa.
 
 La scheda tecnica dell'adesivo dichiara, secondo la norma ISO 4587, resistenze
 al taglio per trazione di 18--20\,MPa su alluminio e di 6--8\,MPa su substrati
 polimerici. L'interfaccia debole è quella verso il blocchetto: assumendo il
 valore più basso fra quelli dichiarati si ottiene un coefficiente di sicurezza
-di 3,7, contro l'1,5 richiesto dal paragrafo~\ref{sec:fem-criterio}.
+di 3,6, contro l'1,5 richiesto dal paragrafo~\ref{sec:fem-criterio}.
 
 Tre condizioni vanno però dichiarate insieme a quel numero.
 
@@ -1205,8 +1221,10 @@ micrometri: il margine è di un ordine di grandezza.
 Il confronto con gli altri componenti chiarisce il ruolo della sede nel bilancio
 complessivo. La piastra di accoppiamento inferiore
 (paragrafo~\ref{sec:piastra-inferiore}) presenta una cedevolezza di
-0,489\,\textmu m/N, oltre trecento volte superiore. La sede non è un contributo
-alla cedevolezza della catena, è un arrotondamento.
+0,00226\,\text{\textmu m/N} e quella superiore
+(paragrafo~\ref{sec:piastra-superiore}) di 0,0957\,\text{\textmu m/N}: poco meno
+del doppio la prima, settanta volte la seconda. La sede non è dunque il termine
+che governa il bilancio, che è invece la piastra superiore.
 
 Una verifica va condotta a parte, perché non riguarda i carichi di prova ma il
 montaggio. Il precarico prescritto per le viti della cella, 1180\,N ciascuna
@@ -1271,18 +1289,28 @@ rispetto a questa terna e non ne fanno parte: fondare la localizzazione su
 elementi che hanno gioco sulla vite significherebbe dichiarare una precisione
 che il collegamento non possiede.
 
-Le tolleranze della tasca discendono dalle verifiche esposte. La larghezza è
-quotata con tolleranza unilaterale positiva, così che nella combinazione più
-sfavorevole resti sempre un gioco e mai un'interferenza: forzare un blocchetto
-in resina in una cavità sottodimensionata significa scheggiarlo al montaggio. Il
-parallelismo fra pareti opposte e la loro perpendicolarità al fondo, entrambi a
-0,05\,mm, garantiscono che il blocchetto si appoggi verticale e non inclinato.
+Le tolleranze del sedile richiedono una precisazione, perché non seguono lo
+schema delle altre. Le due larghezze non sono elementi di dimensione
+indipendenti: ciò che va garantito è l'accoppiamento del contorno nel suo
+insieme, dato che il caso peggiore di una delle due dipende da dove si trova
+l'altra. Sono perciò quotate come quote teoricamente esatte, e la tolleranza è
+affidata a un controllo di profilo di una superficie applicato tutt'attorno,
+di ampiezza 0,04\,mm e riferito alla stessa terna A$\vert$B$\vert$C. Una sola
+zona controlla insieme dimensione, forma, orientamento e posizione delle quattro
+pareti, e il gioco minimo resta garantito in ogni combinazione: forzare un
+blocchetto in resina in una cavità sottodimensionata significherebbe
+scheggiarlo al montaggio.
 
-Una nota di fabbricazione accompagna il disegno. Lo scarico $\varnothing$14,50 e
-il sottosquadro $\varnothing$15,50 sono entrambi più larghi delle pareti della
-tasca che li sovrasta: una fresa a candela non li raggiunge, perché il codolo
-urta contro la parete superiore. La lavorazione richiede un utensile dedicato,
-fresa a T o a disco.
+Completano il quadro il parallelismo del fondo e la perpendicolarità della
+parete cilindrica rispetto al riferimento primario, entrambi a 0,05\,mm, che
+garantiscono che il blocchetto si appoggi verticale e non inclinato.
+
+Resta un vincolo di fabbricazione. Il foro $\varnothing$14,50 e il sedile che lo
+segue si ottengono per fresatura ordinaria, perché la cavità si restringe
+procedendo verso il fondo. Il sottosquadro $\varnothing$15,50 no: è più largo
+del tratto che lo separa dall'apertura, quindi una fresa a candela non lo
+raggiunge e la sua esecuzione richiede un utensile dedicato, fresa a T o a
+disco.
 
 
 \section{Piastra di accoppiamento inferiore}

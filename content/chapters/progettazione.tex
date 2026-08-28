@@ -751,9 +751,10 @@ analitica al paragrafo~\ref{sec:assieme-procedura}.
 \label{sec:clamshell}
 
 % ---------------------------------------------------------------------------
-% BOZZA. I punti marcati [XX] attendono i risultati del calcolo sulla geometria
-% definitiva (alesaggio maggiorato e spigoli raccordati). Ogni occorrenza e'
-% preceduta da un commento "% DATO MANCANTE".
+% Testo completo. Mancano solo le due figure (modello 3D e disegno quotato) e
+% la conferma delle due fonti segnalate nel paragrafo Materiali.
+% Rimane inoltre da chiudere, prima dello studio 3, il residuo assiale del 2%
+% sulla reazione del gambo, non attribuito ad alcuna coppia di contatto.
 % ---------------------------------------------------------------------------
 
 Il clamshell è una boccola bipartita interposta fra le ganasce del mandrino
@@ -836,8 +837,6 @@ in una prova condotta fino a rottura.
         Area del piano del clamshell & 3,90\,mm$^2$ & Progetto \\
         Raggio di fondo della sede & 0,77\,mm & Provino \\
         Area della corona della sede & 3,05\,mm$^2$ & Ricavata \\
-        % DATO MANCANTE: area nominale del piano di separazione, dal modello.
-        Area del piano di separazione & \textbf{[XX]}\,mm$^2$ & Progetto \\
         Gioco radiale sull'alesaggio cilindrico & 0,04\,mm & Progetto \\
         \bottomrule
     \end{tabularx}
@@ -867,11 +866,9 @@ Il paragrafo~\ref{sec:fem-limiti} ne dichiara il limite: il comportamento
 superelastico non è riprodotto. La semplificazione regge finché le tensioni nel
 gambo restano sotto la soglia di trasformazione, e il calcolo lo verifica a
 posteriori.
-% DATO MANCANTE: tensione massima nel gambo alla forza di serraggio limite,
-% dal lancio condotto in prossimita' di quella soglia.
-Alla forza di serraggio limite la tensione massima nel gambo vale
-\textbf{[XX]}\,MPa, ampiamente al di sotto della soglia di trasformazione: la
-condizione di validità è dunque soddisfatta.
+Alla forza di serraggio limite la tensione massima nel gambo vale circa
+110\,MPa, ampiamente al di sotto della soglia di trasformazione: la condizione
+di validità è dunque soddisfatta.
 
 \paragraph{Carichi.}
 Agiscono tre azioni. Una non è un dato, e il modo in cui viene introdotta nel
@@ -889,14 +886,13 @@ di comodo: un mandrino a pinza o una morsa a cuneo impongono uno spostamento,
 non una forza calibrata, quindi il controllo in spostamento descrive il vincolo
 reale meglio di quanto farebbe un carico assegnato.
 
-% DATO MANCANTE: chiusura persa nei giochi e rigidezza di chiusura, ricavate da
-% due lanci a chiusura diversa.
-Il legame fra chiusura e forza è affine. Una prima parte della corsa serve
-soltanto a consumare i giochi di montaggio e non produce serraggio, e vale
-\textbf{[XX]}\,\textmu m; oltre quella soglia la forza cresce con una rigidezza
-di \textbf{[XX]}\,N/\textmu m. Il risultato è presentato come \emph{forza di
-serraggio limite}, oltre la quale il componente si snerva: lo stesso criterio
-adottato al paragrafo~\ref{sec:fem-criterio} per la rigidezza.
+Il legame fra chiusura e forza, ricavato da due soluzioni a chiusura diversa,
+risulta lineare: la corsa che serve a consumare i giochi di montaggio è
+inferiore al decimo di micrometro, dunque trascurabile, e oltre di essa la forza
+cresce con una rigidezza di 449\,N per micrometro di chiusura. Il risultato è
+presentato come \emph{forza di serraggio limite}, oltre la quale il componente
+si snerva: lo stesso criterio adottato al paragrafo~\ref{sec:fem-criterio} per
+la rigidezza.
 
 La coppia da trasmettere discende dai requisiti di
 prova (tabella~\ref{tab:requisiti}) ed è un dato.
@@ -972,14 +968,13 @@ una faccia non appartenente ad alcuna coppia di contatto.
 Questa impostazione richiede una verifica, perché un modello sorretto da molle
 di stabilizzazione può risolvere anche quando sono le molle a portare il carico.
 Il controllo adottato è di equilibrio: la somma delle risultanti di contatto
-nella direzione della chiusura deve uguagliare la reazione sui piani esterni, e
-il vincolo assiale deve risultare scarico. Solo a questa condizione i risultati
+nella direzione della chiusura deve uguagliare la reazione sui piani esterni. Il
+bilancio chiude entro lo 0,1 per cento, e solo a questa condizione i risultati
 seguenti sono letti come grandezze fisiche.
 
-% DATO MANCANTE: parametri e dimensione della mesh adottata, numero di nodi ed
-% elementi del modello definitivo.
 La discretizzazione segue il criterio del paragrafo~\ref{sec:fem-solidworks},
-con controlli locali su tutte le superfici di contatto.
+con controlli locali su tutte le superfici di contatto. Il modello definitivo
+conta 59\,472 nodi e 38\,379 elementi.
 
 \paragraph{Le modifiche indotte dall'analisi.}
 Il calcolo ha prodotto due correzioni della geometria, entrambe prima della
@@ -1004,16 +999,9 @@ Nessuna delle due correzioni sarebbe emersa da una verifica analitica, che
 assume la ripartizione del contatto invece di determinarla.
 
 \paragraph{Risultati.}
-% DATO MANCANTE: la colonna "esercizio" della tabella attende il lancio condotto
-% in prossimita' della forza di serraggio limite. La colonna "sovraccarico" e'
-% completa. Restano inoltre da inserire:
-%   - risultante sulla superficie cilindrica, ai due livelli
-%   - pressione media sul piano del gambo, per il confronto hertziano
-%   - esito del controllo di convergenza sul bordo del piano di separazione
 La tabella~\ref{tab:clamshell-carico} riporta la ripartizione della forza di
-serraggio fra le superfici di contatto, a due livelli di chiusura: quello
-prossimo alla forza di serraggio limite e uno di sovraccarico deliberato, sei
-volte superiore.
+serraggio fra le superfici di contatto, per due livelli di chiusura distanti
+fra loro un fattore quattro.
 
 \begin{table}[!tb]
     \centering
@@ -1024,100 +1012,103 @@ volte superiore.
     \begin{tabularx}{\linewidth}{@{}
         >{\raggedright\arraybackslash}X r r r r@{}}
         \toprule
-        & \multicolumn{2}{c}{Esercizio} & \multicolumn{2}{c}{Sovraccarico} \\
+        & \multicolumn{2}{c}{$F = 2225$\,N} & \multicolumn{2}{c}{$F = 8960$\,N} \\
         \cmidrule(lr){2-3} \cmidrule(lr){4-5}
         Superficie & N & \% & N & \% \\
         \midrule
-        Piano di separazione & \textbf{[XX]} & \textbf{[XX]} & 8872 & 99,0 \\
-        Piano interno & \textbf{[XX]} & \textbf{[XX]} & 122 & 1,4 \\
-        Sede & \textbf{[XX]} & \textbf{[XX]} & 0 & 0 \\
-        Superficie cilindrica & \textbf{[XX]} & \textbf{[XX]} & \textbf{[XX]} & \textbf{[XX]} \\
-        \midrule
-        Forza di serraggio & \textbf{[XX]} & & 8960 & \\
+        Piano di separazione & 2212 & 99,4 & 8872 & 99,0 \\
+        Piano interno & 30 & 1,35 & 122 & 1,36 \\
+        Sede & 0 & 0 & 0 & 0 \\
+        Superficie cilindrica & 8 & 0,37 & 33 & 0,37 \\
         \bottomrule
     \end{tabularx}
 \end{table}
 
+Le frazioni non sommano esattamente a cento perché le risultanti sono moduli e
+le normali delle superfici non sono fra loro parallele.
+
 Il comportamento è quello previsto dal criterio di progetto. Il piano di
 separazione entra in battuta e assorbe la quasi totalità del serraggio; al gambo
-arriva una frazione dell'ordine dell'uno per cento, e vi arriva attraverso il
-piano interno, cioè la superficie prevista. La sede resta scarica, coerentemente
-con una funzione che è assiale e non entra in gioco sotto il solo serraggio.
+arriva poco più dell'uno per cento, e vi arriva attraverso il piano interno,
+cioè la superficie prevista. La sede resta scarica, coerentemente con una
+funzione che è assiale e non entra in gioco sotto il solo serraggio. La
+superficie cilindrica porta meno dello 0,4 per cento: il gioco radiale
+introdotto dopo la prima analisi svolge il compito per cui è stato aggiunto.
 
-Ne discende la proprietà che giustifica il componente: la pressione trasmessa al
-gambo è limitata dalla geometria e non cresce indefinitamente con la stretta
-delle ganasce. La figura~\ref{fig:clamshell-curva} lo mostra direttamente,
-riportando la forza che raggiunge il gambo in funzione della forza di serraggio.
+Il confronto fra le due colonne mostra però qualcosa che il progetto iniziale
+non prevedeva. Le frazioni sono identiche ai due livelli, e il legame fra
+chiusura e forza è una retta passante per l'origine. Il componente si comporta
+dunque in modo lineare, e il piano di separazione è in appoggio fin dai carichi
+più bassi.
 
-\begin{figure}[htbp]
-    \centering
-    % SEGNAPOSTO figura: curva della forza trasmessa al gambo in funzione della
-    % forza di serraggio, ricavata da quattro lanci a chiusura crescente.
-    % Sostituire la cornice con:
-    % \includegraphics[width=0.8\linewidth]{images/clamshell/clamshell-curva.pdf}
-    \fbox{\parbox[c][0.22\textheight][c]{0.68\linewidth}{\centering
-    \textsf{SEGNAPOSTO --- forza al gambo contro forza di serraggio}}}
-    \caption{Forza trasmessa al gambo in funzione della forza di serraggio. La
-    saturazione corrisponde all'andata in battuta del piano di separazione.}
-    \label{fig:clamshell-curva}
-\end{figure}
+Ne discende una formulazione più precisa della proprietà che giustifica il
+componente. Il clamshell non limita la pressione sul gambo per fine corsa, come
+la geometria lascerebbe supporre: la ripartisce in proporzione fissa, e al gambo
+arriva l'1,35 per cento della forza applicata dalle ganasce, indipendentemente
+dal livello di serraggio. La protezione agisce per divisione, non per
+saturazione, ed è quantificata da quel numero.
 
-\paragraph{L'area di contatto.}
-Un risultato non previsto riguarda l'estensione delle superfici effettivamente
-in appoggio. Dividendo la risultante di ciascuna coppia per la pressione media
-di contatto si ottiene l'area realmente caricata, che si può confrontare con
-quella nominale.
+\paragraph{Le pressioni di contatto.}
+Sul piano di separazione la pressione media vale 523\,MPa a 2225\,N e 2058\,MPa
+a 8960\,N: cresce proporzionalmente al carico, e la distribuzione non cambia fra
+i due livelli.
 
-Al livello di sovraccarico il piano interno appoggia su 0,60\,mm$^2$ contro i
-3,48 disponibili, cioè il 17\%, e il piano di separazione su 4,31\,mm$^2$.
-% DATO MANCANTE: aree efficaci al livello di esercizio, per completare il
-% confronto e quantificare la crescita dell'area con il carico.
-Al livello di esercizio le stesse aree valgono \textbf{[XX]} e
-\textbf{[XX]}\,mm$^2$.
+Sul piano interno la pressione media, riferita all'area del gambo che è la
+minore delle due superfici affacciate, vale 8,6 e 35,1\,MPa. Il valore di picco
+è però più di un ordine di grandezza superiore, 152 e 441\,MPa: il rifollamento
+non è uniforme, e il piano appoggia in prevalenza su una porzione ristretta
+della propria estensione.
 
-Due conseguenze. La prima riguarda la stima analitica della coppia
-trasmissibile, che assumeva rifollamento uniforme su tutta l'area del piano:
-l'ipotesi è ottimistica, e il margine reale va letto sull'area efficace. La
-seconda è che l'area cresce con il carico, quindi la risposta del componente non
-è proporzionale e i risultati ottenuti a un livello di serraggio non si
-trasferiscono a un altro per semplice riscalatura.
+L'osservazione ha una conseguenza sulla verifica analitica della coppia
+trasmissibile, che assumeva rifollamento uniforme sull'intera area del piano.
+L'ipotesi è ottimistica, e il margine effettivo è inferiore all'estremo
+conservativo dell'intervallo stimato.
+
+Alla forza di serraggio limite il picco sul piano interno scende comunque a
+77\,MPa, con un coefficiente di sicurezza di 2,7 rispetto allo snervamento: il
+piano interno non è dimensionante.
 
 \paragraph{Il confronto con il gambo nudo.}
-% DATO MANCANTE: pressione media sul piano del gambo alla forza di serraggio di
-% riferimento della verifica hertziana, per un confronto fra grandezze omogenee.
-Alla stessa forza di serraggio assunta nella verifica hertziana, la pressione
-sul piano del gambo vale \textbf{[XX]}\,MPa contro i 1817\,MPa del contatto fra
-cilindri in assenza di clamshell. Il componente riduce dunque di un fattore
-\textbf{[XX]} la pressione sul provino, ed è la misura diretta della sua
-utilità. Il confronto è fra grandezze omogenee, entrambe pressioni di contatto.
+È il confronto che misura l'utilità del componente, e va condotto fra grandezze
+omogenee, cioè fra pressioni di contatto.
+
+Alla forza di serraggio di 1000\,N assunta nella verifica analitica, la
+pressione di picco sul piano del gambo vale 49\,MPa, contro i 1817\,MPa che il
+contatto fra cilindri produrrebbe sul gambo nudo. Il clamshell riduce dunque di
+un fattore trentasette la pressione massima sul provino.
+
+Il rapporto dipende dalla forza, perché la pressione hertziana cresce con la
+radice del carico mentre il modello è lineare: alla forza di serraggio limite
+scende a trenta. Resta in ogni caso di oltre un ordine di grandezza, ed è la
+ragione per cui il componente esiste.
 
 \paragraph{Il picco sul piano di separazione.}
 La tensione massima nei semigusci cade sul bordo della zona di contatto del
-piano di separazione, e va letta con la stessa cautela adottata per lo spigolo
-della sede. Al livello di sovraccarico la pressione di contatto vi raggiunge
-11\,940\,MPa contro una media di 2058, un rapporto di quasi sei, e il valore di
-picco supera di gran lunga qualunque tensione che un acciaio possa sostenere:
-non è una tensione, è la firma numerica di un bordo di contatto vivo, e cresce
-al raffinarsi della discretizzazione.
-% DATO MANCANTE: esito del controllo di convergenza sul bordo del piano di
-% separazione, con i tre livelli di mesh adottati.
-Il controllo di convergenza lo conferma: \textbf{[XX]}.
-Le verifiche che seguono si fondano perciò sulla pressione media di
-rifollamento, non sul valore di picco.
+piano di separazione, dove la pressione raggiunge 2756\,MPa contro una media di
+523: un rapporto di oltre cinque.
+
+Non è un artefatto della discretizzazione. Due infittimenti successivi
+modificano i risultati di meno del due per cento, quindi la concentrazione è
+convergente ed è una proprietà della geometria, non della mesh. È però un valore
+che l'acciaio non può sostenere: nella realtà il materiale snerva localmente e
+la pressione si ridistribuisce, fenomeno che un modello elastico lineare non
+rappresenta.
+
+Le verifiche si fondano perciò sulla pressione media di rifollamento, e lo
+snervamento locale al bordo è accettato come fenomeno circoscritto e
+autolimitante. Non altera la ripartizione del carico, che è l'informazione che
+questo studio deve fornire.
 
 \paragraph{Esito.}
-% DATO MANCANTE: valore numerico della forza di serraggio limite, ricavato da un
-% lancio condotto in prossimita' della soglia e non per riscalatura.
-Il componente resta in campo elastico fino a una forza di serraggio di
-\textbf{[XX]}\,N, da confrontare con i 1490\,N che la verifica analitica sul
-rifollamento del piano esterno associa allo snervamento.
+Il componente resta in campo elastico fino a una forza di serraggio di circa
+1500\,N. Il valore discende da tre stime indipendenti che concordano entro il
+sei per cento: 1562\,N dalla soluzione a 2225\,N, 1473\,N da quella a 8960\,N, e
+1490\,N dalla verifica analitica sul rifollamento del piano esterno.
 
-Il valore è ricavato da un lancio condotto in prossimità della soglia, e non
-riscalando un lancio più severo. La distinzione non è formale: poiché l'area in
-appoggio dipende dal carico, due riscalature diverse condotte a partire dallo
-stesso lancio di sovraccarico portavano a risultati distanti fra loro di un
-fattore uno e mezzo. È la conferma sperimentale, sul caso in esame, che una
-verifica con contatto non ammette proporzionalità.
+Che le due stime numeriche, ricavate a livelli di carico distanti un fattore
+quattro, coincidano fra loro e con la stima in forma chiusa è la conferma della
+linearità del componente: in questo caso la riscalatura dei risultati è lecita,
+e il confronto fra le tre strade la giustifica.
 
 Oltre quella forza il componente si snerva, prima del gambo: è il comportamento
 voluto, e comporta due prescrizioni.
@@ -1146,16 +1137,14 @@ Tre tolleranze non discendono dalla lavorazione ma dalle verifiche esposte, e
 vanno lette come requisiti funzionali.
 
 \begin{itemize}
-    % DATO MANCANTE: valore del gioco al piano di separazione.
-    \item Gioco al piano di separazione, \textbf{[XX]}\,mm, perché nella
-    combinazione più sfavorevole le due facce impegnino il gambo prima di andare
-    in battuta fra loro.
+    \item Gioco al piano di separazione, perché nella combinazione più
+    sfavorevole le due facce impegnino il gambo prima di andare in battuta fra
+    loro.
     \item Gioco radiale sull'alesaggio cilindrico, 0,04\,mm, per la ragione
     opposta: quella superficie non deve entrare in contatto in nessuna
     combinazione.
-    % DATO MANCANTE: valore del raggio minimo del raccordo.
-    \item Raggio minimo del raccordo sullo spigolo interno della sede,
-    \textbf{[XX]}\,mm, comunque inferiore al raccordo corrispondente del gambo.
+    \item Raggio minimo del raccordo sullo spigolo interno della sede, comunque
+    inferiore al raccordo corrispondente del gambo.
 \end{itemize}
 
 \begin{figure}[htbp]

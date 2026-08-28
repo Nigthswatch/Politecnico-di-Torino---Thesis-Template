@@ -299,15 +299,30 @@ scrive
 \begin{equation}
     M_{\mathrm{ap}} = P \, \frac{W}{A} ,
 \end{equation}
-dove $P$ è il precarico complessivo delle viti del giunto. Il collegamento più
-debole della catena è quello fra piastra inferiore e cella, sei viti M2 disposte
-su una circonferenza di 20\,mm di diametro; assumendo un serraggio al 70\,\% del
-carico di snervamento si ottiene $P = 3{,}9$\,kN e $M_{\mathrm{ap}} =
-9{,}8$\,N$\cdot$m, corrispondente a una forza trasversale di circa 109\,N. Il
-criterio di rigidezza, come si vedrà, limita quella forza a un valore oltre
-quindici volte inferiore: i giunti restano chiusi in tutto il campo di
-funzionamento, l'ipotesi di collegamento incollato risulta verificata e con essa
-la linearità dell'intero modello.
+dove $P$ è il precarico complessivo delle viti del giunto. I collegamenti da
+verificare sono i due che affacciano sulla cella, sei viti M2 disposte su una
+circonferenza di 20\,mm di diametro.
+
+Il precarico non è assunto ma prescritto. Il costruttore della cella dichiara
+per quelle viti una coppia di serraggio di 0,4\,N$\cdot$m
+\cite{interface6amount}, dalla quale il precarico si ricava con la relazione
+convenzionale
+\begin{equation}
+    F_{\mathrm{pre}} = \frac{T}{K \, d} ,
+\end{equation}
+dove $d$ è il diametro nominale e $K$ il coefficiente di attrito complessivo del
+collegamento. Assumendo $K = 0{,}17$, valore corrente per viti in acciaio non
+lubrificate, si ottengono 1180\,N per vite e $P = 7{,}1$\,kN complessivi.
+
+Ne discende $M_{\mathrm{ap}} = 17{,}6$\,N$\cdot$m, corrispondente a una forza
+trasversale di circa 197\,N. Il criterio di rigidezza, come si vedrà, limita
+quella forza a un valore oltre trenta volte inferiore: i giunti restano chiusi
+in tutto il campo di funzionamento, l'ipotesi di collegamento incollato risulta
+verificata e con essa la linearità dell'intero modello.
+
+L'unica grandezza assunta resta $K$, e la sua incertezza non è determinante:
+facendolo variare fra 0,14 e 0,20 la forza di apertura si sposta fra 240 e
+168\,N, e la conclusione non cambia.
 
 \paragraph{Discretizzazione.}
 La suddivisione è ottenuta con elementi tetraedrici parabolici, generati dal
@@ -1193,8 +1208,17 @@ complessivo. La piastra di accoppiamento inferiore
 0,489\,\textmu m/N, oltre trecento volte superiore. La sede non è un contributo
 alla cedevolezza della catena, è un arrotondamento.
 
-La verifica di resistenza, condotta sullo stesso modello, non risulta
-dimensionante. La tensione equivalente di von Mises massima vale 3,73\,MPa al
+Una verifica va condotta a parte, perché non riguarda i carichi di prova ma il
+montaggio. Il precarico prescritto per le viti della cella, 1180\,N ciascuna
+(paragrafo~\ref{sec:fem-solidworks}), preme sull'alluminio attraverso la corona
+di appoggio della testa. Con lamatura $\varnothing$4,40 e testa cilindrica M2 la
+corona misura 6,8\,mm$^2$, e la pressione risulta di 173\,MPa: il coefficiente
+di sicurezza vale 2,9. È il margine più basso del componente dopo quello
+sull'incollaggio, ed è la conseguenza diretta della lamatura piana, che
+distribuisce il carico su un anello sottile.
+
+La verifica di resistenza sotto i carichi di prova, condotta sullo stesso
+modello, non risulta invece dimensionante. La tensione equivalente di von Mises massima vale 3,73\,MPa al
 carico di riferimento, ossia 7,5\,MPa alla portata piena della cella: contro i
 505\,MPa di snervamento della lega, il coefficiente di sicurezza è di 68. Il
 massimo cade all'interno della tasca, nella zona di applicazione del carico
@@ -1410,6 +1434,13 @@ alla quale corrisponde una forza di 2200\,N per raggiungere i cinque micrometri
 assunti come limite. La rigidezza non è dunque vincolante, e lo spessore di
 4\,mm è ampiamente sufficiente.
 
+Vale anche qui la verifica di montaggio già svolta per la sede. Il precarico
+delle viti della cella, 1180\,N ciascuna, agisce però su una svasatura conica
+$\varnothing$5,40 anziché su una lamatura piana: la superficie di contatto è di
+26,0\,mm$^2$, quasi quattro volte maggiore, e la pressione scende a 45\,MPa con
+un coefficiente di sicurezza di 11. La geometria della sede della testa, scelta
+per ragioni di ingombro, si rivela vantaggiosa anche sotto questo aspetto.
+
 La tensione equivalente massima vale 12,6\,MPa, con un coefficiente di sicurezza
 di 40 rispetto allo snervamento della lega. Il picco cade attorno ai fori M2,
 dove il carico remoto entra nel componente, ed è quindi un valore di
@@ -1601,6 +1632,11 @@ funzionale, non un dettaglio di lavorazione, perché è lì che si concentrano l
 tensioni di flessione dello sbalzo.
 
 \section{Assieme e procedura di prova}
+%   - PRESCRIZIONI DI SERRAGGIO, da raccogliere qui:
+%     viti M2 verso la cella, 0,4 N*m (Interface, \cite{interface6amount}).
+%     E' il precarico che rende valida l'ipotesi di giunto incollato del
+%     paragrafo 3.1.4: senza di esso il modello agli elementi finiti non regge.
+%     Va prescritta anche la classe delle viti, vedi distinta base.
 \label{sec:assieme-procedura}
 %   - sequenza di montaggio
 %   - centraggio manuale del blocchetto
